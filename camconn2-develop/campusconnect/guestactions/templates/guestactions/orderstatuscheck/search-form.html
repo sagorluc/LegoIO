@@ -1,0 +1,14 @@
+{% load crispy_forms_tags %}
+
+
+<form method="POST">
+  {% csrf_token %}
+  {% for i in form_order_search %}
+    <div class="row">
+      <div class="form-group col-md-8 mb-0">
+        {{ i|as_crispy_field }}
+      </div>
+    </div>
+  {% endfor %}
+  <button class="btn btn-secondary btn-xs rounded-0" type="submit">Submit</button>  
+</form>    

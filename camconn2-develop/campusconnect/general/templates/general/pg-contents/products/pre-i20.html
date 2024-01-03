@@ -1,0 +1,39 @@
+        <div class="row mb-5 pb-2">
+          <div class="col-md-8 heading-section">
+            <h2 class="mb-4"><span>Pre I20</span> Services</h2>
+            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <div class="blog-entry">
+              <div class="text bg-white p-4">
+                <h3 class="heading"><a href="{% url 'prei20_detail_view_link' '1' %}">{{prei20_product_list.1.title}}</a></h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="blog-entry">
+              <div class="text bg-white p-4">
+                <h3 class="heading"><a href="{% url 'prei20_detail_view_link' '2' %}">{{prei20_product_list.2.title}}</a></h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="blog-entry">
+              <div class="text bg-white p-4">
+                <h3 class="heading"><a href="{% url 'prei20_detail_view_link' '3' %}">{{prei20_product_list.0.title}}</a></h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center mt-4">
+          <p class="mb-0"><a href="{% url 'prei20_services_all' %}" class="btn btn-primary rounded-0">All Service</a></p>
+        </div>

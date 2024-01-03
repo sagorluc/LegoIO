@@ -1,0 +1,42 @@
+{% extends 'resumeweb/layout/base_form_submission.html' %}
+
+
+{% block left_column %}
+    <div class="mb-6">
+      {% include 'guestactions/orderstatuscheck/before-you-submit.html' %}
+    </div>
+    <div class="mb-6">  
+      {% include 'guestactions/orderstatuscheck/what-happens-next.html' %}
+    </div>
+{% endblock %}
+
+
+{% block right_column %}
+
+    <div class="col-12 col-md-8">
+        <div class="row mb-md-8 mb-6">
+            <div class="col">
+              <h2 class="fw-bolder mb-0">
+                {{pg_headline}}
+              </h2>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mb-6">
+        <div class="col-12 col-md-12">
+            <div class="card border">
+                <div class="card-body">
+					{% include 'guestactions/orderstatuscheck/search-form.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+	{% block form_resp %}
+    	{% include 'guestactions/orderstatuscheck/search-result.html' %}
+	{% endblock %}
+
+{% endblock %}

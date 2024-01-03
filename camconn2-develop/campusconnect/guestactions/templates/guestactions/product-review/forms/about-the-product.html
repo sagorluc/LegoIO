@@ -1,0 +1,18 @@
+{% load crispy_forms_tags %}
+
+<h4 class="fw-bolder mb-0">Section 1: About the product</h4>
+
+<div class="card border rounded-0 mb-3">
+	<div class="card-body">
+	  <div class="row">
+	    <div class="form-group col-md-6 mb-0">
+	      {{ form.product_liked|as_crispy_field }}
+	    </div>
+	  </div>          
+	  <div class="row">
+	    <div class="form-group col-md-12 mb-0">
+	      {{ form.feedback|as_crispy_field }}
+	    </div>
+	  </div>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+{% if product_line != 'bandwidth' %}
+  <div class="row py-5 mb-6">
+    <div class="card border-0"> 
+        <div class="card-body"> 
+              <h2 class="fw-bolder mb-1">{{product_line|title}} {% if category_selected %} | <span class="fw-bolder">{{category_selected | capfirst}}</span>{% endif %}</h2>
+              <small class="text-reset">{{pg_header}}</small> 
+        </div>
+    </div>
+  </div>
+{% else %}
+  <div class="row py-5 mb-6">
+    <div class="card border-0"> 
+        <div class="card-body"> 
+              <h2 class="mb-1">{{product_line|title}} {% if category_selected %} | <span class="fw-bolder">{{category_selected | upper}}</span>{% endif %}</h2>
+              <small class="text-reset">{{pg_header}}</small> 
+        </div>
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,50 @@
+{% load static %}
+
+
+{% if pg_layout_type == 'homepg' %}
+
+    <div class="container">
+      <div class="row justify-content-between align-items-center mb-6">
+        <div class="col-12 col-md-4 order-md-2 text-center">
+          <img class="img-fluid w-75 w-md-100 mb-6 mb-md-0" src="{% static 'resumeweb/assets/img/3rd/products/strategy/businessman_generated.jpg' %}" alt="...">
+        </div>
+        <div class="col-12 col-md-7 order-md-1">
+          <p class="col-12 col-md-10 col-lg-8">
+            <h2 class="fw-bolder">Target Audiances</h2>
+          </p>
+          <p class="">
+            {{product_line | title}} services could be useful for various types of
+            job seekers including but not limited to the following groups
+          </p>
+          <p class="">
+            <ul>
+              {% for data in fa_list %}
+                <li class="">{{data.category|capfirst}}
+                  <ul><li>{{data.score|capfirst}}</li></ul>
+                </li>
+              {% endfor %}
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+
+{% else %}
+
+    <div class="row justify-content-between align-items-center mb-6">
+      <div class="col-12 col-md-12">
+        <div class="text-reset">
+          <p class="">
+            <ul>
+              {% for data in fa_list %}
+                <li class="">Service category: {{data.category|capfirst}}
+                  <ul><li>Impact Factor Score: {{data.score|capfirst}}</li></ul>
+                </li>
+              {% endfor %}
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>  
+
+{% endif %}

@@ -1,0 +1,15 @@
+{% extends 'inventory/layout/base_prod_details_v2.html' %}
+
+
+{% block right_column %}
+  <div class="mb-6">
+    {% include 'inventory/layout/products/visa/components/show-related-services.html' %}
+  </div>
+  <div class="mb-6">
+    {% include 'inventory/pg-contents/service-list-all/visa/by_cat.html' %}
+  </div>
+  <div class="mb-6">
+    {% include 'inventory/components/visa/all_serv_link.html' %}
+  </div>  
+
+{% endblock %}

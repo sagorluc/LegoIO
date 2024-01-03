@@ -1,0 +1,73 @@
+<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+	<tr>
+		<td class="bg_white">
+			<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+				<tr>
+					<td class="bg_light email-section">
+						<div class="heading-section" style="text-align: left; padding: 25px 5px 0px 5px;">
+							
+							<h3 class="heading">Order Details</h3>
+
+							{% if products_list %}
+								{% for instance in products_list %}
+									{% with instance=instance %}
+
+										<p style="color:#111765">Tracking # {{ instance.mcart.tracking_id }}</p>
+										<p>{{instance.mcart.sku|upper}}</p>
+										<p>{{instance.mcart.title|title}}</p>
+										
+										<p>Item price
+											{% if instance.mcart.final_price == instance.mcart.base_price %}
+												${{instance.mcart.final_price}}
+											{% else %}
+												(coupon {{instance.mcart.mcart_coupons.mcoupon_given.random_string_32}} applied: ${{instance.mcart.base_price}} - ${{instance.mcart.coupon_subtract}})
+												${{instance.mcart.final_price}}
+											{% endif %}			              		
+										</p>
+
+										<p>Service Option Information</p>
+										{% for serviceoption in instance.mcart_serviceoptions %}
+											{% with serviceoption=serviceoption %}
+												<p>{{serviceoption.sku|upper}}</p>
+												<p>{{serviceoption.name|title}}</p>
+												<p>${{serviceoption.price}}</p>
+											{% endwith %}
+										{% empty %}
+											<p>No customized service option fee collected</p>
+										{% endfor %}			              		
+										
+										<p>Delivery Fee</p>
+										{% for deliveryoption in instance.mcart_deliveryoptions %}
+											{% with deliveryoption=deliveryoption %}
+												<p>{{deliveryoption.name}}</p>
+												<p>${{deliveryoption.price}}</p>
+											{% endwith %}
+										{% empty %}
+											<p>No delivery fee collected</p>
+										{% endfor %}
+
+
+										<p>Tax collected ${{instance.item_tax_price}}</p>
+										<p>Item Total ${{instance.item_totalcost}}</p>
+
+										<p>Order Delivery Information</p>
+										{% for deliverydate in instance.deliverydate_list %}
+											<p>Estimated Delivery Date</p>
+											<p>{{ deliverydate|date:'M d Y'}} EST</p>
+										{% endfor %}
+
+
+									{% endwith %}
+								{% endfor %}
+							{% else %}
+								<p>No product found in your purchase order</p>
+							{% endif %}
+
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</td>
+	</tr>
+</table>

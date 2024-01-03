@@ -1,0 +1,38 @@
+{% load static %}
+
+<div class="mb-6">
+  <p class="fw-bolder">Choose your payment options</p>
+</div>
+
+{% comment %} <!-- working this function-->
+  <script>
+  function openPopup(event) {
+    event.preventDefault();
+    var leftPosition = screen.width - 1100; // Calculate the left position
+    var topPosition = (screen.height - 300) / 2; // Calculate the top position
+    var windowFeatures = 'width=400,height=600,left=' + leftPosition + ',top=' + topPosition;
+    window.open('/vsslcommerz/vcreate','Popup Window', windowFeatures);
+    //console.log("checking...........")
+  
+  }
+
+
+</script> 
+
+
+<button id="myButton" onclick="openPopup(event)" type="button" class="btn btn-primary" style="scale:0.9">
+  <a style="color: white; text-decoration:none " 
+  href="{% url 'enter_payment_getway' %}" >Pay Now </a></button>  {% endcomment %}
+
+
+ 
+
+  <button id="myButton" onclick="" type="button" class="btn btn-primary" style="scale:0.9">
+    <a style="color: white; text-decoration:none " 
+    href="{% url 'enter_payment_getway' %}" >Pay Now </a></button> 
+
+    <button id="myButton" onclick="" type="button" class="btn btn-primary" style="scale:0.9">
+      <a style="color: white; text-decoration:none " 
+      href="{% url 'amar_pay' %}" >Amar Pay </a></button> 
+  
+

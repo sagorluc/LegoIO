@@ -1,0 +1,14 @@
+<div class="card w-50">
+  {% if disable_item %}
+    <p id="pAlreadyExistText" class="fs-sm text-muted">This product is added in your cart</p>
+    <button class="card-link btn btn-danger btn-xs rounded-1"
+            onclick="mmh_removeProductFromCart_andUpdateDom()">
+            Remove from Cart
+    </button>
+  {% else %}
+    <button class="card-link btn btn-primary btn-xs rounded-1"
+            onclick="mmh_addProductToCart_andUpdateDom()">
+            Add To Cart <i class="fe fe-shopping-cart"></i>
+    </button>
+  {% endif %}
+</div>

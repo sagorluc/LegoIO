@@ -1,0 +1,20 @@
+{% if messages %}
+  <div class="row">
+      <div class="col-12 col-md-12">
+          <div class="card bg-green-200">
+              <div class="card-body">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+              </div>
+          </div>
+      </div>
+  </div>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-black" type="submit">Submit</button>
+</form>
+

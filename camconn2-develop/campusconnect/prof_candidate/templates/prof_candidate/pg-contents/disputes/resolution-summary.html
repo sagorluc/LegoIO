@@ -1,0 +1,99 @@
+<table class="table table-sm text-reset">
+  <tbody>
+    <tr>
+      <td>Order ID</td>
+      <td>{{ object.product_uniqid }} MMH: VERIFY product_uniqid still Exists>>>with london DB</td>
+    </tr>
+    <tr>
+      <td>Order Placed</td>
+      <td>2021-04-14 12.22pm EST</td>
+    </tr>
+    <tr>
+      <td>Total Price</td>
+      <td>$23.99</td>
+    </tr>
+    <tr>
+      <td>Delivery Email</td>
+      <td>{{ object.email_address }}</td>
+    </tr>
+    <tr>
+      <td>Resume Attached</td>
+      <td><a href="#">resume123.doc</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ----------------------------------- -->
+<p class="mb-0 border-bottom pt-3 text-primary">
+  Item 1
+</p>
+<p class="text-reset">
+  I want to buy a car
+</p>
+<p class="text-reset">
+  $46.00
+</p>
+<ul>
+  <li class="text-reset">I want to buy car cover</li>
+  <li class="text-reset">$3.78</li>
+</ul>
+<ul>
+  <li class="text-reset">I want to buy car insurance</li>
+  <li class="text-reset">$9.78</li>
+</ul>
+<p class="text-reset mb-0 pt-3">
+  Estimated Time of Delivery
+</p>
+<small class="text-reset">
+  2021-05-22 11:59pm EST
+</small>
+
+<!-- ----------------------------------- -->
+
+<!-- ----------------------------------- -->
+<p class="mb-0 border-bottom pt-3">
+  Item 2
+</p>
+<p class="text-reset">
+  I want to buy a car
+</p>
+<p class="text-reset">
+  $46.00
+</p>
+<ul>
+  <li class="text-reset">I want to buy car cover</li>
+  <li class="text-reset">$3.78</li>
+</ul>
+<ul>
+  <li class="text-reset">I want to buy car insurance</li>
+  <li class="text-reset">$9.78</li>
+</ul>
+<p class="text-reset mb-0 pt-3">
+  Estimated Time of Delivery
+</p>
+<small class="text-reset">
+  2021-05-22 11:59pm EST
+</small>
+<!-- ---------------------------- -->
+<!-- about the buyer -->
+<!-- ---------------------------- -->
+<p class="mb-0 border-bottom pt-3">
+  About the buyer
+</p>
+<table class="table table-sm text-reset">
+  <tbody>
+    <tr>
+      <td>Name</td>
+      <!-- <td>{{ object.product_uniqid }}</td> -->
+      <td>{{ request.user.first_name }}{{ request.user.last_name }}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>2021-04-14 12.22pm EST</td>
+    </tr>
+    <tr>
+      <td>Mode of Payment</td>
+      <td>Paypal</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,57 @@
+{% load static %}
+
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">My Orders MMH</h1>
+</div>
+
+
+
+{% if object_list %}
+  {% for object in object_list %}
+
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <div class="d-inline-block mb-1 text-muted">title: {{ object.title }}</div>
+          <div class="d-inline-block mb-1 text-muted">base_price: {{ object.base_price }}</div>
+          <div class="d-inline-block mb-1 text-muted">quantity: {{ object.quantity }}</div>
+          <div class="d-inline-block mb-1 text-muted">created: {{ object.created }}</div>
+          <div class="d-inline-block mb-1 text-muted">updated: {{ object.updated }}</div>
+          <div class="d-inline-block mb-1 text-muted">updated: ADD DISPLAY FOR SERVICE OPTIONS</div>
+          <div class="d-inline-block mb-1 text-muted">updated: ADD DISPLAY FOR SERVICE OPTIONS</div>
+          <div class="d-inline-block mb-1 text-muted">updated: ADD DISPLAY FOR SERVICE OPTIONS</div>
+          <div class="d-inline-block mb-1 text-muted">updated: ADD DISPLAY FOR SERVICE OPTIONS</div>
+          <div class="d-inline-block mb-1 text-muted">updated: ADD DISPLAY FOR SERVICE OPTIONS</div>
+          <div class="d-inline-block mb-1 text-muted">item_id: {{ object.item_id }}</div>
+          <div class="d-inline-block mb-1 text-muted">owner_uniqid: {{ object.owner_uniqid }}</div>
+        </div>
+      </div>
+    </div>
+
+  {% endfor %}
+{% endif %}
+
+
+{% comment "Optional note" %}
+<div class="d-inline-block mb-1 text-muted">service_options_uniqid: {{ object.service_options_uniqid }}</div>
+
+
+<div class="col p-4 d-flex flex-column position-static">
+  <div class="d-inline-block mb-1 text-muted">Order ID: {{ object.id }} >>349943</div>
+  <div class="d-inline-block mb-1 text-muted">Order Date: {{ object.created }}</div>
+  <div class="d-inline-block mb-1 text-muted">Order Time: 08.30pm EST</div>
+  <h6 class="mb-0">Service(s) Purchased</h6>
+  <div class="d-inline-block mb-1 text-muted">Service Type: Exp180</div>
+  <div class="d-inline-block mb-1 text-muted">ID: e238</div>
+  <div class="d-inline-block mb-1 text-muted">Title: I want to drink water</div>
+  <div class="d-inline-block mb-1 text-muted">Serive Options</div>
+  <div class="d-inline-block mb-1 text-muted">ID: p278</div>
+  <div class="d-inline-block mb-1 text-muted">Title: I want to drink water with ice</div>
+  <h6 class="mb-0">Service(s) Delivery</h6>
+  <div class="d-inline-block mb-1 text-muted">Order Status: Processing 25% Completed</div>
+  <div class="d-inline-block mb-1 text-muted">Estimated delivery by: Nov 30 2020 11.59pm EST</div>
+    <a href="{% url 'candidate_order_details' object.id %}" class="btn btn-primary">Show Details</a>
+    <a href="#" class="stretched-link">Check Updated Status</a>
+</div>
+{% endcomment %}

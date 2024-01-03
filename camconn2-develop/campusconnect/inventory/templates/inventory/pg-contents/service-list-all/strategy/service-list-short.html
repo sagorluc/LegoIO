@@ -1,0 +1,32 @@
+<div class="row">
+{% for object in object_list %}
+  
+    <div class="col-12 col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="fs-sm text-muted fw-bolder mb-0">{{object.sku | upper}}</p>
+          <p class="fw-bolder text-primary">
+            <a href="{% url 'strategy_prod_details' object.id %}">{{object.title | capfirst}}</a>
+          </p>
+          <p class="fs-sm mb-0">
+            <span class="text-reset">Price: ${{object.listprice}}</span> 
+            <span class="text-danger">Current offer: ${{object.saleprice}}</span>
+          </p>
+          <p class="fs-sm text-reset">{{object.category | capfirst}}</p>
+        </div>
+      </div>
+    </div>
+
+{% endfor %}
+</div>
+
+
+<div class="row pt-5">
+  <div class="col-12 col-md-4 col-lg-4 col-xl-5">
+    <a class="btn btn-sm btn-primary rounded-0 me-1" href="{% url 'strategy_all_serv' %}">
+      Show All Services
+    </a>
+  </div>
+</div>
+
+

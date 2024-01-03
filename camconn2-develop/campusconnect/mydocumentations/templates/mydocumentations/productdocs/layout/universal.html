@@ -1,0 +1,42 @@
+{% extends 'mydocumentations/productdocs/base_prod_docs.html' %}
+
+
+{% block meta %}
+  <title>Product Docs | Resumenalyzer</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+{% endblock %}
+
+
+{% block opening_banner %}
+  {% include 'mydocumentations/productdocs/pg-contents/opening-banners/universal.html' %}
+{% endblock %}
+
+
+{% block product_intro %}
+  <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+    <section class="py-6 py-md-6">
+		  {% include 'mydocumentations/productdocs/pg-contents/universal/intro.html' %}
+    </section>
+  </div>
+{% endblock %}
+
+
+{% block product_doc %}
+
+    <section class="py-6 py-md-6">
+      {% include 'mydocumentations/productdocs/pg-contents/universal/exp180.html' %}
+    </section>
+
+    <section class="py-6 py-md-6">
+      {% include 'mydocumentations/productdocs/pg-contents/universal/adhoc.html' %}
+    </section>
+
+{% endblock %}
+
+
+{% block pg_footer %}
+  <section class="py-6 py-md-6">
+    {% include 'mydocumentations/productdocs/pg-contents/universal/link-to-other.html' %}
+  </section>
+{% endblock %}

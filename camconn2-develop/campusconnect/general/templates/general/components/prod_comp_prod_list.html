@@ -1,0 +1,13 @@
+<div class="form-group col-6" id="prod_dropdownlist">
+
+
+<form>
+  <select name="prod_code" class="form-control form-control-sm" id="id_prod_code">
+    {% for i in prod_list %}
+      <option value="{{i}}">{{i}}</option>
+    {% endfor %}
+
+  </select>
+</form>
+
+</div>

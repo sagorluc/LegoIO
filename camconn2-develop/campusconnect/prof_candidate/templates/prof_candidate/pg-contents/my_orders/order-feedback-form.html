@@ -1,0 +1,14 @@
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+
+<!-- 
+<div class="col">
+    <p><h5 class="mb-0">Created Against: {{ track_id }} </h5></p>
+</div> -->
+
+
+<form method="POST">
+    {% csrf_token %}
+    {{form | crispy}}
+    <button class="btn btn-outline-info mt-3" type="submit">Submit</button>
+</form>

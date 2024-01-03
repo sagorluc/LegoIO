@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(name: 'Application',
+            choices: ['ccv1-dev', 'ccv1-prod'],
+            description: 'Deployment environment'
+        )
+    }
+
+    stages {
+        stage('ScaleDown ECS Service') {
+            steps {
+                script{
+                     
+                    sh """
+                    aws ecs update-service \
+                        --cluster dataflightit-tools-cluster \
+                        --service ${params.Application} \
+                        --desired-count 0 \
+                        --region us-east-1
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            deleteDir() /* clean up our workspace */
+        }
+    }
+}

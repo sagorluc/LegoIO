@@ -1,0 +1,40 @@
+{% extends 'inventory/layout/base_prod_list.html' %}
+
+
+{% block leftside_contents %}
+
+  {% if pg_layout_type != 'All Services' %}
+      <div class="mb-6">
+        {% include 'inventory/components/prei20/cat-list.html' %}
+      </div>
+      <div class="mb-6">
+        {% include 'inventory/components/prei20/all_serv_link.html' %}
+      </div>      
+      <div class="mb-6">
+        Product Inside add later
+      </div>      
+      <div class="mb-6">
+        {% include 'general/components/faq-gen.html' %}
+      </div>
+  {% else %}
+
+    <div class="mb-6">
+      {% include 'inventory/components/prei20/about.html' %}
+    </div>
+    <div class="mb-6">
+      {% include 'inventory/components/prei20/quick-start-guide.html' %}
+    </div>
+    <div class="mb-6">
+      {% include 'inventory/components/prei20/cat-list.html' %}
+    </div>  
+    <div class="mb-6">
+      Product Inside add later
+    </div>
+
+  {% endif %}
+{% endblock %}
+
+
+{% block service_list %}
+  {% include 'inventory/pg-contents/service-list-all/prei20/service-list-long.html' %}
+{% endblock %}

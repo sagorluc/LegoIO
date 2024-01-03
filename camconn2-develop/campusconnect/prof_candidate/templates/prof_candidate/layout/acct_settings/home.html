@@ -1,0 +1,33 @@
+{% extends 'prof_candidate/layout/primary_layout.html' %}
+{% load static %}
+
+{% block sidebar_content %}
+  <div class="mb-6">
+    {% include 'prof_candidate/components/menu/home-link.html' %}
+  </div>
+  <div class="mb-6">
+    {% include 'prof_candidate/components/menu/acct_set.html' %}
+  </div>
+  <div class="mb-6">
+    {% include 'prof_candidate/components/is_this_editable.html' %}
+  </div>
+  <div class="mb-6">  
+    {% include 'prof_candidate/components/info_privacy_policy.html' %}
+  </div>
+  <div class="mb-6">  
+    {% include 'prof_candidate/components/info_security_policy.html' %}
+  </div>
+{% endblock %}
+
+
+{% block body_content_section %}
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        {% include 'prof_candidate/pg-contents/acct_settings/home.html' %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

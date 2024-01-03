@@ -1,0 +1,29 @@
+class ObjectWrapper:
+    """Encapsulates S3 object actions."""
+    def __init__(self, s3_object):
+        """
+        :param s3_object: A Boto3 Object resource. This is a high-level resource in Boto3
+                          that wraps object actions in a class-like structure.
+        """
+        self.object = s3_object
+        self.key = self.object.key
+
+    def get(self):
+        """
+        Gets the object.
+
+        :return: The object data in bytes.
+        """
+        try:
+            body = self.object.get()['Body'].read()
+            logger.info(
+                "Got object '%s' from bucket '%s'.",
+                self.object.key, self.object.bucket_name)
+        except ClientError:
+            logger.exception(
+                "Couldn't get object '%s' from bucket '%s'.",
+                self.object.key, self.object.bucket_name)
+            raise
+        else:
+            return body
+

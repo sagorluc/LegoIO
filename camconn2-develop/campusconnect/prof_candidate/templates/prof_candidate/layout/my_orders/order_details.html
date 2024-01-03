@@ -1,0 +1,39 @@
+{% extends 'prof_candidate/layout/primary_layout.html' %}
+{% load static %}
+
+
+{% block header %}
+  {% include 'prof_candidate/components/headers/latest-order-feat.html' %}
+{% endblock %}
+
+
+{% block sidebar_content %}
+  <div class="mb-6">
+    {% include 'prof_candidate/components/menu/home-link.html' %}
+  </div>
+  <div class="mb-6">
+    {% include 'prof_candidate/components/menu/orders.html' %}
+  </div>
+  <div class="mb-6">
+    {% include 'prof_candidate/components/orders/payment_mode.html' %}
+  </div>
+  <div class="mb-6">  
+    {% include 'prof_candidate/components/orders/pricing_info.html' %}
+  </div>
+  <div class="mb-6">  
+    {% include 'prof_candidate/components/orders/conf_email_sent_to.html' %}
+  </div>
+  <div class="mb-6">
+    {% include 'prof_candidate/components/orders/invoice.html' %}
+  </div>
+{% endblock %}
+
+
+{% block body_content_header %}
+  {{section_header_1}}
+{% endblock %}
+
+
+{% block body_content_section %}
+    {% include 'prof_candidate/pg-contents/my_orders/order-details.html' %}
+{% endblock %}

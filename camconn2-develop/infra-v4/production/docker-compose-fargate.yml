@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+    webapp:
+        image: ccv1/dev/webapp:$GIT_COMMIT
+        ports:
+            - "5000:5000"
+        env_file:
+            - ../../.env
+    webserver:
+        image: ccv1/dev/webserver:$GIT_COMMIT
+        depends_on:
+            - webapp
+        network_mode: 'service:webapp'

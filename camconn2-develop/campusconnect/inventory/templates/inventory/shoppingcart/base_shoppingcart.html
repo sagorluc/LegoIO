@@ -1,0 +1,84 @@
+{% extends 'general/base_v3.html' %}
+
+
+{% block meta %}
+<title>TCART_HOME_V3_9876</title>
+<meta content="" name="descriptison">
+<meta content="" name="keywords">
+{% endblock %}
+
+
+{% block header_section %}
+  {% include 'inventory/shoppingcart/components/current-offers.html' %}
+  {% include 'general/components/menus/header/main-menu-3.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="container-fluid py-2 bg-light">
+    <div class="container d-flex flex-column">
+    
+      {% if pg_layout == 'carthome' %}
+          <section class="bg-white">
+              <div id="mmh_shopping_cart_contents">{{shopping_cart_contents}}</div>
+          </section>
+      {% else %}
+          <section class="bg-white">
+              <div class="row">
+
+                <div class="col-12 col-md-7 order-md-1 bg-light">
+                  <div class="py-7">
+
+                    <div class="row align-items-center mb-6">
+                      <div class="col-12 col-md">
+                        <h1 class="py-3 fw-bolder mb-0">Checkout</h1>
+                        <p>Step {{step_num}}/4</p>
+                      </div>
+                      <div class="col-12 col-md-auto">
+                        <a href="{% url 'mydocumentations:privacy_policy' %}" class="btn btn-sm btn-outline-gray-300 d-none d-md-inline">
+                          <span class="fe fe-lock"></span>
+                        </a>
+                      </div>
+                    </div>
+
+                    {% block cart_leftsidebar_section %}
+                    {% endblock %}
+
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-4 order-md-2 bg-white">
+                  <div class="py-7">
+                    {% block cart_rightsidebar_section %}
+                    {% endblock %}
+                  </div>
+                </div>
+              
+              </div>
+          </section>
+      {% endif %}
+    
+
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block footer_section %}
+  <footer class="bg-dark">
+    <div class="container-fluid bg-dark">
+      <div class="row d-flex justify-content-center text-muted">
+        <div class="col-12 col-md-12">
+          <div class="footer_nav text-center">
+            {% include 'commonroom/site_components/menus/footnotes/legaldocs.html' %} 
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+{% endblock %}
+
+
+{% comment "Optional note" %}
+{% endcomment %}

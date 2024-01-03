@@ -1,0 +1,18 @@
+{% extends 'inventory/shoppingcart/base_shopcart.html' %}
+
+
+{% block cart_leftsidebar_section %}
+  {% include 'inventory/shoppingcart/components/userlogin/accordion.html' %}
+  <p>{{proceed_as_guest_html}}</p>
+{% endblock %}
+
+
+{% block cart_rightsidebar_section %}
+  <div class="card-body border mb-6">
+    {% include 'inventory/shoppingcart/components/summary/placeholder.html' %}
+  </div>
+{% endblock %}
+
+
+{% comment "Optional note" %}
+{% endcomment %}

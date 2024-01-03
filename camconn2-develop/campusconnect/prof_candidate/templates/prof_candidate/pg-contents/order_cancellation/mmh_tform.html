@@ -1,0 +1,11 @@
+{% load crispy_forms_tags %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+</form>
+
+{% comment "Optional note" %}
+{% endcomment %}
+

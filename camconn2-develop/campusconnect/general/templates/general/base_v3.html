@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% block head %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'inventory/assets/favicon/favicon.ico' %}" type="image/x-icon" />
+
+    <!-- CSS FILES  -->
+    <link rel="stylesheet" href="{% static 'general/assets/fox/css/open-iconic-bootstrap.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'general/assets/fox/css/animate.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'general/assets/fox/css/owl.carousel.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'general/assets/fox/css/owl.theme.default.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'general/assets/fox/css/magnific-popup.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'general/assets/fox/css/aos.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'general/assets/fox/css/ionicons.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'general/assets/fox/css/flaticon.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'general/assets/fox/css/icomoon.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'general/assets/fox/css/style.css' %}" type="text/css" />    
+
+    {% block meta %}
+    {% endblock %}
+
+  {% endblock head %}
+</head>
+
+<body data-aos-easing="slide" data-aos-duration="800" data-aos-delay="0">
+
+
+  {% block header_section %}
+    {% if pg_layout_type == "all_serv_list" %}
+      <section class="py-6">
+        {% include "inventory/shoppingcart/components/current-offers.html" %}
+        {% include 'general/components/menus/header/topnews.html' %}
+        {% include 'general/components/menus/header/main-menu-3.html' %}
+      </section>
+    {% else %}
+      {% include "inventory/shoppingcart/components/current-offers.html" %}
+      {% include 'general/components/menus/header/topnews.html' %}
+      {% include 'general/components/menus/header/main-menu-3.html' %}
+    {% endif %}
+  {% endblock %}
+
+
+  {% block content %}
+  {% endblock %}
+
+
+    <!-- vendor -->
+    <script src="{% static 'general/assets/fox/js/jquery.min.js' %}"></script>
+    <script src="{% static 'general/assets/fox/js/jquery-migrate-3.0.1.min.js' %}" type="module"></script>   
+    <script src="{% static 'general/assets/fox/js/popper.min.js' %}"></script> 
+    <script src="{% static 'general/assets/fox/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'general/assets/fox/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'general/assets/fox/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'general/assets/fox/js/jquery.magnific-popup.min.js' %}"></script>
+
+    <script src="{% static 'general/assets/fox/js/scrollax.min.js' %}"></script>
+    <script src="{% static 'general/assets/fox/js/main.js' %}"></script>
+
+   <!-- custom -->
+   <script src="{% static 'general/assets/js/shopcartmow1.js' %}"></script>
+   <script src="{% static 'auth_mmh_v2/assets/js/custom.js' %}"></script>
+   <script src="{% static 'general/assets/js/custom.js' %}" type="module"></script>
+
+  <!-- Block Required For Cart Paypal Integration -->
+  {% block mmh_javascript %}
+  {% endblock mmh_javascript %}
+
+
+
+</body>
+</html>
+
+
+{% comment "Optional note" %}
+{% endcomment %}

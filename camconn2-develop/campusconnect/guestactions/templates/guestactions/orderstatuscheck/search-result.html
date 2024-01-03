@@ -1,0 +1,61 @@
+{% if order_status_latest %}
+
+        <div class="row mb-6">
+            <div class="col-12 col-md-12">
+                <div class="card border">
+                    <div class="card-body">
+
+  {% if posted_info %}
+    <div class="row mb-6">
+      <p class="fw-bolder">Your search input</p>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Tracking ID</td><td>{{posted_info.1}}</td>
+          </tr>
+          <tr>
+            <td>Email Address</td><td>{{posted_info.0}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+
+  
+    <div class="row mb-6">
+      <p class="fw-bolder">Your Order Status</p>
+      {% if order_status_latest == 'nobuyerfound' %}
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Order status</td><td>No order found with given information</td>
+            </tr>
+            <tr>
+              <td>Possible reason</td><td>No order was purchased with {{posted_info.0}} email address</td>
+            </tr>
+          </tbody>
+        </table>
+      {% else %}
+        <table class="table">
+          {% for i in order_status_latest %}
+          <tbody>
+            <tr>
+              <td>Tracking ID</td><td>{{i.1}}</td>
+            </tr>
+            <tr>
+              <td>Processing Status</td><td>{{i.0|title}}</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>  
+      {% endif %}  
+    </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endif %}

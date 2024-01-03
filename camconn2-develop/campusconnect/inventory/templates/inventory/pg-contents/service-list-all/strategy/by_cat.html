@@ -1,0 +1,23 @@
+{% regroup all_strat_services by tagname as service_list %}
+{% for s in service_list %}
+
+
+    {% for c in s.list %}
+
+        <div class="card border-bottom rounded-0 mb-6">
+          <div class="card-body">
+            <p class="card-text">{{c.sku|upper}}</p>
+            <h3 class="card-title text-primary fw-bolder">{{c.title | capfirst}}</h3>
+            <p class="card-text text-muted">{{c.description | capfirst}}</p>
+            <p class="card-text">
+              <span class="">Listing Price:<del>${{ c.listprice }}</del></span>
+              <span class="">Current Offer:<span class="text-danger">${{ c.saleprice }}</span>
+            </p>
+            <a class="btn btn-primary btn-xs rounded-0" href="{% url 'strategy_prod_details' c.id %}">Show Detials</a>
+          </div>
+        </div>
+
+    {% endfor %}
+
+
+{% endfor %}

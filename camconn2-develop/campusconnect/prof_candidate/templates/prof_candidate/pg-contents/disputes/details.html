@@ -1,0 +1,96 @@
+
+  
+    <div class="list-group list-group-flush mb-6">
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col">
+            <!-- <h3 class="mb-0">Dispute Details</h3> -->
+            <table class="table table-sm text-reset">
+              <tbody>
+                <tr>
+                  <td>Dispute ID</td>
+                  <td>{{ object.id }}</td>
+                </tr>
+                <tr>
+                  <td>Dispute Filled</td>
+                  <td>{{ object.created_at }} EST</td>
+                </tr>
+                <!-- <tr>
+                  <td>Tracking ID</td>
+                  <td># {{ object.created_aganist }}</td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+
+
+
+<!-- ----------------------------------- -->
+
+
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-sm text-reset">
+        <tbody>
+          <p class="mb-0 border-bottom pt-3">
+            Dispute Cause(s)
+          </p>
+            {% for obj in object.dispcause.all %}
+            <small class="text-reset">
+              <p>{{ obj }}</p>  <!-- Will show dispute causes -->
+            </small>
+            {% endfor %}
+          <p class="mb-0 border-bottom pt-3">
+            Detail Message
+          </p>
+          <small class="text-reset">
+            {{ object.msg }}
+          </small>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+    
+
+
+
+<!-- ----------------------------------- -->
+
+    <div class="row mb-6">
+      <div class="col">
+        <h4 class="mb-0">
+          Resolution Center
+        </h4>
+      </div>
+      <div class="col-auto me-n5">
+        <small class="text-reset">
+        </small>
+      </div>
+      <div class="col-auto">
+      </div>
+    </div>
+
+
+
+    <div class="row mb-6">
+      <div class="col">
+        <table class="table table-sm text-reset">
+          <tbody>
+    
+              <a class="" href="{% url 'prof_candidate:dispute_result' %}">           
+                Dispute Result
+              </a>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+

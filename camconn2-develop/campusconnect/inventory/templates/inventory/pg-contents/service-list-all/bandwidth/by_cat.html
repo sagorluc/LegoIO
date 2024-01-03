@@ -1,0 +1,18 @@
+{% for p in all_visa_services %}
+
+    <div class="card border-bottom rounded-0 mb-6">
+      <div class="card-body box-shadow">
+        <p class="card-text">{{p.sku|upper}}</p>
+        <h3 class="card-title text-primary fw-bolder">{{p.title | capfirst}}</h3>
+        <p class="card-text text-muted">{{p.description | capfirst}}</p>
+        <p class="card-text">
+          <span class="">Listing Price:<del>${{ p.listprice }}</del></span>
+          <span class="">Current Offer:<span class="text-danger">${{ p.saleprice }}</span>
+        </p>
+        <p class="card-text">
+          <a class="btn btn-primary btn-xs rounded-0" href="{% url 'usvisa_prod_details' p.id %}">Show Detials</a>
+        </p>
+      </div>
+    </div>
+
+{% endfor %}

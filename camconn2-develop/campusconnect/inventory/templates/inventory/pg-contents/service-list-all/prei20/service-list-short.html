@@ -1,0 +1,25 @@
+{% for object in object_list %}
+
+    <div class="py-4 d-flex border-bottom">
+      <div class="text">
+        <h3 class="heading">
+          <a href="{% url 'prei20_detail_view_link' object.id %}">{{object.title | capfirst}}</a>
+        </h3>
+        <div class="meta">
+          <div><span class="icon-calendar"></span> June 27, 2019</div>
+          <div><span class="icon-person"></span> Dave Lewis</div>
+          <div><span class="icon-chat"></span> 19</div>
+        </div>
+      </div>
+    </div>
+
+{% endfor %}
+
+
+<div class="row pt-5">
+  <div class="col-12 col-md-4 col-lg-4 col-xl-5">
+    <a class="btn btn-sm btn-primary rounded-0 me-1" href="{% url 'prei20_services_all' %}">
+      Show All Services
+    </a>
+  </div>
+</div>

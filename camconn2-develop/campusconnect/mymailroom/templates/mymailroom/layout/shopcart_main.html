@@ -1,0 +1,8 @@
+{% extends 'mymailroom/base_fancy.html' %}
+
+{% block main_body %}
+	{% include 'mymailroom/components/shopping_cart/msg_body.html' %}
+	{% include 'mymailroom/components/shopping_cart/item-details.html' %}
+	{% include 'mymailroom/components/shopping_cart/transaction-details.html' %}
+	{% include 'mymailroom/components/shopping_cart/delivery-details.html' %}
+{% endblock %}

@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="card-body">
+      <h4 class="fw-bold text-primary">Account Settings</h4>
+      <ul class="card-list list text-reset">
+        <li class="list-item">
+          <a class="list-link text-reset" href="{% url 'prof_candidate:acct_set_home' %}">
+            Account Info
+          </a>
+        </li>
+        <li class="list-item">
+          <a class="list-link text-reset" href="{% url 'prof_candidate:update_password' %}">
+            Update Password
+          </a>
+        </li>
+        <li class="list-item">
+          <a class="list-link text-reset" href="{% url 'prof_candidate:account_deactivate' %}">
+            Deactivate Account
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>

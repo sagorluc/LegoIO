@@ -1,0 +1,68 @@
+{% if pg_layout_type == 'homepg' %}
+<div class="card bg-primary-desat text-white">
+  <div class="card-body">
+{% else %}
+  <div class="mb-0">
+    <div class="mb-0">
+{% endif %}
+      <div class="list-group list-group-flush">
+
+        <div class="d-flex">
+          <div class="me-auto">
+                <p class="fw-bolder text-reset">Product Insights</p>    
+          </div>
+        </div>
+
+        <div class="py-1 d-flex align-items-center border-top border-bottom">
+          <div class="me-auto">
+            <p class="fw-bold mb-1">
+              <a class="fs-sm text-decoration-none text-reset" href="{% url 'usvisa_how_it_works' %}">
+                <span class="fe fe-chevron-right"></span>How It Works
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="py-1 d-flex align-items-center border-bottom">
+          <div class="me-auto">
+            <p class="fw-bold mb-1">
+              <a class="fs-sm text-decoration-none text-reset" href="{% url 'usvisa_del_meth' %}">
+                <span class="fe fe-chevron-right"></span>Delivery Methods
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="py-1 d-flex align-items-center border-bottom">
+          <div class="me-auto">
+            <p class="fw-bold mb-1">
+              <a class="fs-sm text-decoration-none text-reset" href="{% url 'usvisa_use_cases' %}">
+                <span class="fe fe-chevron-right"></span>Use Cases
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="py-1 d-flex align-items-center border-bottom">
+          <div class="me-auto">
+            <p class="fw-bold mb-1">
+              <a class="fs-sm text-decoration-none text-reset" href="{% url 'usvisa_compare_this' %}">
+                <span class="fe fe-chevron-right"></span>Product Comparison
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="py-1 d-flex align-items-center">
+          <div class="me-auto">
+            <p class="fw-bold mb-1">
+              <a class="fs-sm text-decoration-none text-reset" href="{% url 'usvisa_faq' %}">
+                <span class="fe fe-chevron-right"></span>FAQs
+              </a>
+            </p>
+          </div>
+        </div>      
+      
+      </div>
+    </div>
+</div>

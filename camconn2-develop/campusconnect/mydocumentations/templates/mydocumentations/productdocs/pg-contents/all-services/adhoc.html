@@ -1,0 +1,34 @@
+{% load static %}
+
+
+<div class="card overflow-hidden text-center text-lg-start">
+  <div class="row">
+    <div class="col-md-4 position-relative">
+
+      <!-- Image -->
+      <img src="{% static 'resumeweb/assets/img/illustrations/illustration-2.png' %}" class="h-75 position-absolute right-0 mt-6" alt="...">
+
+    </div>
+    <div class="col-md-8">
+
+      <div class="card-body py-7 py-md-9">
+        <h2 class="fw-bolder">Adhoc</h2>
+        <p class="mb-0">
+          If a job search candidate find the services offered by Exp180 
+      didnot cover his or her need, they are requested to fillup a small
+      form which will help guide us to develop a unique service based on 
+      a candidate's request.
+        </p>
+      </div>
+      <div class="card-meta">
+        <h6 class="text-uppercase me-2 mb-0">
+          <a class="" href="{% url 'adhoc:adhoc_home' %}">Product Home</a>
+        </h6>
+        <p class="h6 text-uppercase mb-0 ms-auto">
+          <a class="" href="{% url 'adhoc:adhoc_faq' %}">FAQs</a>
+        </p>
+      </div>                  
+
+    </div>
+  </div>
+</div>

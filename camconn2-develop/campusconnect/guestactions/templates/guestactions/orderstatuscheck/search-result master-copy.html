@@ -1,0 +1,43 @@
+{% if no_order_msg %}
+  {{no_order_msg}}
+{% endif %}
+
+
+
+
+{% if order_status %}
+  <h1>Your Order Status</h1>
+  {{order_status}}
+  {{order_status.0.0}}
+
+  <table class="table">
+    {% for i in order_status %}
+    <tbody>
+      <tr>
+        <td>Product</td><td>{{i.0|capfirst}}</td>
+      </tr>
+      <tr>
+        <td>SKU</td><td>{{i.1|upper}}</td>
+      </tr>
+      <tr>
+        <td>Processing Status</td><td>{{i.2}}</td>
+      </tr>
+      <tr>
+        <td>Delivery update</td><td>to be added later [ontime, late, delivered]</td>
+      </tr>      
+      <tr>
+        <td>Purchase Date & Time</td><td>{{i.4|slice:":16"}} EST</td>
+      </tr>
+      <tr>
+        <td>Tracking ID</td><td>{{i.3}}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>  
+{% endif %}
+
+
+{% if posted_info %}
+<h1>Your posted information</h1>
+{{posted_info}}
+{% endif %}

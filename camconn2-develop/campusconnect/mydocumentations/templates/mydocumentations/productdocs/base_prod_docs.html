@@ -1,0 +1,34 @@
+{% extends 'resumeweb/layout/primary_layout.html' %}
+
+
+{% block body_contents %}
+
+  <div class="container">
+    <div class="row justify-content-center">
+        {% block product_intro %}
+        {% endblock %}
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+          {% block product_doc %}
+          {% endblock %}
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+          {% block pg_footer %}
+          {% endblock %}
+      </div>
+    </div>
+  </div>
+
+  {% if pg_layout_type != 'contact_us' %}
+    <div class="bg-gray-300">
+      {% include 'resumeweb/components/ads/1-customer-service-msg-now.html' %}
+    </div>
+  {% endif %}            
+
+
+{% endblock %}

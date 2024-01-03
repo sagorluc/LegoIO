@@ -1,0 +1,37 @@
+{% load static %}
+
+
+<!-- PROMO OFFER 1 -->
+<div class="col-12 col-md-6 col-lg-5">
+
+  <h2 class="display-3 fw-bold mb-6 mb-md-8">
+    Invite friends and <span class="text-primary">get credits</span>
+  </h2>
+
+  <p class="text-muted mb-6">
+    Invite friends to register in resumenalyzer, and when they complete registration,
+    you will get $0.50 for each successful registration, and you will be able
+    to use those credits in your purchases in resumenalyzer.
+  </p>
+  <p class="text-muted">
+    You can send as many invites as you want
+  </p>
+
+  <form class="mb-6 mb-md-8 mb-md-0 order-md-1">
+    <div class="row gx-4">
+      <div class="col-auto">
+        <a class="btn btn-secondary rounded-0" href="{% url 'guestactions:invite_friends_link' %}">Start</a>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<div class="col-12 col-md-6">
+  <div class="position-relative vw-md-50 pt-7 ps-7 ps-md-9 overflow-hidden" style="max-width: 800px;">
+    <div class="position-absolute top-0 end-0 bottom-0 start-0 rounded-4"></div>
+    <img class="position-relative w-100 w-md-150"
+      src="{% static 'resumeweb/assets/img/screenshots/ui/landkit-figma.png' %}" alt="...">
+  </div>
+</div>
+

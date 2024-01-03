@@ -1,0 +1,25 @@
+{% load crispy_forms_tags %}
+
+
+<form method="POST">
+  {% csrf_token %}
+  <div class="row">
+    <div class="form-group col-md-6 mb-0">
+      {{ form.f_name|as_crispy_field }}
+    </div>
+    <div class="form-group col-md-6 mb-0">
+      {{ form.l_name|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-12 mb-0">
+      {{ form.email|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-12 mb-0">
+      {{ form.msg|as_crispy_field }}
+    </div>
+  </div>
+  <button class="btn btn-black" type="submit">Submit</button>  
+</form>    

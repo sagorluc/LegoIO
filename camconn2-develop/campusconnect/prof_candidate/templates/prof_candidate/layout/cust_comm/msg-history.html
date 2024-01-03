@@ -1,0 +1,22 @@
+{% extends 'prof_candidate/layout/primary_layout.html' %}
+{% load static %}
+
+
+{% block header %}
+  {% include 'prof_candidate/components/headers/promo-offers.html' %}
+{% endblock %}
+
+
+{% block sidebar_content %}
+  <div class="mb-6">
+    {% include 'prof_candidate/components/menu/home-link.html' %}
+  </div>
+  <div class="mb-6">
+    {% include 'prof_candidate/components/menu/cust_comm.html' %}
+  </div>
+{% endblock %}
+
+
+{% block body_content_section %}
+  {% include 'prof_candidate/pg-contents/cust-comm/msg-history.html' %}
+{% endblock %}

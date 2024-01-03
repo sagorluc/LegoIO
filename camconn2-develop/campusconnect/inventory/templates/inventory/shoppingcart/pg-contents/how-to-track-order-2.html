@@ -1,0 +1,53 @@
+<section class="pt-7 pt-md-10 pb-8 pb-md-11">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-10 col-lg-8">
+        <h2>
+          Check Order Details
+        </h2>
+        <p class="fs-lg text-reset mb-7 mb-md-7">
+          Here is a summary
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Shopping Cart Contents</h5>
+            <p class="card-text">{{ shopping_cart_contents }}</p>
+            <a href="{% url 'guestactions:check_my_order_status' %}" class="btn btn-link">Check Order Status</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% comment "Optional note" %}
+<div class="col-sm-6">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">If you purchase as a registered user</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-link">Go somewhere</a>
+    </div>
+  </div>
+</div>
+<div class="col-sm-6">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">If you purchase as guest</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="{% url 'guestactions:check_my_order_status' %}" class="btn btn-link">Go somewhere</a>
+    </div>
+  </div>
+</div>
+{% endcomment %}
+
+
+{% comment "Optional note" %}
+{% endcomment %}
+

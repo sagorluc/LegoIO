@@ -1,0 +1,50 @@
+{% load crispy_forms_tags %}
+
+<h4 class="fw-bolder mb-0">Section 1: About the site</h4>
+
+<div class="card border rounded-0 mb-3">
+  <div class="card-body">
+    
+    <div class="row">
+      <div class="form-group col-md-6 mb-0">
+        {{ form.site_used|as_crispy_field }}
+      </div>
+    </div>          
+    <div class="row">
+      <div class="form-group col-md-12 mb-0">
+        {{ form.hmpg_design|as_crispy_field }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12 mb-0">
+        {{ form.userfriendly|as_crispy_field }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12 mb-0">
+        {{ form.promo_offers|as_crispy_field }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12 mb-0">
+        {{ form.service_lineup|as_crispy_field }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12 mb-0">
+        {{ form.overall_exp|as_crispy_field }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12 mb-0">
+        {{ form.recommend|as_crispy_field }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12 mb-0">
+        {{ form.message|as_crispy_field }}
+      </div>
+    </div>
+
+  </div>  
+</div>

@@ -1,0 +1,20 @@
+
+
+      {% if mmh_render_for_this_view_only %}
+        <div class="d-flex">
+          {% if products_list %}
+          <div class="py-3">
+            {% if resume_required %}
+              Next Step > Upload resume >
+              <a class="btn btn-sm btn-outline-secondary" href="{% url 'mmh_cartfileupload' %}" id="cart_go_to_fileupload_btn">Continue</a>
+            {% else %}
+              Next Step > RESUME NOT REQUIRED >
+              <a class="btn btn-primary" href="{% url 'mmh_cartcheckout' %}">Go to checkout</a>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      {% else %}
+        <h1>Resume upload section not found</h1>
+      {% endif %}
+

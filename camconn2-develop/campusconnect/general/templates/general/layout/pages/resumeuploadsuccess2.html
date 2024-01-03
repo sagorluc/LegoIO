@@ -1,0 +1,101 @@
+{% load static %}
+
+<style>
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #fff;
+}
+.loader img{
+    position: relative;
+    left: 20%;
+    top: 40%;
+}
+</style>
+
+
+<div class="loader" ><img src="{% static 'resumeweb/assets/img/giphy224.gif' %}"></div>
+
+<section class="py-15 py-md-15 bg-gray-200">  
+  <div class="container-fluid">
+    <div class="row align-items-center px-5">
+
+      <div class="col-12 col-md-5 col-lg-6 order-md-2 border border-primary bg-secondary">
+        <div class="d-flex p-5">
+          advertisements
+        </div>
+      </div>
+
+
+
+      <div class="col-12 col-md-7 col-lg-6 order-md-1 py-8 py-md-8 py-lg-8">
+
+        <h4 class="display-3 fw-bold">
+          <span class="text-primary">Thank you</span> for uploading your resume.
+          for uploading
+        </h4>
+        <p class="fs-lg text-muted mb-6">
+          your submission confirmation number is xxx-xxx-xxxx
+        </p>
+
+        <p class="fs-lg text-muted mb-6">
+          Our current response time is xx hour xx mins. YOu should hear back to 
+          your email xx@gmail.com from us
+          withing this time
+        </p>
+
+        <p class="fs-lg text-muted mb-6">
+          If you havenot heard from our analyst withing this timeframe, please contact us
+          at contact@resumenalyzer.com
+        </p>
+
+        <p class="fs-lg text-muted mb-6">
+          {% if messages %}
+            {% for i in messages %}
+              {{i}}
+            {% endfor %}
+          {% endif %}
+        </p>
+
+        <p class="fs-lg text-muted mb-6">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </p>
+
+      </div>
+
+
+    </div>
+  </div>
+</section>

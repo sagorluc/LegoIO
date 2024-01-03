@@ -1,0 +1,75 @@
+
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-8 text-center">
+    <a href="{% url 'prei20_homepg_url' %}">
+      <h6 class="text-uppercase text-warning btn btn-xs active btn-outline-primary">Exp180</h6>
+    </a>
+    <h1 class="display-2 fw-bolder">Resume Formatting is the Key. Lets Rethink</h1>
+    <p class="mb-6 mb-md-6">
+      Exp180 services are designed to provide you with the 360 degree 
+      solutions that you need to properly present your profile
+      to the recruiters and hiring managers so that thay can
+      feel urgency to select you for an interview.
+    </p>
+  </div>
+</div>
+
+
+<div class="row justify-content-center bg-light">
+  <div class="col-12 col-md-8 col-lg-6 col-xl-6">
+
+        
+          {% for object in servicelist_exp180 %}
+            <div class="row">
+
+                <div class="card-body">
+                  <p class="text-muted fw-bolder mb-0">{{object.sku | upper}}</p>
+                  <p class="fw-bolder text-primary">
+                    <a class="" href="{% url 'prei20_detail_view_link' object.id %}">{{object.title | capfirst}}</a>
+                  </p>
+                  <p class="text-reset">{{object.description | capfirst}}</p>
+                  <p class="mb-0">
+                    <span class="text-reset">Price: ${{object.listprice}}</span> 
+                    <span class="text-danger">Current offer: ${{object.saleprice}}</span>
+                  </p>
+                  <p class="text-reset mb-0">Category: {{object.category | capfirst}}</p>
+                  <p>
+                      <div class="col-12 col-md-8 col-lg-8">
+                        <h4 class="fs-sm">Features available</h4>
+                        <div class="d-flex">
+                          <div class="badge badge-rounded-circle bg-success mt-1 me-4">
+                            <i class="fe fe-check"></i>
+                          </div>
+                          <p class="fs-sm mb-0">
+                            Multiple service options
+                          </p>
+                        </div>
+                        <div class="d-flex">
+                          <div class="badge badge-rounded-circle bg-success mt-1 me-4">
+                            <i class="fe fe-check"></i>
+                          </div>
+                          <p class="fs-sm mb-0">
+                            Multiple deliery options 
+                          </p>
+                        </div>
+                      </div>          
+                  </p>
+                </div>
+
+            </div> 
+            <hr>
+          {% endfor %}
+        
+  </div>
+</div>
+
+
+<div class="row justify-content-center py-7 py-md-7">
+  <div class="col-12 col-md-10 col-lg-8 text-center">
+    <a class="btn" href="{% url 'prei20_services_all' %}">
+      <h3 class="fw-bolder">View all Exp180 Services <i class="fe fe-arrow-right ms-auto"></i></h3>
+    </a>
+  </div>
+</div>
+
+

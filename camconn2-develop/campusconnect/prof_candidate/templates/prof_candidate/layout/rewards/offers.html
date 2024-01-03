@@ -1,0 +1,19 @@
+{% extends 'prof_candidate/layout/primary_layout.html' %}
+
+
+{% block sidebar_content %}
+  <div class="card mb-6">
+    {% include 'prof_candidate/components/menu/rewards.html' %}
+  </div>
+
+  <div class="card">
+    {% include 'prof_candidate/components/how_coupon_code_works.html' %}  
+  </div>
+{% endblock %}
+
+
+{% block body_content_section %}  
+    {% include 'prof_candidate/pg-contents/my_rewards/current_offers/offer1.html' %}
+    {% include 'prof_candidate/pg-contents/my_rewards/current_offers/offer2.html' %}
+    {% include 'prof_candidate/pg-contents/my_rewards/current_offers/offer3.html' %}     
+{% endblock %}

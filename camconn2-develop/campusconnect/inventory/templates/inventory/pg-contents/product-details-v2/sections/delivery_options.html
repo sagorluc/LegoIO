@@ -1,0 +1,43 @@
+<div class="p-3 mb-6">
+
+  <h2 class="fs-sm fw-bolder">Delivery Options</h2>  
+
+  {% if qs_delivery_options %}
+    <div class="col-12 col-md-8  p-2 mb-6">
+        {% for item in qs_delivery_options %}
+          <input type="radio"
+                class="class_delivery_option"
+                id="{{item.pk}}"
+                price="{{item.price}}"
+                name="delivery_option"
+                product="{{item.id}}"
+                {% if item.ndb_checked %}
+                  checked="checked"
+                {% endif %}
+                {% if disable_item %}
+                  disabled=true
+                {% endif %}
+                value="{{item.name}}"/>
+          {{item.name | capfirst}}
+
+          {% comment "Optional note" %}
+            Display slashed out version of price if there is a sale going on.
+          {% endcomment %}
+          {% if item.listprice > item.price %}
+            <span class="text-danger"><del>${{ item.listprice }}</del></span>
+          {% endif %}
+          <span class="">${{ item.price }}</span>
+          <br>
+        {% endfor  %}
+    </div>
+  {% else %}
+    <span class="text-danger">nothing added yet</span>
+  {% endif %}
+
+
+
+  {% comment "Optional note" %}
+  <span class="">&nbsp;(HOURS TO CANCEL {{ item.hours_to_cancel_after_payment }})</span>
+  {% endcomment %}
+
+</div>

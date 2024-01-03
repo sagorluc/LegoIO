@@ -1,0 +1,29 @@
+<div class="row mb-6">
+	<div class="card">
+	    <div class="card-body">
+	    	<p class="fw-bolder">Your query</p>
+			<p>{{search_query_input_from_user | capfirst}}</p>
+		</div>
+	</div>
+</div>
+
+
+<div class="row mb-6">
+		<div class="card">
+			<div class="card-body">
+				<p class="fw-bolder">Matching Results</p>
+			</div>
+			{% for i in results %}
+			    <div class="card-body">
+			        <p class="fw-bolder text-primary">
+			          <a class="" href="{{i.title}}">{{i.title | capfirst}}</a>
+			        </p>
+			        <p class="fs-sm text-reset">{{i.description | capfirst}}</p>
+			    </div>
+			{% empty %}
+			    <div class="card-body">
+			        <p class="fs-sm text-reset">No match found</p>
+			    </div>			
+		    {% endfor %}
+		</div>
+</div>

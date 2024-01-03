@@ -1,0 +1,77 @@
+
+<div class="row p-5">
+  <div class="col-auto">
+    <div class="icon-circle bg-primary text-white">
+      <i class="fe fe-users"></i>
+    </div>
+  </div>
+  <div class="col ms-n4">
+    <h2 class="fw-bold mb-0">
+      Processing Time
+    </h2>
+    <p class="fs-sm text-reset mb-0">
+      Review processing timelines across all services
+    </p>
+  </div>
+</div>
+
+
+<table class="table table-light fs-sm">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Min</th>
+        <th>Max</th>
+        <th class="text-center" width="50%">Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="{% url 'exp180_homepg_url' %}" class="fs-sm">Exp180</a></td>
+        <td>4 hours</td>
+        <td>7 days</td>
+        <td>
+          It is in accordance to the delivery option which the applicants select
+        </td>
+      </tr>
+      <tr>
+        <td><a href="{% url 'adhoc:adhoc_home' %}" class="fs-sm">Adhoc</a></td>
+        <td>2 days</td>
+        <td>7 days</td>
+        <td>It takes a wide range of processing time for Adhoc services 
+          due to its diversity of core services and its service options</td>
+      </tr>
+      <tr>
+        <td><a href="{% url 'intprep_home' %}" class="fs-sm">Dialogue</a></td>
+        <td>4 hours</td>
+        <td>7 days</td>
+        <td>It is in accordance to the delivery option which the applicants select</td>
+      </tr>
+      <tr>
+        <td><a href="{% url 'rolebased_home' %}" class="fs-sm">Identity</a></td>
+        <td>4 hours</td>
+        <td>7 days</td>
+        <td rowspan="5" class="align-middle">The processing time depends on the delivery options which the applicants select, keeping in mi nd to give ample time to process the individual orders              </td>
+      </tr>
+      <tr>
+        <td><a href="{% url 'proflevel_home' %}" class="fs-sm">Staircase</a></td>
+        <td>4 hours</td>
+        <td>7 days</td>
+      </tr>
+      <tr>
+        <td><a href="{% url 'usvisa_home' %}" class="fs-sm">Bandwidth</a></td>
+        <td>4 hours</td>
+        <td>7 days</td>
+      </tr>
+      <tr>
+        <td><a href="{% url 'posti20_home' %}" class="fs-sm">Dialect</a></td>
+        <td>4 hours</td>
+        <td>7 days</td>
+      </tr>          
+      <tr>
+        <td><a href="{% url 'strategy_home' %}" class="fs-sm">Strategy</a></td>
+        <td>4 hours</td>
+        <td>7 days</td>
+      </tr>          
+    </tbody>
+</table>

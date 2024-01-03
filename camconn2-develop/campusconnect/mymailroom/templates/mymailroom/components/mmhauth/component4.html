@@ -1,0 +1,36 @@
+<p style="line-height: 140%;"><span data-metadata="&lt;!--(figmeta)eyJmaWxlS2V5IjoiWUswYUxXejkwdm5ST2ZlclZiTDl4RiIsInBhc3RlSUQiOjE3NTA2ODE1MzksImRhdGFUeXBlIjoic2NlbmUifQo=(/figmeta)--&gt;" style="line-height: 19.6px;"></span><span style="line-height: 19.6px;">Hello Guest</span></p>
+<p style="line-height: 140%;"> </p>
+<p style="line-height: 140%;"><span style="line-height: 19.6px;">We are committed to provide you with an easy and secured way to reset your password.</span></p>
+
+<p style="line-height: 140%;"> </p>
+{% autoescape off %}
+  {% block reset_link %}
+
+  <p style="line-height: 140%;">
+    <span style="line-height: 19.6px;">
+          For secured reset, please click on the following link
+    </span>
+  </p>
+
+  <p style="line-height: 140%;">
+    <span style="line-height: 19.6px;">
+        <a style="" href={{protocol}}://{{dns_name}}{% url 'mmhauth:password_reset_confirm' uidb64=uid token=token %}>Click Here</a>
+    </span>
+  </p>
+
+  <p style="line-height: 140%;">
+    <span style="line-height: 19.6px;">
+          If clicking the link above doesn't work, 
+          please copy and paste the following URL in a new browser
+          window: 
+    </span>
+  </p>
+
+
+  <p style="line-height: 140%; text-decoration: underline;">
+    <span style="line-height: 19.6px;">
+          {{ protocol }}://{{ dns_name }}{% url 'mmhauth:password_reset_confirm' uidb64=uid token=token %}
+    </span>
+  </p>
+  {% endblock %}
+{% endautoescape %}

@@ -1,0 +1,5 @@
+function lenv()
+{
+ export $(grep -v ^# $1 | xargs -0)
+
+}

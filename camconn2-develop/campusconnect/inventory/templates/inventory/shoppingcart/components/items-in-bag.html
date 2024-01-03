@@ -1,0 +1,5 @@
+{% if not products_list %}
+	{% include 'inventory/shoppingcart/components/cart-bag-empty.html' %}
+{% else %}
+	{% include 'inventory/shoppingcart/components/cart-bag-not-empty.html' %}
+{% endif %}

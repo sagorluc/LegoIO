@@ -1,0 +1,28 @@
+{% regroup object_list by category as service_list %}
+{% for role in service_list %}
+
+
+    {% for i in role.list %}
+        
+        <div class="card border-bottom rounded-0 mb-6">
+          <div class="card-body box-shadow">
+            <p class="card-text">{{p.sku|upper}}</p>
+            <h3 class="card-title text-primary fw-bolder">
+              <a class="" href="{% url 'rolebased_prod_details' i.id  %}">{{i.title | capfirst}}</a>
+            </h3>
+            <p class="card-text text-muted">
+              {{i.description | capfirst}}
+            </p>
+            <p class="card-text mb-0">
+              <span class="">Listing Price:<del>${{ i.listprice }}</del></span>
+              <span class="">Current Offer:<span class="text-danger">${{ i.saleprice }}</span>
+            </p>
+            <p class="card-text">Category: 
+              <a class="text-decoration-none" href="{% url 'rolebased_bycat' role.grouper %}">{{role.grouper|title}}</a>
+            </p>
+        </div>
+
+
+    {% endfor %}
+
+{% endfor %}

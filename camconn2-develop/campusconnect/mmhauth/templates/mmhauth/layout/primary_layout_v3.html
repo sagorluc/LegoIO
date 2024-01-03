@@ -1,0 +1,74 @@
+{% extends 'base_02152023.html' %}
+{% load static %}
+
+
+{% block meta %}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="col-12 col-md-6">
+      <div class="card">
+          <div class="card-body">
+
+            <div class="row align-items-center mb-6">
+              <div class="col-12 col-md">
+                {% block form_heading %}
+                {% endblock %}
+              </div>
+              <div class="col-12 col-md-auto">
+                <a href="{% url 'mydocumentations:privacy_policy' %}" class="btn btn-sm btn-outline-gray-300 d-none d-md-inline">
+                  <span class="fe fe-lock"></span>
+                </a>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              {% block main_body_section %}
+              {% endblock %}
+            </div>
+
+            <div id="form_error_509">
+              {% block form_error %}
+              {% endblock %}
+            </div>
+
+
+            <div id="auth_footer_links">
+              {% if pg_header == 'Sign In' %}
+              <p class="mb-0 fs-sm text-muted pt-3">
+                Don't have an account yet ?
+                <a href="{% url 'mmhauth:mmh_auth_register_url' %}">Sign up</a>
+              </p>
+              <p class="mb-0 fs-sm text-muted pt-3">
+                Need to reset password?
+                <a href="{% url 'mmhauth:password_reset' %}">Start Now</a>
+              </p>
+              {% elif pg_header == 'Sign Up' %}
+              <p class="mb-0 fs-sm text-muted pt-3">
+                Already have an account ?
+                <a href="{% url 'mmhauth:mmh_auth_login_request' %}">Sign In</a>
+              </p>
+              <p class="mb-0 fs-sm text-muted pt-3">
+                Need to reset password?
+                <a href="{% url 'mmhauth:password_reset' %}">Start Now</a>
+              </p>
+              {% endif %}
+            </div>
+
+          </div>
+      </div>
+    </div>
+
+
+    <div class="col-12 col-md-6">
+      <div class="card bg-light">
+        <div class="card-body bg-light">
+          {% block right_hand_side %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

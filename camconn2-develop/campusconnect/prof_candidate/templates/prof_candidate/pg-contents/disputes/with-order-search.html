@@ -1,0 +1,129 @@
+{% load widget_tweaks %}
+
+<div class="card card-bleed shadow-light-lg mb-6">
+
+  <div class="card-header">
+    <div class="row align-items-center">
+      <div class="col">
+        <h4 class="mb-0">
+          Order Summary
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="list-group-item">
+      <div class="row align-items-center">
+        <div class="col">
+
+          <label>
+          <input type="radio" name="advSearchOption" value="date_range" checked> Date Range</label>
+          <label>
+          <input type="radio" name="advSearchOption" value="order_id"> Order ID</label>
+          <label>
+          <input type="radio" name="advSearchOption" value="serv_title"> Service Title</label>
+
+          <div class="form-a">
+            <form  method="POST">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="fname" class="">Start Date</label><br>
+                  <input type="text" id="fname" name="fname" value="John"><br>
+                </div>
+                <div class="col-md-6">
+                  <label for="lname">End Date</label><br>
+                  <input type="text" id="lname" name="lname" value="Doe"><br>
+                </div>
+              </div>
+              <input id="date_range_556" class="btn btn-link btn-sm mt-1" type="button" value="Submit">
+            </form>
+          </div>
+          <div class="form-b" style="display: none">
+            <form method="POST">
+              {% csrf_token %}
+              <label for="fname">Put an order ID</label><br>
+              <input type="text" id="fname" name="fname" value="John"><br>
+              <input class="btn btn-link btn-sm mt-1" type="submit" value="Submit">
+            </form>
+          </div>
+          <div class="form-c" style="display: none">
+            <form method="POST">
+              {% csrf_token %}
+              <label for="fname">Type a service title</label><br>
+              <input type="text" id="fname" name="fname" value="John"><br>
+              <input class="btn btn-link btn-sm mt-1" type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="card card-bleed shadow-light-lg mb-6" id="ggKShh76" style="display: none">
+  <div class="card-header">
+    <div class="row align-items-center">
+      <div class="col">
+        <h4 class="mb-0">
+          File Dispute for order#
+        </h4>
+      </div>
+      <div class="col-auto me-n5">
+        <small class="text-reset">
+        </small>
+      </div>
+      <div class="col-auto">
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="list-group list-group-flush">
+      {% if object_list %}
+        {% for object in object_list %}
+
+        <div class="list-group-item">
+          <div class="row align-items-center">
+            <div class="col">
+              <p class="mb-0">
+                Date: {{ object.created }} EST
+              </p>
+              <small class="text-reset mb-0">
+                Order # {{ object.product_uniqid }}
+              </small>
+              <p class="text-reset">
+                {{ object.title }}
+              </p>
+            </div>
+            <div class="col-auto">
+              <a class="btn btn-xs btn-outline-white" href="{%url 'prof_candidate:order_details' object.id %}">
+                Details
+              </a>
+            </div>
+          </div>
+
+          <div class="row" style="display:inline-block">
+            <a class="text-muted" href="{% url 'c_order_status_check' object.id %}">
+              Cancel Order
+            </a>
+            <a class="text-muted" href="{% url 'c_order_status_check' object.id %}">
+              Check Delivery Status
+            </a>
+            <a class="text-muted" href="{% url 'file_disp_with_order' object.tracking_id %}">
+              File Dispute
+            </a>
+          </div>
+
+
+        </div>
+
+        {% endfor %}
+      {% endif %}
+
+    </div>
+
+  </div>
+</div>

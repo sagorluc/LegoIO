@@ -1,0 +1,87 @@
+{% extends 'general/base_v3.html' %}
+
+
+{% block meta %}
+{% endblock %}
+
+
+{% block body %}
+
+    {% block topnews %}
+        {% include 'general/components/menus/header/topnews.html' %}
+    {% endblock %}
+
+
+    {% block mainmenu %}
+      {% include 'prof_candidate/components/menu/main-menu.html' %}
+    {% endblock %}
+
+
+    {% block header %}
+      {% include 'prof_candidate/components/headers/promo-offers.html' %}
+    {% endblock %}
+
+
+    <main class="py-8 py-md-11 bg-gray-200">            
+        <div class="container-md">
+
+                {% if body_content_type == 'home' %}
+              
+                  <div class="row mb-6">
+                    <div class="col-12 col-md-4">
+                                {% include 'prof_candidate/components/menu/orders.html' %}
+                    </div>
+                    <div class="col-12 col-md-4">
+                                {% include 'prof_candidate/components/menu/cust_comm.html' %}
+                    </div>        
+                    <div class="col-12 col-md-4">
+                                {% include 'prof_candidate/components/menu/disputes.html' %}
+                    </div>
+                  </div>
+              
+                  <div class="row mb-6">
+                    <div class="col-12 col-md-4">
+                                {% include 'prof_candidate/components/menu/cancel-history.html' %}
+                    </div>
+                    <div class="col-12 col-md-4">
+                                {% include 'prof_candidate/components/menu/acct_set.html' %}
+                    </div>                
+                  </div>
+
+                {% else %}
+            
+                <div class="row">
+                    {% block content %}
+                        <!-- SIDEBAR -->
+                        <div class="col-12 col-md-4">
+                            {% block sidebar_content %}{% endblock %}
+                        </div>
+
+                        <!-- BODY SECTION -->
+                        <div class="col-12 col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h4 class="mb-0">{% block body_content_header %}{% endblock %}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            {% block body_content_section %}{% endblock %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>
+
+                {% endif %}
+
+            </div>
+    </main>
+
+{% endblock %}

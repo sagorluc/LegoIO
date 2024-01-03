@@ -1,0 +1,37 @@
+{% extends 'resumeweb/layout/base_prod_list.html' %}
+
+
+{% block leftside_contents %}
+
+  {% if pg_layout_type != 'all_serv_list' %}
+      <div class="mb-6">
+        {% include 'resumeweb/components/exp180/cat-list.html' %}
+      </div>
+      <div class="mb-6">
+        {% include 'general/components/menus/products/exp180/prod-insight-1.html' %}
+      </div>      
+      <div class="mb-6">
+        {% include 'general/components/faq-gen.html' %}
+      </div>
+  {% else %}
+
+    <div class="mb-6">
+      {% include 'resumeweb/components/exp180/about.html' %}
+    </div>
+    <div class="mb-6">
+      {% include 'resumeweb/components/exp180/quick-start-guide.html' %}
+    </div>
+    <div class="mb-6">
+      {% include 'resumeweb/components/exp180/cat-list.html' %}
+    </div>  
+    <div class="mb-6">
+      {% include 'general/components/menus/products/exp180/prod-insight-1.html' %}
+    </div>
+
+  {% endif %}
+{% endblock %}
+
+
+{% block service_list %}
+    {% include 'guestactions/product-search/main-body.html' %}
+{% endblock %}

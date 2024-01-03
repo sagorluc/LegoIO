@@ -1,0 +1,47 @@
+{% load crispy_forms_tags %}
+
+
+
+
+<div class="card-header">
+    <div class="row align-items-center">
+    <div class="col">
+        <h4 class="mb-0">{{pgheader}}</h4>
+    </div>
+    </div>
+</div>
+
+    {% if empty_msg %}
+    <!-- resume upload form  -->
+    <div class="card-body">
+        {{ empty_msg }}
+        <p>
+            <a href="{% url 'prof_candidate:resume_form_edit' %}">
+                <button class="btn btn-sm btn-primary w-50" type="submit">Fillup Form Now</button>
+            </a>
+        </p>
+    </div>
+{% else %}
+
+    <div class="mx-6">
+        <p>Your Recent job: {{ Exp_1 }}</p>
+        <p>Start date: {{ start_date_1 }}</p>
+        <p>End Date: {{ end_date_1 }} </p>
+        <p> Job Duties: {{ Job_Duties_1 }}</p>
+        <br>
+        <p>Your Earlier job: {{ Exp_2 }}</p>
+        <p>Start date: {{ start_date_2 }}</p>
+        <p>End Date: {{ end_date_2 }} </p>
+        <p> Job Duties: {{ Job_Duties_2 }}</p>
+        <br>
+        <p>Your More Earlier job: {{ Exp_3 }}</p>
+        <p>Start date: {{ start_date_3 }}</p>
+        <p>End Date: {{ end_date_3 }} </p>
+        <p> Job Duties: {{ Job_Duties_3 }}</p>
+        <a href="{% url 'prof_candidate:resume_form_edit' %}">
+            <button class="btn btn-sm btn-primary w-25" type="submit">Edit Resume</button>
+        </a>
+    </div>
+{% endif %}
+
+

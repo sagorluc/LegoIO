@@ -1,0 +1,51 @@
+{% load static %}
+
+<!-- CPT -->
+<div class="row align-items-center">
+  <div class="col-12 col-md-5 col-lg-4" data-aos="">
+
+      <!-- Heading -->
+      <h1 class="fw-bolder text-primary">
+        Bandwidth Services
+      </h1>
+
+      <p><a class="btn btn-black" href="{% url 'usvisa_all_services' %}">Show all</a></p>
+      <p><a class="text-dark" href="{% url 'usvisa_bycat' 'opt' %}" >Show by category</a></p>
+
+  </div>
+  <div class="col-12 col-md-7 col-lg-7 offset-lg-1">
+
+    <!-- Card -->
+    <div class="card card-border border-primary shadow mb-6" data-aos="">
+      <div class="card-body">
+
+        <!-- List group -->
+        <div class="list-group list-group-flush">
+          {% regroup servicelist_bandwd by category as service_list %}
+          {% for visa in service_list %}
+          <p class="">
+            <a href="{% url 'usvisa_bycat' 'cpt' %}" class="text-decoration-none">
+              <span class="display-4 fw-bolder text-dark">{{visa.grouper | upper}}</span>
+            </a>            
+          </p>
+
+            {% for cp in visa.list %}
+              <div class="list-group-item d-flex align-items-center">
+                <div class="me-auto">
+                  <p class="fw-bold mb-1">
+                    <a class="fw-bolder text-primary text-decoration-none" href="{% url 'usvisa_prod_details' cp.id  %}">{{cp.title | capfirst}}</a>
+                  </p>
+                  <p class="fs-sm text-muted mb-0">${{cp.listprice}}</p>
+                </div>
+              </div>
+            {% endfor %}
+
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,32 @@
+{% extends 'mydocumentations/productdocs/base_prod_docs.html' %}
+
+
+{% block meta %}
+  <title>Product Docs | Resumenalyzer</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+{% endblock %}
+
+
+{% block opening_banner %}
+  {% include 'mydocumentations/productdocs/pg-contents/opening-banners/faq.html' %}
+{% endblock %}
+
+
+{% block product_doc %}
+
+    <section class="py-8 py-md-11">
+      {% include "mydocumentations/productdocs/pg-contents/faq-content/0-general/my-purchases.html" %}
+    </section>
+    <section class="py-8 py-md-11">
+      {% include "mydocumentations/productdocs/pg-contents/faq-content/0-general/about-membership.html" %}
+    </section>
+
+{% endblock %}
+
+
+{% block pg_footer %}
+  <section class="py-8 py-md-11">
+    {% include "mydocumentations/productdocs/components/list-faq-prod-based.html" %}
+  </section>
+{% endblock %}

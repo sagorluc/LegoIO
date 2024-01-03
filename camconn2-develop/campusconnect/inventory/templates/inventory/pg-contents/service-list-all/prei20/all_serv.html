@@ -1,0 +1,49 @@
+{% regroup object_list by category as service_list %}
+{% for lang in service_list %}
+
+<div class="row">
+  <div class="col-12 col-md-12">
+
+
+    <div class="row">
+      <div class="col-6">
+        <h4 class="fw-bold mb-1">{{lang.grouper|title}}</h4>
+        <p class="fs-sm text-muted mb-0">
+          Find relevant services 
+        </p>
+      </div>
+      <div class="col-6">
+        <a class="text-decoration-none" href="{% url 'posti20_bycat' lang.grouper %}">[Browse This Category]</a>
+      </div>
+    </div>
+
+    
+    {% for i in lang.list %}
+      <div class="col-12 col-md-12">
+        
+        <div class="card mt-4 rounded-0">
+          <div class="list-group list-group-flush">
+            <div class="list-group-item text-reset text-decoration-none">
+              <p class="fw-bold mb-1">
+                {{i.title | capfirst}}
+              </p>
+              <p class="fs-sm text-muted mb-0">
+                {{i.description | capfirst}}
+              </p>
+            </div>
+          </div>
+          <a href="{% url 'posti20_prod_details' i.id  %}">Details</a>
+          <hr>
+        </div>
+
+      </div>
+    {% endfor %}
+
+
+  </div>
+</div>
+{% endfor %}
+
+{% comment "Optional note" %}
+<a href="{% url 'posti20_prod_details' i.langname i.id  %}">Details</a>
+{% endcomment %}

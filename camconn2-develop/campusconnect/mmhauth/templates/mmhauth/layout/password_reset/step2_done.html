@@ -1,0 +1,25 @@
+{% extends 'mmhauth/layout/primary_layout_v3.html' %}
+{% load static %}
+
+
+{% block form_heading %}
+    <h1 class="py-3 fw-bolder mb-0">Password Reset</h1>
+    <p>Step 2/4</p>
+{% endblock %}
+
+
+{% block main_body_section %}
+    <p>
+        We have sent you an email to <strong>{{user_email_add}}</strong> with the Password Reset Verification link. 
+    </p>
+    <p>
+    In a few matter of moments,
+    we will send you an email with a password reset link. Please click 
+    on that link and it will take you to the new password setup page.
+    </p>
+{% endblock %}
+
+
+{% block right_hand_side %}
+    {% include 'mmhauth/components/tips2.html' %}
+{% endblock %}

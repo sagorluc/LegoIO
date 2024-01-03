@@ -1,0 +1,63 @@
+{% extends 'resumeweb/layout/primary_layout.html' %}
+{% load static %}
+
+
+{% block meta %}
+  <title>Home | Confirmation | Resumenalyzer</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+{% endblock %}
+
+
+<style>
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #fff;
+}
+.loader img{
+    position: relative;
+    left: 20%;
+    top: 40%;
+}
+</style>
+
+
+{% block content %}
+
+  <!-- thank you block -->
+  <section class="ftco-section">
+    <div class="container">
+  
+      <div class="row">
+        <div class="col-12 col-md-10 col-lg-8">
+          <h4 class="display-3 fw-bold">
+            Thank you for submitting <span class="text-primary">{{task}}</span> with us
+          </h4>
+  
+          <p class="text-muted mb-7 mb-md-7">Here is a summary</p>
+        </div>
+      </div>
+  
+  
+      <div class="row">
+        <div class="col-12 col-md-8">
+  
+          <div class="card border">
+            <div class="card-body">
+              {% block thankyou_note %}
+              {% endblock %}  
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
+  </section>
+    
+{% endblock %}

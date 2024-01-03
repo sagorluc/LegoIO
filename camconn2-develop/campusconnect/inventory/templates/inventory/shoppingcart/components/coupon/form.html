@@ -1,0 +1,23 @@
+<h2>Coupon Code</h2>
+
+<form class="form-inline" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+  <button class="btn btn-xs btn-secondary rounded-0" type="submit" value="submit">Apply</button>
+</form>
+
+<a href="">
+  <small>How to get a coupon code?</small>
+</a>
+
+{% if form_errors %}
+  {% for error in form_errors %}
+  <small>{{error}}</small>
+  {% endfor %}
+{% endif %}
+
+
+{% comment "blue" %}
+{% endcomment %}
+
+

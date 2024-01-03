@@ -1,0 +1,31 @@
+{% extends 'resumeweb/layout/primary_layout.html' %}
+{% load static %}
+
+
+{% block meta %}
+  <title>Home | Resumenalyzer</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+{% endblock %}
+
+
+{% block content %}
+<div class="loader" ><img src="{% static 'resumeweb/assets/img/giphy224.gif' %}"></div>
+
+<section class="py-5 py-md-5 bg-gray-200">  
+  <div class="container-fluid">
+    <div class="row align-items-center px-5">
+
+      <div class="col-12 col-md-8 col-lg-7 order-md-1 py-1 py-md-1 py-lg-1">
+        {% include 'resumeweb/pg-contents/resume-upload-thankyou-block.html' %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% include 'resumeweb/pg-contents/shoppingcart/how-to-track-order.html' %}
+{% endblock %}
+
+
+

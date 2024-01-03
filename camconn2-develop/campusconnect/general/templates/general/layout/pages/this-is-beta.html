@@ -1,0 +1,88 @@
+{% extends 'resumeweb/layout/primary_layout.html' %}
+
+
+{% block body_contents %}
+
+
+<section class="py-8 py-md-4">
+  <div class="container">
+    <div class="mx-auto p-3 py-md-5">
+      <h1>Welcome to resumenalyzer <span class="badge bg-secondary">BETA</span></h1>
+      <p class="col-md-8">
+        We are glad to release our BETA version after a 
+        regorous R&D of more than three and half years. 
+        The objective was to help guide the 
+        US job seekers in both Spring and Fall season of 2022. 
+      </p>
+    </div>
+  </div>
+</section>  
+
+
+
+<section class="py-8 py-md-4">
+  <div class="container">
+    <div class="mx-auto p-3 py-md-5">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Current features</h2>
+            <p>Resumenalyzer</p>
+            <ul class="icon-list">
+              <li>
+                <a href="{% url 'guestactions:check_my_order_status' %}">Order Status Check</a>
+              </li>
+              <li>
+                <a href="{% url 'guestactions:product_review_by_guest_link' %}">Product Feedback</a>
+              </li>
+              <li>
+                Order Status Update
+              </li>              
+            </ul>
+            <p>Candidate Profile</p>
+            <ul class="icon-list">
+              <li>
+                <a href="{% url 'prof_candidate:dashboard_homepage' %}">Candiate Dashboard</a>
+              </li>
+              <li>
+                <a href="{% url 'prof_candidate:dashboard_homepage' %}">Order History</a>
+              </li>              
+              <li>
+                Dispute Filling
+              </li>
+              <li>
+                Order Cancellation
+              </li>              
+            </ul>            
+          </div>
+        </div>    
+    </div>
+  </div>
+</section>
+
+
+
+<section class="py-8 py-md-4">
+  <div class="container">
+    <div class="mx-auto p-3 py-md-5">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Upcoming features</h2>
+            <p>
+              In our next major release, we hope to add some interesting features such as 
+            </p>
+            <ul class="icon-list">
+              <li class="text-muted">Profile Readiness Analysis</li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>  
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,188 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-8 text-center">
+    <a href="{% url 'intprep_home' %}">
+      <h6 class="text-uppercase text-warning btn btn-xs active btn-outline-primary">Dialogue</h6>
+    </a>
+    <h1 class="display-2 fw-bolder">Interview Sehedule is on track ?</h1>
+    <p class="mb-6 mb-md-6">
+      Whether you have a Phone Interview with Recruiter and/or Hiring Manager, a Video Interview with Hiring Manager,
+      or a Video Interview with Coding Round with Tech Lead and Interview Panel coming up, 
+      our services will help you complete your preparation within
+      shortest possible time and with Halk-eye precision
+    </p>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-12 col-md-6">
+
+    <div class="card border bg-light mb-6">
+      <div class="card-body py-6 py-md-8">
+        <div class="row justify-content-center">
+          <div class="col-12">
+
+            <p class="mb-5">
+              <span class="bg-primary-soft">
+                <span class="h4 fw-bold">Interview with Big Tech</span>
+              </span>
+            </p>
+
+            {% for i in servicelist_dialog_bigtech %}
+              
+                <div class="d-flex">
+                  <div class="badge badge-rounded-circle bg-success-soft mt-1 me-4">
+                    <i class="fe fe-check"></i>
+                  </div>
+                  <p class="fw-bolder">
+                    <a href="{% url 'intprep_prod_details' i.id %}">{{i.title | capfirst}}</a>
+                  </p>                  
+                </div>
+
+              
+            {% endfor %}
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-12 col-md-6">
+
+    <!-- Card -->
+    <div class="card border bg-light mb-6">
+
+      <!-- Body -->
+      <div class="card-body py-6 py-md-8">
+        <div class="row justify-content-center">
+          <div class="col-12">
+
+            <p class="mb-5">
+              <span class="bg-primary-soft">
+                <span class="h4 fw-bold">Interview with Startup</span>
+              </span>
+            </p>
+
+            {% for i in servicelist_dialog_startup %}
+              
+                <div class="d-flex">
+                  <div class="badge badge-rounded-circle bg-success-soft mt-1 me-4">
+                    <i class="fe fe-check"></i>
+                  </div>
+                  <a href="{% url 'intprep_prod_details' i.id %}">
+                    <p class="fw-bolder">{{i.title | capfirst}}</p>
+                  </a>
+                </div>
+              </a>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div> 
+
+
+<div class="row py-3">
+  <div class="col-12 col-md-6">
+
+    <!-- Item -->
+    <div class="d-flex">
+      <div class="badge badge-lg badge-rounded-circle bg-success">
+        <span>?</span>
+      </div>
+      <div class="ms-5">
+        <h4 class="fs-sm">
+          Why should I purchase this service ?
+        </h4>
+        <p class="fs-sm mb-6 mb-md-8">
+          Absolutely. The Bootstrap Themes license allows you to build a website for personal use or for a client.
+        </p>
+      </div>
+    </div>
+
+    <!-- Item -->
+    <div class="d-flex">
+      <div class="badge badge-lg badge-rounded-circle bg-success">
+        <span>?</span>
+      </div>
+
+      <div class="ms-5">
+        <h4 class="fs-sm">
+          What is the accuracy of this service ?
+        </h4>
+        <p class="fs-sm mb-6 mb-md-0">
+          Yes. We update all of our themes with each Bootstrap update, plus are constantly adding new components, pages, and features to our themes.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6">
+
+    <!-- Item -->
+    <div class="d-flex">
+
+      <!-- Badge -->
+      <div class="badge badge-lg badge-rounded-circle bg-success">
+        <span>?</span>
+      </div>
+
+      <div class="ms-5">
+
+        <!-- Heading -->
+        <h4 class="fs-sm">
+          What is the guarantee that I will get my interview questionaire common from
+          a given question set ?
+        </h4>
+
+        <!-- Text -->
+        <p class="fs-sm mb-6 mb-md-8">
+          Yup! Bootstrap Themes come with a satisfaction guarantee. Submit a return and get your money back.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- Item -->
+    <div class="d-flex">
+
+      <!-- Badge -->
+      <div class="badge badge-lg badge-rounded-circle bg-success">
+        <span>?</span>
+      </div>
+
+      <div class="ms-5">
+
+        <!-- Heading -->
+        <h4 class="fs-sm">
+          Does it work with Rails? React? Laravel?
+        </h4>
+
+        <!-- Text -->
+        <p class="fs-sm mb-6 mb-md-0">
+          Yes. Landkit has basic CSS/JS files you can include. If you want to enable deeper customization, you can integrate it into your assets pipeline or build processes.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</div> 
+
+
+<div class="row justify-content-center py-7 py-md-7">
+  <div class="col-12 col-md-10 col-lg-8 text-center">
+    <a href="{% url 'intprep_all_services' %}" class="btn">
+      <h3 class="fw-bolder">View all Dialogue Services <i class="fe fe-arrow-right ms-auto"></i></h3>
+    </a>
+  </div>
+</div>
+
+

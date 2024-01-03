@@ -1,0 +1,48 @@
+{% regroup object_list by category as service_list %}
+{% for level in service_list %}
+<div class="row">
+  <div class="col-12 col-md-12">
+
+    <div class="row">
+      <div class="col-6">
+        <h4 class="fw-bold mb-1">{{level.grouper|title}}</h4>
+        <p class="fs-sm text-muted mb-0">
+          User experience and design are top priorities at Landkit.
+        </p>
+      </div>
+      <div class="col-6">
+        <a class="text-decoration-none" href="{% url 'proflevel_bycat' level.grouper %}">
+          [Browse This Category]
+        </a>
+      </div>
+    </div>
+
+
+    {% for i in level.list %}
+    <div class="row">
+      <div class="col-12 col-md-12">
+
+          <div class="card mt-4 rounded-0">
+            <div class="card-body box-shadow">
+              <h3 class="card-title text-primary">{{i.title}}</h3>
+              <p class="card-text">
+                <span class="">Listing Price:<del>${{ i.listprice }}</del></span>
+                <span class="">Current Offer:<span class="text-danger">${{ i.saleprice }}</span>
+              </p>
+              <p class="card-text text-muted">
+                {{i.description}}
+              </p>
+              <h5 class="card-title">Additional Services or Service Ad-on</h5>
+              <p class="card-text">
+                <a class="btn btn-primary btn-sm" href="{% url 'proflevel_prod_details' i.id %}">Show Detials</a>
+              </p>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+{% endfor %}

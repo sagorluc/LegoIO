@@ -1,0 +1,36 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+<div class="ms-5">
+  <h2>Upload resume for quick feedback free of cost</h2>
+  <p class="text-muted">
+    Magic Resume will adapt based on what positions the employer has available when it's shared.
+  </p>
+
+  <p class="text-muted mb-0">
+    <form id="guestResumeForm1" method="POST">
+      {% csrf_token %}
+      <div class="row">
+        <div class="form-group col-md-10 mb-0">
+          {{ form.file1|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-10 mb-0">
+          {{ form.email|as_crispy_field }}
+        </div>
+      </div>
+      <button class="btn btn-primary btn-xs rounded-0" type="submit">Submit</button>  
+    </form>  
+  </p>
+</div>
+
+
+<button class="btn btn-primary" id="guestResumeModal_wrongfiletype" data-bs-toggle="modal" data-bs-target="#modal272600" style="display:None">
+  Launch demo modal
+</button>
+
+<button class="btn btn-primary" id="guestResumeModal_largefile" data-bs-toggle="modal" data-bs-target="#modal272600" style="display:None">
+  Launch demo modal
+</button>

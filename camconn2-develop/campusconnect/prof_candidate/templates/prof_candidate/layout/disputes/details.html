@@ -1,0 +1,37 @@
+{% extends 'prof_candidate/layout/primary_layout.html' %}
+{% load static %}
+
+
+{% block header %}
+  {% include 'prof_candidate/components/headers/promo-offers.html' %}
+{% endblock %}
+
+
+{% block sidebar_content %}
+  <div class="mb-6">
+    {% include 'prof_candidate/components/menu/home-link.html' %}
+  </div>
+  <div class="mb-6">
+    {% include 'prof_candidate/components/menu/disputes.html' %}
+  </div>
+  <div class="mb-6">  
+    {% include 'prof_candidate/components/orders/order_info.html' %}
+  </div>
+{% endblock %}
+
+
+{% block body_content_section %}
+
+    <div class="card-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h4 class="mb-0">Dispute Details</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      {% include 'prof_candidate/pg-contents/disputes/details.html' %}
+    </div>
+
+{% endblock %}

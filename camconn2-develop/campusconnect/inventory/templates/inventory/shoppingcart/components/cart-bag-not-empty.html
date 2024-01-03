@@ -1,0 +1,117 @@
+{% for instance in products_list %}
+	{% with instance=instance %}
+
+		{% comment "blue" %}
+			{{instance}}
+		{% endcomment %}
+
+
+		<div class="border border-primary rounded position-relative my-6">
+			<div class="p-5">
+
+				<div class="">
+					<h1>
+						<span class="position-absolute top-0 start-50 translate-middle badge rounded bg-primary">
+							Order Item # {{ forloop.counter }}
+						</span>
+					</h1>
+				</div>
+				
+
+				<div class="media-body mb-6 lh-125">
+		
+					<div class="border-bottom mb-6">
+						<h4 class="text-primary fw-bolder">Main Product</h4>
+						<h5>{{instance.mcart.sku | upper}}</h5>
+						<div class="d-flex justify-content-between">
+							<h5 class="fw-bolder">{{instance.mcart.title | capfirst}}</h5>
+							{% if instance.mcart.final_price == instance.mcart.base_price %}
+								<h5 class="fw-bolder">${{instance.mcart.final_price}}</h5>
+								{% else %}
+								<h6 class="small">(coupon {{instance.mcart.mcart_coupons.mcoupon_given.random_string_32}} applied:
+									${{instance.mcart.base_price}} - ${{instance.mcart.coupon_subtract}})</h6>
+								<h5>${{instance.mcart.final_price}}</h5>
+							{% endif %}
+						</div>
+					</div>
+
+
+					<div class="border-bottom mb-6">
+						<h4 class="text-primary fw-bolder">Service Options</h4>
+						{% for serviceoption in instance.mcart_serviceoptions %}
+							{% with serviceoption=serviceoption %}
+								<h5>{{serviceoption.sku | upper}}</h5>
+								<div class="d-flex justify-content-between">
+									<p>hello</p>
+									<h5>{{serviceoption.name}}</h5>
+									<h5>${{serviceoption.price}}</h5>
+								</div>
+							{% endwith %}
+							{% empty %}
+								nothing added
+						{% endfor %}
+					</div>
+
+
+					<div class="border-bottom mb-6">
+						<h4 class="text-primary fw-bolder">Delivery Options</h4>
+						{% for deliveryoption in instance.mcart_deliveryoptions %}
+							{% with deliveryoption=deliveryoption %}
+								<div class="d-flex justify-content-between w-100">
+									<h5 class="fw-bold">{{deliveryoption.name}}</h5>
+									<h4 class="fw-bold">${{deliveryoption.price}}</h4>
+								</div>
+							{% endwith %}
+							{% empty %}
+								nothing added
+						{% endfor %}
+					</div>
+
+
+				</div>
+
+
+				<div class="d-flex justify-content-between align-items-center mb-6">
+					<div><span class="d-block text-right mt-1 fw-bold">Item Tax</span></div>
+					<div><span class="d-block text-right mt-1 fw-bold">${{instance.item_tax_price}}</span></div>
+				</div>
+
+				
+				<div class="d-flex justify-content-between align-items-center mb-6">
+					<div><span class="d-block text-right mt-1 fw-bolder fs-4">Item Total</span></div>
+					<div><span class="d-block text-right mt-1 fw-bolder fs-4">${{instance.item_totalcost}}</span></div>
+				</div>
+
+
+				
+				<div class="col-12 text-left">
+					{% if mmh_render_for_this_view_only %}
+						<a href="javascript:mmh_removeItemFromCartByModelNameAndId_andRefreshCartHomeDom('{{instance.mcart.model_name}}','{{instance.mcart.item_id}}')"
+							class="small text-danger fw-bolder mt-5 text-decoration-none">Remove Item <i class="fe fe-trash-2"></i>
+						</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+
+
+		{% if instance.mcart.tracking_id %}
+			<div>Tracking Reference Id: {{ instance.mcart.tracking_id }}</div>
+		{% endif %}
+
+
+		{% comment "Optional note" %}
+		{% endcomment %}
+
+	{% endwith %}
+{% endfor %}
+
+
+{% if mmh_render_for_this_view_only %}
+	<a class="btn btn-link btn-sm text-danger fw-bolder "
+		href="javascript:mmh_removeAllItemsFromCart_andRefreshCartHomeDom()">Empty Cart <i class="fe fe-shopping-cart"></i>
+	</a>
+{% endif %}
+
+

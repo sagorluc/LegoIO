@@ -1,0 +1,13 @@
+{% extends 'prof_candidate/layout/primary_layout.html' %}
+
+
+{% block sidebar_content %}
+  {% include 'prof_candidate/components/menu/resume.html' %}
+  {% include 'prof_candidate/components/online-profile/resume_form_tips.html' %}              
+{% endblock %}
+
+
+
+{% block body_content_section %}
+  {% include 'prof_candidate/pg-contents/my_resume/resume_form.html' %}
+{% endblock %}

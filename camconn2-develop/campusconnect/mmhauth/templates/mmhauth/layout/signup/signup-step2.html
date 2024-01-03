@@ -1,0 +1,28 @@
+{% extends 'mmhauth/layout/primary_layout_v3.html' %}
+{% load static %}
+
+
+{% block form_heading %}
+    <h1 class="py-3 fw-bolder mb-0">Sign Up</h1>
+    <p>Step 2/3</p>
+{% endblock %}
+
+
+{% block main_body_section %}
+<div class="mb-6">
+    <p>Thank you for your interest in Resumenalyzer</p>
+</div>
+
+<div class="mb-6">
+    <p> A verification email has been sent to 
+    <strong>{{user_email}}</strong> from us.
+    The verification email contains a link on which you have to click on. You cannot login within 
+    our system until you complete this verification process.
+    </p>
+</div>
+{% endblock %}
+
+
+{% block right_hand_side %}
+    {% include 'mmhauth/components/tips3.html' %}
+{% endblock %}

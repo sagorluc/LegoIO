@@ -1,0 +1,46 @@
+<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+  <tr>
+      <td class="bg_white">
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+          <tr>
+            <td class="bg_white email-section">
+            	<div class="heading-section" style="text-align: left; padding: 25px 5px 0px 5px;">
+	              	<h3 class="heading">Your coupon details</h3>
+
+	              	<p>Coupon code {{coupon_code_dict.coupon_code|upper}}</p>
+	              	<p>This coupon code will be expired in {{coupon_code_dict.hours_to_expire}} hours</p>
+	              	<p>This coupon code is good for any product line</p>
+	              	<p>This coupon code is good for any amount of purchase</p>
+									<p>This coupon code will offer you a discount of {{coupon_code_dict.discount_percent}}%</p>
+
+            	</div>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+</table>
+
+
+<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+	<tr>
+		<td class="bg_white">
+			<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+				<tr>
+					<td class="bg_white email-section">
+						<div class="heading-section" style="text-align: left; padding: 25px 5px 25px 5px;">
+							<h3 class="heading">Things to remember</h3>
+
+							<p>You can use this coupon only once</p>
+							<p>guest_email>>{{email_guest}}</p>
+							<p>friend_email>>{{email_friend}}</p>
+
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>

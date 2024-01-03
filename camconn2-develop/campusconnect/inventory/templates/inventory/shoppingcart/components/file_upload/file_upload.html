@@ -1,0 +1,47 @@
+{% extends 'inventory/shoppingcart/base_shopcart.html' %}
+
+
+{% block cart_leftsidebar_section %}
+
+    {% if file_upload_form_html %}
+      <div class="mb-6">
+        {{file_upload_form_html}}
+      </div>
+    {% endif %}
+
+    {% if file_upload_general_rules %}
+      <div class="mb-6">
+       
+      </div>
+    {% endif %}
+
+    {% if file_upload_general_rules %}
+      <div class="mb-6">
+       
+      </div>
+    {% endif %}        
+
+    {% if file_upload_general_rules %}
+      <div class="mb-6">
+        
+      </div>
+    {% endif %}        
+
+    {% if file_upload_failure_msg %}
+      <div id="cart_file_upload_fail_msg">
+        {{file_upload_failure_modal}}
+      </div>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block cart_rightsidebar_section %}
+    <div class="card-body border mb-6">
+      {% include 'inventory/shoppingcart/components/summary/placeholder.html' %}
+    </div>
+{% endblock %}
+
+
+{% comment "Optional note" %}
+{% endcomment %}

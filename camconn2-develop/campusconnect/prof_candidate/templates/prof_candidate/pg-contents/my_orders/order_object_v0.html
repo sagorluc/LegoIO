@@ -1,0 +1,112 @@
+<div class="list-group-item">
+  
+  <div class="row">
+    <div class="col">
+      <p class="text-primary">
+          Tracking ID # {{ object.tracking_id }}
+      </p>
+      <p>
+        Order Date: {{ object.created|date:'m/d/Y h:i A' }} EST
+      </p>
+      <table class="table table-sm text-reset">
+        <tbody>
+          <tr>Product Purchased</tr>
+          <tr>
+            <td>{{ object.sku }}</td>
+            <td>{{ object.title }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-auto">
+      <a class="btn btn-xs btn-outline-white" href="{%url 'prof_candidate:order_details' object.tracking_id %}">
+        Details
+      </a>
+    </div>
+  </div>
+
+  <div class="row" style="display:inline-block">
+    
+    <div class="col">
+      <p>
+        <table>
+          <tr>
+            <td>Order Cancellation Status</td>
+          </tr>
+          <tr>
+            {% if object.processing_status == 'pending' or object.processing_status == 'processing' %}
+              {% if object.grace_left_in_seconds %}
+            <td>
+              You can cancel this order within {{ object.grace_period_ends|date:'m/d/Y h:i A'  }} EST
+            </td>
+          </tr>
+          <tr> 
+            <td>
+                <a class=" " href="{% url 'prof_candidate:mmh_cancel_order' object.tracking_id %}">Cancel Order</a>
+            </td>
+          </tr> 
+              {% else %}
+                Order cancellation time has expired
+              {% endif %}
+            {% else %}
+              Order cancellation time has expired
+            {% endif %}
+        </table>
+      </p>
+    </div>
+
+
+    <div class="col">
+      <p>
+        {% if object.processing_status == 'cancelled' %}
+        THIS ORDER WAS CANCELLED AND REFUNDED.
+        {% endif %}
+      </p>
+    </div>
+
+
+    <div class="col">
+      <table>
+        <tr>
+          <td>Current Delivery Status</td>
+        </tr>
+        <tr>
+          <td><span class=" ">{{ object.processing_status | title }}</span></td>
+        </tr>
+      </table>
+    </div>
+
+
+
+    <div class="col">
+      <p>
+        {% if object.processing_status == 'delivered' %}
+        <a class=" " href="{% url 'prof_candidate:file_disp_with_order' object.tracking_id %}">File Dispute</a>
+        {% endif %}
+      </p>
+    </div>
+
+
+    <div class="col">
+        {% if object.processing_status == 'pending' or object.processing_status == 'processing' %}
+        <a class=" " href="{% url 'prof_candidate:order_status_check' object.id %}">Check Latest Delivery Status</a>
+        {% endif %}
+    </div>
+
+
+
+
+
+  </div>
+
+</div>
+
+
+{% comment "comment text" %}
+{% endcomment %}
+
+
+
+
+
+

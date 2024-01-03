@@ -1,0 +1,71 @@
+{% extends 'resumeweb/layout/base_prod_ins_pages.html' %}
+
+
+{% block leftside_content %}
+
+    {% if how_it_works_section %}  
+      <div class="mb-6">
+        {% include 'resumeweb/components/0-dialogue/about.html' %}
+      </div>
+      <div class="mb-6">
+        {% include 'resumeweb/components/menus/products/dialogue/prod-insight-1.html' %}
+      </div>      
+      <div class="mb-6">
+        {% include 'general/components/faq-gen.html' %}
+      </div>
+    {% endif %}
+
+    {% if use_cases_section %}
+      <div class="mb-6">
+        {% include 'resumeweb/components/ads/1-target-audi.html' %}
+      </div>
+      <div class="mb-6">
+        {% include 'resumeweb/components/menus/products/dialogue/prod-insight-1.html' %}
+      </div>
+    {% endif %}
+
+    {% if gen_pdm_section %}
+      <div class="mb-6">
+        {% include 'resumeweb/components/ads/1-target-audi.html' %}
+      </div>
+      <div class="mb-6">
+        {% include 'resumeweb/components/menus/products/dialogue/prod-insight-1.html' %}
+      </div>
+    {% endif %}
+
+    {% if dialogue_faq_section %}
+      <div class="mb-6">
+        {% include 'resumeweb/components/faq-other.html' %}
+      </div>
+      <div class="mb-6">
+        {% include 'resumeweb/components/menus/products/dialogue/prod-insight-1.html' %}
+      </div>      
+      <div class="mb-6">
+        {% include 'general/components/faq-gen.html' %}
+      </div>
+    {% endif %}
+
+{% endblock %}
+
+
+
+{% block rightside_content %}
+    
+    {% if use_cases_section %}
+      {% include 'resumeweb/pg-contents/use-cases/dialogue/001-list.html' %}
+    {% endif %}
+
+    {% if how_it_works_section %}
+      {% include 'resumeweb/pg-contents/how-it-works/001-list.html' %}
+    {% endif %}
+
+    {% if dialogue_faq_section %}
+      {% include 'resumeweb/layout/general/faq.html' %}
+    {% endif %}
+
+    {% if gen_pdm_section %}
+      {% include 'resumeweb/layout/general/gpdm.html' %}
+    {% endif %}
+
+{% endblock %}
+

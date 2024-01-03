@@ -1,0 +1,17 @@
+<p class="mb-0">
+      <span class="fs-sm">{{product_line | capfirst}} |</span>
+      <span class="fs-sm">{{serv_others.0.category|capfirst}} |</span>
+      <span class="fs-sm fw-bolder">Other services</span>
+
+</p>
+
+<ul>
+  {% for j in serv_others %}
+  <li class="">
+    <p class="fs-sm fw-bolder text-muted mb-0">{{j.sku | upper}}</p>
+    <a class="fs-sm" href="{% url 'exp180_detail_view_link' j.id %}">
+      {{j.title | capfirst}}
+    </a>
+  </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,28 @@
+{% extends 'general/layout/primary_layout.html' %}
+
+
+{% block body_contents %}
+
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-12 col-md-8 mb-6">
+          {% block left_column %}
+          {% endblock %}
+        </div>
+
+        <div class="col-12 col-md-4 mb-6">
+          {% block right_column %}
+          {% endblock %}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+
+{% block mmh_javascript %}
+{% endblock mmh_javascript %}

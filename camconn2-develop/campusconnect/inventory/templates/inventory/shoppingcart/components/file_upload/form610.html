@@ -1,0 +1,27 @@
+{% load static %}
+
+
+<h2>Upload your resume</h2>
+
+<div class="mb-6">
+    <form method="POST" id="form_cart_file_upload72" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary btn-xs rounded-0" type="submit" value="submit">Upload & Continue</button>
+    </form>
+</div>
+
+
+{% comment "Optional note" %}
+<form method="post" action="/cart/cart/upload" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
+{% endcomment %}
+
+
+<button class="btn btn-primary" id="guestResumeModal_wrongfiletype" data-bs-toggle="modal" data-bs-target="#guestResumeModal2726" style="display:None">
+  Launch demo modal
+</button>
+
+<button class="btn btn-primary" id="guestResumeModal_largefile" data-bs-toggle="modal" data-bs-target="#guestResumeModal2700" style="display:None">
+  Launch demo modal
+</button>

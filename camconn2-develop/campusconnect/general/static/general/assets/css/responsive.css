@@ -1,0 +1,76 @@
+@media (max-width: 768px) {
+	.mr-top {
+		margin-top: 50px;
+	}
+
+	.blog h4 {
+		margin-top: 15px;
+	}
+
+	.about-us img {
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 640px) {
+	.navbar-brand h1 {
+		line-height: 14px
+	}
+
+	.navbar .navbar-collapse {
+		margin-top: 26px;
+	}
+
+	.navbar .mr-b {
+		margin-bottom: 24px;
+	}
+
+	.footer-content {
+		padding: 14px 0;
+	}
+
+	.login .button {
+		margin-bottom: 30px;
+	}
+
+	.register .button {
+		margin-bottom: 30px;
+	}
+
+	.checkout .button {
+		margin-bottom: 50px;
+	}
+
+	.single-product img {
+		margin-bottom: 30px;
+	}
+
+	.author img {
+		width: calc(100% - 80%);
+	}
+
+	.comment img {
+		width: calc(100% - 80%);
+		margin: 10px;
+	}
+
+	.contact-us .button {
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 480px) {
+	#slider .caption h1 {
+		font-size: 36px;
+	}
+
+	#slider .caption h2 {
+		font-size: 20px;
+	}
+}
+
+@media (max-width: 360px) {
+	.cart .table {
+		font-size: 12px;
+	}
+}

@@ -1,0 +1,65 @@
+{% extends 'inventory/shoppingcart/base_shopcart.html' %}
+
+
+{% block cart_leftsidebar_section %}
+      <div class="col-12 col-md-8 card-body border mb-6">
+        {% include 'inventory/shoppingcart/components/summary/placeholder.html' %}
+      </div>
+
+      <div class="mb-6">
+        {% include 'inventory/shoppingcart/components/checkout/tips.html' %}
+      </div>
+
+      <div class="mb-6">
+        {% include 'inventory/shoppingcart/components/checkout/privacy.html' %}
+      </div>
+{% endblock %}
+
+
+{% block cart_rightsidebar_section %}
+      <div class="row">{{paypal_buttons_container_html}}</div>
+
+      <div class="row">
+        <div id="payment_gateway_loading_error_msg" hidden>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading"><strong>Opps! Something went wrong!</strong></h4>
+            <p>
+                It seems like our Payment Gateway Server not responding at this moment. This is not a problem with your computer or browser. This error is due to the Resumenalyzer Server failed to load the connection
+                        with the payment gateway.
+            </p>
+            <hr>
+            <p class="mb-0">
+              Please <a href="{% url 'mmh_carthome' %}">click here</a> to restart
+            </p>
+          </div>          
+        </div>
+      </div>      
+
+      <div class="row">
+        <div id="successful_payment_processing_status_msg" hidden>
+          <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Well done!</h4>
+            <p>System Processing. Please wait ...</p>
+            <hr>
+            <p class="mb-0">In few moments, we will redirect you to the confirmation page</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="failed_payment_processing_status_msg" hidden>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Holy guacamole!</strong> Your payment was not processed. Please try again ...
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        </div>
+      </div>      
+{% endblock %}
+
+
+{% block mmh_javascript %}
+    <script src="https://www.paypal.com/sdk/js?client-id={{my_client_id}}&disable-funding=credit"></script>
+    <script src="/static/general/assets/js/mmh_paypal.js"></script>
+{% endblock mmh_javascript %}

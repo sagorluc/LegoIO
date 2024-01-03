@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-8 text-center">
+
+    <a href="{% url 'rolebased_home' %}">
+      <h6 class="text-uppercase text-warning btn btn-xs active btn-outline-primary">Identity</h6>
+    </a>
+    <h1 class="display-2 fw-bolder">Rebrand your <span class="text-primary">Identity</span>
+    </h1>
+    <p class="mb-6 mb-md-6">
+        A resume/profile analysis tool to help you prepare when you
+        submit your resume for progamming
+        languages or platform based jobs 
+        such as Java Developer, Python Developer, 
+        API Developer or Database Administrator
+    </p>
+
+  </div>
+</div>
+
+
+{% regroup servicelist_identy by category as service_list %}
+{% for lang in service_list %}
+  <div class="row align-items-center">
+    <div class="col">
+
+      <h4 class="fw-bolder mb-1">
+        {{lang.grouper|title}}
+      </h4>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+
+    <div class="table-responsive mb-3 mb-md-3">
+      <table class="table table-align-top">   
+        <tbody>
+          {% for i in lang.list %}
+            <tr>                 
+              <td>
+                <p class="fw-bolder mb-1" style="width:400px">
+                  <a class="" href="{% url 'rolebased_prod_details' i.id  %}">  
+                      {{i.title | capfirst}}
+                  </a>
+                </p>
+                <p class="fs-sm mb-0" style="width:300px">
+                  {{i.description | truncatechars:100 | capfirst}}
+                </p>
+
+              </td>
+              <td>
+
+                  <p class="fs-sm mb-0">
+                    ${{i.listprice}}
+                  </p>
+
+              </td>
+              <td>
+
+                  <p class="fs-sm mb-0">
+                    <span class="text-danger">${{i.saleprice}}</span>
+                  </p>
+
+
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    </div>
+  </div>
+{% empty %}  
+  <h1>No service added</h1>
+{% endfor %}
+
+
+
+
+
+
+<div class="row justify-content-center py-7 py-md-7">
+  <div class="col-12 col-md-10 col-lg-8 text-center">
+    <a href="{% url 'rolebased_all_services' %}" class="btn">
+      <h3 class="fw-bolder">View all Identity Services <i class="fe fe-arrow-right ms-auto"></i></h3>
+    </a>
+  </div>
+</div>

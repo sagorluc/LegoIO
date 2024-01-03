@@ -1,0 +1,40 @@
+{% regroup object_list by category as service_list %}
+{% for visa in service_list %}
+  <div class="d-flex justify-content-left mb-3">
+    <a href="{% url 'usvisa_bycat' 'cpt' %}" class="text-decoration-none">
+      <span class="display-4 fw-bolder" data-annual="29" data-monthly="49">{{visa.grouper | upper}}</span>
+    </a>
+    <p class="px-3">
+      <a href="{% url 'usvisa_bycat' visa.grouper %}" class="fs-sm">Browse all</a>
+    </p>    
+  </div>
+  <div class="row mb-6">
+    <div class="col-12 col-md-8">
+      {% for cp in visa.list %}
+
+            <div class="bg-white p-4">
+                <p class="fs-sm text-reset fw-bolder mb-0">{{cp.sku | upper}}</p>
+                <p class="fw-bolder text-primary">
+                  <a class="" href="{% url 'usvisa_prod_details' cp.id  %}">{{cp.title | capfirst}}</a>
+                </p>
+                <p class="fs-sm text-reset">{{cp.description | truncatechars:100 | capfirst}}</p>
+                <p class="fs-sm mb-0">
+                  <span class="text-reset">Price: ${{cp.listprice}}</span> 
+                  <span class="text-danger">Current offer: ${{cp.saleprice}}</span>
+                </p>
+                <p class="fs-sm">Visa Category: {{cp.category | upper}}</p>
+            </div>
+        
+      {% endfor %}
+    </div>
+  </div>
+{% endfor %}
+
+
+<div class="row pt-5">
+  <div class="col-12 col-md-4 col-lg-4 col-xl-5">
+    <a class="btn btn-sm btn-primary rounded-0 me-1" href="{% url 'usvisa_all_services' %}">
+      Show All Services
+    </a>
+  </div>
+</div>

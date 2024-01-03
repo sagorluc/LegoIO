@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+    webapp_campusconnect:
+        image: campusconnect/dev/webapp:$GIT_COMMIT
+        ports:
+            - "8007:8007"
+        env_file:
+            - ../../.env
+    webserver_campusconnect:
+        image: campusconnect/dev/webserver:$GIT_COMMIT
+        depends_on:
+            - webapp_campusconnect
+        network_mode: 'service:webapp_campusconnect'

@@ -1,0 +1,36 @@
+{% load static %}
+
+
+    <section data-jarallax data-speed=".8" class="py-6 py-md-10 overlay overlay-white overlay-90 jarallax border-bottom" style="background-image: url(/static/resumeweb/assets/img/3rd/21849.jpg);">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6 order-md-1">
+              
+              <div class="card bg-white p-5">
+                <h3 class="display-5 fw-bold">Before you make a purchase</h3>
+                <ul>
+                  <li>Get a coupon code that can help you get upto 33% discount for your next purchase <span><a href="{% url 'guestactions:product_review_by_guest_link' %}">Learn more</a></span></li>
+                  <li>Read about the product docs to get familiar with product scopes <span><a href="{% url ' all_services_link' %}">Learn more</a></span></li>
+                  <li>Signup with resumenalyzer <span><a href="{% url 'mmhauth:mmh_auth_register_url' %}">Start now</a></span></li>
+                  <li>Review the product comparison chart to get a bird's eye view about the common matrix about all products <span><a href="{% url ' compare_all_services_link' %}">Learn more</a></span></li>
+                </ul>
+              </div>
+          </div>
+
+          <div class="col-12 col-md-6 order-md-2">
+            <div class="card bg-white p-5">
+              <h3 class="display-5 fw-bold">After you make a purchase</h3>
+              <ul>
+                <li>Check Order Status to get the latest about your order processing status and delivery updates <span><a href="{% url 'guestactions:check_my_order_status' %}">Click here</a></span></li>
+                <li>Contact with our customer support 24x7 for any questions about a service or about your order <span><a href="{% url 'guestactions:contact_us_guest' %}">Click here</a></span></li>
+                <li>Participate in Site Survey <span><a href="{% url 'guestactions:submit_site_survey_as_guest' %}">Click here</a></span></li>
+                <li>Provide Product Feedback and earn coupon that you can use in your next purchase <span><a href="{% url 'guestactions:product_review_by_guest_link' %}">Click here</a></span></li>
+              </ul>
+            </div>
+          </div>
+
+
+
+    </div>
+  </div>
+</section>

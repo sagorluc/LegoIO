@@ -1,0 +1,65 @@
+<div class="row bg-warning">
+
+  {% block cart_leftsidebar_section %}
+    <div class="col-12 col-md-7 order-md-1 bg-light">
+
+      <div class="row align-items-center mb-6">
+        <div class="col-12 col-md">
+          <h1 class="py-3 fw-bolder mb-0">Checkout</h1>
+          <p>Step 1/4</p>
+        </div>
+        <div class="col-12 col-md-auto">
+          {% comment %} <a href="{% url 'privacy_policy' %}" class="btn btn-sm btn-outline-gray-300 d-md-inline"> {% endcomment %}
+            <span class="fe fe-lock"></span>
+          </a>
+        </div>
+      </div>
+
+      <h3 class="fw-bold text-center">My Cart <i class="fe fe-shopping-cart"></i></h3>
+
+      <div id="divCartContainer">
+        <div class="cart my-3">
+          {% include 'inventory/shoppingcart/components/items-in-bag.html' %}
+        </div>
+      </div>
+
+      <div class="row mb-6">
+        {% include 'inventory/shoppingcart/components/resume_upload.html' %}
+      </div>
+
+      <div class="row">
+        {% include 'inventory/shoppingcart/components/disclaimer_info.html' %}
+      </div>
+
+    </div>
+  {% endblock %}
+
+
+  {% block cart_rightsidebar_section %}
+    <div class="col-12 col-md-4 order-md-2 bg-white">
+      {% if products_list %}
+
+      <div class="py-7">
+        <div class="card-body border mb-6">
+          {% include 'inventory/shoppingcart/components/coupon/placeholder.html' %}
+        </div>
+
+        <div class="card-body border mb-6">
+          {% with total_cost=total_cost %}
+            {% include 'inventory/shoppingcart/components/summary/sum101.html' %}
+          {% endwith %}
+        </div>
+      </div>
+
+      {% endif %}
+    </div>
+  {% endblock %}
+
+</div>
+
+<!-- ============================================== -->
+{% comment "ORIGINAL IMPLEMENTATION" %}
+{% include "resumeweb/layout/mmh_cart/tcart_coupons.html" with qs_mcoupon_given=qs_mcoupon_given %}
+NOTE: OLD IMPLEMENTATION USED TEMPLATE tcart_coupons AND ITERATED THROUGH A QUERY SET OF THEM.
+NEW IMPLEMENTATION USES TEMPLATE tcart_coupon AND DISPLAYS FORM FIELD FOR USER TO INPUT ONE OF THEM.
+{% endcomment %}

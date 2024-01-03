@@ -1,0 +1,8 @@
+{% for ques in questions_answers %}
+  <h3 class="fs-sm fw-bolder">
+    {{ ques.question }}
+  </h3>
+  <p class="fs-sm text-reset mb-6">
+    {{ ques.answer }}
+  </p>
+{% endfor %}

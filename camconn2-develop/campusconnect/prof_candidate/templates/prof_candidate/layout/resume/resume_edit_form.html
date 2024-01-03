@@ -1,0 +1,44 @@
+{% extends 'prof_candidate/layout/primary_layout.html' %}
+
+
+{% block sidebar_content %}
+  <div class="mb-6">
+    {% include 'prof_candidate/components/menu/resume.html' %}
+  </div>
+
+  <div class="mb-6">  
+    {% include 'prof_candidate/components/online-profile/resume_form_tips.html' %}
+  </div>
+
+  <div class="mb-6">  
+    {% include 'prof_candidate/components/online-profile/file-upload-benefits.html' %}
+  </div>
+
+  <div class="mb-6">  
+    {% include 'prof_candidate/components/info_privacy_policy.html' %}
+  </div>
+
+  <div class="mb-6">  
+    {% include 'prof_candidate/components/who_can_see_my_data.html' %}  
+  </div>
+{% endblock %}
+
+
+
+{% block body_content_section %}
+
+
+    <div class="card-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h4 class="mb-0">Update your resume</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      {% include 'prof_candidate/pg-contents/my_resume/resume_edit_form.html' %}
+    </div>
+          
+
+{% endblock %}

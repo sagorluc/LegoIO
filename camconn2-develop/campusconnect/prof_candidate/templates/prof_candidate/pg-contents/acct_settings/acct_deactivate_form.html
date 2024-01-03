@@ -1,0 +1,22 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+<div class="row">
+    <div class="col-12 col-md-auto">
+
+      <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <span class="text-danger">{{form_error}}</span>
+        <button class="btn btn-xs btn-danger rounded-0" type="submit">
+          Deactivate Now
+        </button>
+      </form>
+      <p>
+        Please make sure this is final submission
+      </p>
+
+
+    </div>
+</div>

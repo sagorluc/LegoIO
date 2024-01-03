@@ -1,0 +1,41 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+
+<div class="ms-5">
+  <h2 class="fw-bold text-white">Upload your most up-to-date resume for a quick analysis free of cost !!!</h2>
+  <p class="text-muted">
+    Get meaningful analysis in minutes from resumanalyzer
+  </p>
+
+  <p class="text-muted mb-0">
+    <form id="guestResumeForm1" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        <div class="form-group text-white fs-sm col-md-10 mb-0">
+          {{ form_guest_resume.file1|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group text-white fs-sm col-md-10 mb-0">
+          {{ form_guest_resume.email|as_crispy_field }}
+        </div>
+      </div>
+      <button class="btn btn-primary btn-xs rounded-0" type="submit">Submit</button>  
+    </form>  
+  </p>
+</div>
+
+
+
+
+
+<button class="btn btn-primary" id="guestResumeModal_wrongfiletype" data-bs-toggle="modal" data-bs-target="#guestResumeModal2726" style="display:None">
+  Launch demo modal
+</button>
+
+<button class="btn btn-primary" id="guestResumeModal_largefile" data-bs-toggle="modal" data-bs-target="#guestResumeModal2700" style="display:None">
+  Launch demo modal
+</button>
+

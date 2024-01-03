@@ -1,0 +1,36 @@
+<div class="mb-6">
+
+	<p class="bg-success">
+		<span class="product__id" style="display: none;">{{object.id}}</span>
+		<span class="product__model_name" style="display: none;">{{model_name}}</span>
+	</p>
+
+
+	<h1 class="product__title text-primary fw-bolder text-warnig fs-3 m-0 p=0">{{object.title | capfirst}}</h1>
+		{% include 'resumeweb/pg-contents/product-details-v2/sections/sku.html' %}
+	<hr class="text-warning">
+
+
+	<div class="mb-6">
+		<h2 class="fw-bolder fs-3">Description</h2>
+		<p class="fs-sm text-reset">{{object.description | capfirst}}</p>
+	</div>
+
+	<div class="mb-6">
+		<h2 class="fw-bolder fs-3">Category</h2>
+		<p class="fs-sm text-reset">{{object.category | capfirst}}</p>
+	</div>
+
+	<div class="mb-6">
+		<h2 class="fw-bolder fs-3">Pricing</h2>
+		<div class="d-flex justify-content-between">
+			<div class="fs-sm text-reset">List Price: ${{ object.listprice }}</div>
+			<div class="fs-sm">
+				Current Offer: <span class="text-danger">$</span><span class="text-danger product__price">{{ object.saleprice }}</span>
+			</div>
+		</div>
+
+	</div>
+
+</div>		
+

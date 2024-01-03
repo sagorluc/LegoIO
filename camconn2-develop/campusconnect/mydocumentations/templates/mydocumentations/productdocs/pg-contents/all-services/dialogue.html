@@ -1,0 +1,33 @@
+{% load static %}
+
+
+<div class="card shadow-light-lg overflow-hidden text-center text-lg-start">
+  <div class="row">
+    <div class="col-md-4 position-relative">
+
+      <!-- Image -->
+      <img src="{% static 'resumeweb/assets/img/illustrations/illustration-2.png' %}" class="h-75 position-absolute right-0 mt-6" alt="...">
+
+    </div>
+    <div class="col-md-8">
+
+      <div class="card-body py-7 py-md-9">
+        <h4 class="fw-bold">Dialogue</h4>
+        <p class="text-muted mb-0">
+          We provide customized services that help you succeed 
+      in variours forms of interviews such as phone interviews, 
+      and various types of companies such as fintech, healthcare, startup, big corporations
+        </p>
+      </div>
+      <div class="card-meta">
+        <h6 class="text-uppercase me-2 mb-0">
+          <a class="" href="{% url 'intprep_all_services' %}">Product Home</a>
+        </h6>
+        <p class="h6 text-uppercase mb-0 ms-auto">
+          <a class="" href="{% url 'intprep_faq' %}">FAQs</a>
+        </p>
+      </div>                  
+
+    </div>
+  </div>
+</div>

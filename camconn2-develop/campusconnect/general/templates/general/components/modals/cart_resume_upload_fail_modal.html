@@ -1,0 +1,21 @@
+<!-- Cart Resume Upload Fail Modal -->
+<div class="modal fade" id="cartModal2299" tabindex="-1" aria-labelledby="cartResumeUploadFailModalLabel" aria-hidden="true">
+  <div class="modal-dialog"  style="z-index: 1001;">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="cartResumeUploadFailModalLabel">File Upload Failure</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="cartResumeUploadFailMsg">
+          <p class="text-danger">{{ request.session.mmh_failed_validation }}</p>
+          <p>We are only accepting .doc or .docx file format.
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-xs rounded-0" data-bs-dismiss="modal">Close</button>
+      </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+{% load widget_tweaks %}
+
+
+<div class="card-body">
+  <div class="list-group list-group-flush">
+    {% include 'prof_candidate/pg-contents/order_cancellation/order_object_summary.html' %}
+  </div>
+</div>
+
+<div class="card-body">
+  <div class="list-group list-group-flush">
+    <h1>{{ object.id }}</h1>
+    <p>{{ object.message }}</p>
+  </div>
+</div>

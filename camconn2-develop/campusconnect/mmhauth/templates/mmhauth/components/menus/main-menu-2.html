@@ -1,0 +1,41 @@
+{% load static %}
+
+
+
+    <div class="bg-white" style="z-index:1030">
+      <nav class="navbar navbar-expand-lg navbar-light py-1 bg-white">
+
+
+          <a class="w-25 py-1" href="{% url 'site_homepage_link' %}">
+            <img src="{% static 'general/assets/img/brand-2.png' %}" class="img-fluid" alt="..." width="80%">
+          </a>
+
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLogo"
+            aria-controls="navbarLogo" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Collapse Section -->
+          <div class="nav me-lg-auto mb-2 justify-content-end mb-md-0 collapse navbar-collapse" id="navbarLogo">
+
+            <!-- Toggler button -->
+            <div>
+              <button class="col-2 navbar-toggler ms-auto bg-danger d-block d-sm-none d-md-block d-lg-none"
+                type="button" data-bs-toggle="collapse" data-bs-target="#navbarLogo" aria-controls="navbarLogo"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fe fe-x"></i>
+              </button>
+            </div>
+
+
+            <!-- items -->
+            {% include 'mmhauth/components/menus/collapse-section-items.html' %}
+            
+          </div>
+
+
+
+      </nav>
+    </div>
+

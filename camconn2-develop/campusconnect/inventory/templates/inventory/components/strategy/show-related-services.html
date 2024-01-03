@@ -1,0 +1,11 @@
+<p class="mb-0">
+      <span class="fs-sm fw-bolder">{{product_line | capfirst}} |</span>
+      <span class="fs-sm">Category |</span>
+      <span class="fs-sm">{{cat_selected.0|capfirst}}</span>
+</p>
+
+<p>
+  {% for j in cat_selected %}
+    <a class="fs-sm" href="{% url 'strategy_bycat' j %}">Browse Category</a>
+  {% endfor %}
+</p>

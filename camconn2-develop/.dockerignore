@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+._test-run.txt
+
+node_modules/
+
+# Python
+app/__pycache__/
+app/*/__pycache__/
+app/*/*/__pycache__/
+app/*/*/*/__pycache__/
+.env/
+.venv/
+venv/
+projectX/
+projectY/
+campusconnect/static
+homepage_resume_uploads/
+
+# Local PostgreSQL data
+**/*.sqlite3
+._.DS_Store

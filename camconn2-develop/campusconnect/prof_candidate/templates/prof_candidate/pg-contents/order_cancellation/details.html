@@ -1,0 +1,55 @@
+<div class="mb-6">
+  <table class="table table-sm text-reset">
+    <thead><p class="text-primary mb-0">Order Cancellation Information</p></thead>
+    <tbody>
+      <tr>
+        <td>Confirmation ID</td>
+        <td>{{object.0.submission_conf_id}}</td>
+      </tr>
+      <tr>
+        <td>Order Placed</td>
+        <td>{{object.0.created_at|date:'m/d/Y h:i a'}} EST</td>
+      </tr>
+      <tr>
+        <td>Reasoning</td>
+        <td>{{object.0.message | capfirst}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ---------------------------- -->
+<!-- Order Cancellation -->
+<!-- ---------------------------- -->
+<div class="mb-6">
+  <table class="table table-sm text-reset">
+    <thead><p class="text-primary mb-0">Order Processing Status</p></thead>
+    <tbody>
+        <table class="table table-sm text-reset">
+          <tbody>
+            <tr>
+              <td>Processing of this order is now haulted</td>
+            </tr>
+          </tbody>
+        </table>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- ---------------------------- -->
+<!-- Delivery info -->
+<!-- ---------------------------- -->
+<div class="mb-6">
+  <p class="mb-0 border-bottom pt-3 text-primary">Delivery Info</p>
+    <table class="table table-sm text-reset">
+      <tbody>
+        <tr>
+          <td>This order is not going to be delivered. We have sent you an email about the cancellation of the delivery of this status
+          </td>
+        </tr>      
+      </tbody>
+    </table>
+</div>

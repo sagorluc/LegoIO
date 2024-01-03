@@ -1,0 +1,15 @@
+{% load crispy_forms_tags %}
+
+<form method="POST">
+  {% csrf_token %}
+
+  <div class=mb-6>
+    {% include 'guestactions/product-review/forms/about-the-product.html' %}
+  </div>
+
+  <div class=mb-6>
+    {% include 'guestactions/product-review/forms/about-you.html' %}  
+  </div>
+
+  <button class="btn btn-primary btn-xs rounded-0" type="submit">Submit</button>
+</form>

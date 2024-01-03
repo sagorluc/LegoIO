@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<HEAD>
+</HEAD>
+    <BODY>
+        basic list template used here!
+        {% block links %}
+            <BR>
+               {% comment %}
+        <a href="{% url hash %}">hash</a>
+               {% endcomment %}
+        {% endblock %}
+        <TABLE>
+            {% block content %}
+                 {% for obj in object_list %}
+                        <li>{{ obj }}
+                        </li>
+                {% endfor %}
+            {% endblock %}
+        </TABLE>
+    </BODY>
+</HTML>

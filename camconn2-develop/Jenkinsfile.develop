@@ -1,0 +1,327 @@
+pipeline {
+    agent any
+    options { ansiColor('xterm') }
+    environment {
+        ECR_REGISTRY       = "700158924566.dkr.ecr.us-east-1.amazonaws.com"
+        AWS_ACCOUNT_ID     = "700158924566"
+        CAMPUSCONNECT_APP_IMAGE     = "campusconnect/dev/webapp"
+        CAMPUSCONNECT_NGINX_IMAGE   = "campusconnect/dev/webserver"
+        SLACK_CHANNEL      = "#jenkins"
+        AWS_DEFAULT_REGION = "us-east-1"
+    }
+
+    stages {
+
+
+        stage('Checkout git repo') {
+            
+            steps {
+                checkout scm
+                
+                script {
+                    sh "echo reading from jenkinsfile.develop"
+                    env.GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+
+                }
+                script {
+                    try {
+                        notifyBuild('started')
+
+                        dir("place") {
+                            sh 'script name'
+                        }
+                    } catch (e) {
+                        // If there was an exception thrown, the build failed
+                        currentBuild.result = "failed"
+                        throw e
+                    } finally {
+                        // Success or failure, always send notifications
+                        notifyBuild(currentBuild.result)
+                    }            
+                }
+            }
+
+        }
+
+
+        stage('check ENV_var') {
+
+            steps {
+                script{
+                
+                    // prepare application configuratoin
+                    sh """
+                    CONFIG_PARAMETERS=\$(aws ssm  get-parameters-by-path \
+                      --path "/campusconnect-dev/" \
+                      --query "Parameters[*].Name" \
+                      --region us-east-1 \
+                      --output text)
+
+                    for config in \$CONFIG_PARAMETERS; do
+                        env_value=\$(aws ssm get-parameter \
+                            --name "\$config" \
+                            --query "Parameter.Value" \
+                            --region us-east-1 \
+                            --output text)
+                        env_name=\${config##/*/}
+                        
+                    done
+                    """                   
+
+                }
+                script {
+                    try {
+                        notifyBuild('started')
+
+                        dir("place") {
+                            sh 'script name'
+                        }
+                    } catch (e) {
+                        // If there was an exception thrown, the build failed
+                        currentBuild.result = "failed"
+                        throw e
+                    } finally {
+                        // Success or failure, always send notifications
+                        notifyBuild(currentBuild.result)
+                    }            
+                }            
+            }
+
+        }
+
+
+        stage('build and publish webapp image') {
+                     
+            steps {
+                script {
+                    sh "aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
+                    
+                    // To delete volumes currently not being used by a running or stopped container
+                    sh "docker system prune --all --force --volumes"
+
+                    // build and publish campusconnect_app image
+                    sh "docker build -t ${CAMPUSCONNECT_APP_IMAGE}:${GIT_COMMIT} -f infra-v4/develop/docker/Dockerfile.webapp ."
+                    sh "docker tag ${CAMPUSCONNECT_APP_IMAGE}:${GIT_COMMIT} ${ECR_REGISTRY}/${CAMPUSCONNECT_APP_IMAGE}:${GIT_COMMIT}"
+                    sh "docker tag ${CAMPUSCONNECT_APP_IMAGE}:${GIT_COMMIT} ${ECR_REGISTRY}/${CAMPUSCONNECT_APP_IMAGE}:latest"
+                    sh "docker push ${ECR_REGISTRY}/${CAMPUSCONNECT_APP_IMAGE}:${GIT_COMMIT}"
+                    sh "docker push ${ECR_REGISTRY}/${CAMPUSCONNECT_APP_IMAGE}:latest"
+                    
+                    sh "docker inspect ${CAMPUSCONNECT_APP_IMAGE}:${GIT_COMMIT}"                    
+                    sh "docker ps -a"
+                    sh "docker container ls -a"
+
+                }
+
+                script {
+                    try {
+                        notifyBuild('started')
+
+                        dir("place") {
+                            sh 'script name'
+                        }
+                    } catch (e) {
+                        // If there was an exception thrown, the build failed
+                        currentBuild.result = "failed"
+                        throw e
+                    } finally {
+                        // Success or failure, always send notifications
+                        notifyBuild(currentBuild.result)
+                    }            
+                }
+            }
+        }
+
+
+        stage('build and publish webserver image') {
+
+            steps {
+                script {
+
+                    // build and publish campusconnect_nginx image
+                    sh "docker build -t ${CAMPUSCONNECT_NGINX_IMAGE}:${GIT_COMMIT} -f infra-v4/develop/docker/Dockerfile.webserver ."
+                    sh "docker tag ${CAMPUSCONNECT_NGINX_IMAGE}:${GIT_COMMIT} ${ECR_REGISTRY}/${CAMPUSCONNECT_NGINX_IMAGE}:${GIT_COMMIT}"
+                    sh "docker tag ${CAMPUSCONNECT_NGINX_IMAGE}:${GIT_COMMIT} ${ECR_REGISTRY}/${CAMPUSCONNECT_NGINX_IMAGE}:latest"
+                    sh "docker push ${ECR_REGISTRY}/${CAMPUSCONNECT_NGINX_IMAGE}:${GIT_COMMIT}"
+                    sh "docker push ${ECR_REGISTRY}/${CAMPUSCONNECT_NGINX_IMAGE}:latest"
+
+                    sh "docker inspect ${CAMPUSCONNECT_NGINX_IMAGE}:${GIT_COMMIT}"
+                    sh "docker ps -a"
+                    sh "docker container ls -a"
+                }
+
+                script {
+                    try {
+                        notifyBuild('started')
+
+                        dir("place") {
+                            sh 'script name'
+                        }
+                    } catch (e) {
+                        // If there was an exception thrown, the build failed
+                        currentBuild.result = "failed"
+                        throw e
+                    } finally {
+                        // Success or failure, always send notifications
+                        notifyBuild(currentBuild.result)
+                    }            
+                }
+            }
+        }
+
+
+
+        stage('Database Migration') {
+
+            steps {
+                script {
+
+                    String username_fname = 'admin'
+                    String username_lname = new Date().format("yyyyMMddHHmmss")
+                    String dynamicUsername = username_fname + username_lname
+
+                    // prepare application configuratoin
+                    sh """
+                        set +x
+                        DOCKER_EVN_FILE=.env
+                        CONFIG_PARAMETERS=\$(aws ssm  get-parameters-by-path \
+                          --path "/campusconnect-dev/" \
+                          --query "Parameters[*].Name" \
+                          --region us-east-1 \
+                          --output text)
+
+                        for config in \$CONFIG_PARAMETERS; do
+                           env_value=\$(aws ssm get-parameter \
+                            --name "\$config" \
+                            --query "Parameter.Value" \
+                            --with-decryption  \
+                            --region us-east-1 \
+                            --output text)
+                            env_name=\${config##/*/}
+
+                           echo "\${env_name}=\${env_value}" >> \${DOCKER_EVN_FILE}
+                        done
+                        set -x
+                    """
+
+                    // -- setup docker-compose
+                    sh """curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-\$(uname -s)-\$(uname -m)" -o docker-compose"""
+                    sh "chmod +x docker-compose"
+                    
+                    // Make sure previously launched docker containers are stopped
+                    sh "./docker-compose -f infra-v4/develop/docker-compose-fargate.yml down"
+
+                    // start containers for db migration
+                    sh "./docker-compose -f infra-v4/develop/docker-compose-fargate.yml up -d"
+                    sh "./docker-compose -f infra-v4/develop/docker-compose-fargate.yml config"
+
+                    // --- check if target container is up & running
+                    sh "docker ps -a --format '{{json .}}'"
+                    sh "docker logs develop_webapp_campusconnect_1"
+
+                    // --- starting db migration commands
+                    sh "./docker-compose -f infra-v4/develop/docker-compose-fargate.yml exec -T webapp_campusconnect python manage.py showmigrations"
+                    sh "./docker-compose -f infra-v4/develop/docker-compose-fargate.yml exec -T webapp_campusconnect python manage.py makemigrations"
+                    sh "./docker-compose -f infra-v4/develop/docker-compose-fargate.yml exec -T webapp_campusconnect python manage.py migrate"
+                    sh "./docker-compose -f infra-v4/develop/docker-compose-fargate.yml exec -T webapp_campusconnect python manage.py showmigrations"
+
+                    // --- check for critial issues
+                    sh "./docker-compose -f infra-v4/develop/docker-compose-fargate.yml exec -T webapp_campusconnect python manage.py check --deploy"
+
+                    // --- create superuser username=someusername
+                    sh "./docker-compose -f infra-v4/develop/docker-compose-fargate.yml exec -T webapp_campusconnect python manage.py create_superuser_command2 --username ${dynamicUsername} --noinput"
+
+                }
+                script {
+                    try {
+                        notifyBuild('started')
+
+                        dir("place") {
+                            sh 'script name'
+                        }
+                    } catch (e) {
+                        // If there was an exception thrown, the build failed
+                        currentBuild.result = "failed"
+                        throw e
+                    } finally {
+                        // Success or failure, always send notifications
+                        notifyBuild(currentBuild.result)
+                    }            
+                }
+            }
+
+            post {
+            
+                always {
+                    //   make sure that the Docker image is removed
+                    sh "./docker-compose -f infra-v4/develop/docker-compose-fargate.yml down"
+                }
+            }
+        }
+
+
+    }
+
+    post {
+
+        success {
+            script {
+                msg = "campusconnect/dev >>> Build#${env.BUILD_NUMBER} >>> success"
+                slackSend message: msg, color: 'good', channel: "${SLACK_CHANNEL}"
+            }
+        }
+
+        failure {
+            script {
+                msg = "campusconnect/dev >>> Build#${env.BUILD_NUMBER} >>> failed"
+                colorCode = '#FF0000'
+                slackSend message: msg, color: colorCode, channel: "${SLACK_CHANNEL}"
+            }
+        }
+
+        always {
+            // remote campusconnect_app images
+            sh "docker rmi -f ${CAMPUSCONNECT_APP_IMAGE}:${GIT_COMMIT} || true"
+            sh "docker rmi -f ${ECR_REGISTRY}/${CAMPUSCONNECT_APP_IMAGE}:${GIT_COMMIT} || true"
+            sh "docker rmi -f ${ECR_REGISTRY}/${CAMPUSCONNECT_APP_IMAGE}:latest || true"
+
+            // remote campusconnect_web images
+            sh "docker rmi -f ${CAMPUSCONNECT_NGINX_IMAGE}:${GIT_COMMIT}  || true"
+            sh "docker rmi -f ${ECR_REGISTRY}/${CAMPUSCONNECT_NGINX_IMAGE}:${GIT_COMMIT} || true"
+            sh "docker rmi -f ${ECR_REGISTRY}/${CAMPUSCONNECT_NGINX_IMAGE}:latest || true"
+
+            deleteDir() /* clean up our workspace */
+        }
+    }
+}
+
+
+
+def notifyBuild(String buildStatus = 'started') {
+    // build status of null means successful
+    buildStatus =  buildStatus ?: 'successful'
+
+    // Default values
+    def mySlackChannel = "#jenkins"
+    def colorName = 'RED'
+    def colorCode = '#FF0000'
+    def subject = "Build#${env.BUILD_NUMBER} campusconnect/dev: ${buildStatus}"
+    def details = "${subject} ${STAGE_NAME}"
+
+    // Override default values based on build status
+    if (buildStatus == 'started') {
+        color = 'WHITE'
+        colorCode = '#FFFFFF'
+        slackSend (channel: mySlackChannel, color: colorCode, message: details)
+    } else if (buildStatus == 'successful') {
+        color = 'GREEN'
+        colorCode = '#008000'
+        details = 'successful'
+        slackSend (channel: mySlackChannel, color: colorCode, message: details)
+    } else {
+        color = 'RED'
+        colorCode = '#FF0000'
+        details = 'failed'
+        slackSend (channel: mySlackChannel, color: colorCode, message: details)
+    }
+
+}

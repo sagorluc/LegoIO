@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-10 text-center">
+    <a href="{% url 'proflevel_home' %}">
+      <h6 class="text-uppercase text-warning btn btn-xs active btn-outline-primary">Staircase</h6>
+    </a>    
+    <h1 class="display-2 fw-bolder">Applying for a job or looking job change leveraging <span class="text-primary">your experience level ?</span></h1>
+    <p class="mb-6 mb-md-6">
+      Staircase services are designed to provide you with
+      a comprehensive analysis of your resume/profile
+      that you need to know to most accurately identify 
+      the strength and weakness of your profile
+      before applying for a career-level higher position
+    </p>
+  </div>
+</div>
+
+
+<div class="row">
+    {% regroup servicelist_stairc by category as service_list %}
+    {% for lang in service_list %}
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <!-- Heading -->
+          <h4 class="fw-bolder mb-5">
+            {{lang.grouper|title}} Level
+          </h4>
+
+          <!-- List -->
+          {% for i in lang.list %}
+            <div class="d-flex">
+              <div class="badge badge-rounded-circle bg-primary mt-1 me-4">
+                <i class="fe fe-check"></i>
+              </div>
+              <p class="">
+                  <a class="fw-bolder" href="{% url 'proflevel_prod_details' i.id %}">{{i.title | capfirst}}</a>
+                  <br><span class="text-reset">${{i.listprice}}</span>
+                      <span class="text-danger">${{i.saleprice}}</span>
+              </p>
+            </div>
+          {% endfor %}
+      </div>
+    {% empty %}  
+      <h1>No service added</h1>
+    {% endfor %}
+</div>
+
+
+<div class="row justify-content-center py-7 py-md-7">
+  <div class="col-12 col-md-10 col-lg-8 text-center">
+    <a href="{% url 'proflevel_all_services' %}" class="btn">
+      <h3 class="fw-bolder">View all Staircase Services <i class="fe fe-arrow-right ms-auto"></i></h3>
+    </a>
+  </div>
+</div>

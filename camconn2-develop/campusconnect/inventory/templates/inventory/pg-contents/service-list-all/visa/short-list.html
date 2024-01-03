@@ -1,0 +1,53 @@
+{% load static %}
+
+<!-- CPT -->
+<div class="row align-items-center">
+  <div class="col-12 col-md-5 col-lg-4" data-aos="">
+
+    <!-- Heading -->
+    <h1 class="">
+      Identity services prepare 
+      your resume to reflect <span class="text-primary"> the power 
+      of your position titles</span> 
+      in your next search
+    </h1>
+
+    <p><a class="btn btn-black" href="{% url 'rolebased_all_services' %}">Show all</a></p>
+    <p><a class="text-dark" href="{% url 'rolebased_bycat' 'developer' %}" >Show by category</a></p>
+
+  </div>
+  <div class="col-12 col-md-7 col-lg-7 offset-lg-1">
+
+    <!-- Card -->
+    <div class="card card-border border-primary shadow mb-6" data-aos="">
+      <div class="card-body">
+
+        <!-- List group -->
+        <div class="list-group list-group-flush">
+          {% for cp in servicelist_identy %}
+            <div class="list-group-item d-flex align-items-center">
+
+              <!-- Text -->
+              <div class="me-auto">
+
+                <!-- Heading -->
+                <p class="fw-bold mb-1">
+                  <a class="fw-bolder text-primary text-decoration-none" href="{% url 'rolebased_prod_details' cp.id  %}">{{cp.title | capfirst}}</a>
+                </p>
+
+                <!-- Text -->
+                <p class="fs-sm text-muted mb-0">
+                  ${{cp.listprice}}
+                </p>
+
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

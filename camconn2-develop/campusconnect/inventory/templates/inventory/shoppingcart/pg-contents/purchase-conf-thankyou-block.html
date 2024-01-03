@@ -1,0 +1,38 @@
+<h4 class="display-3 fw-bolder">
+  <span class="text-primary">Thank you</span> for your business with Resumenalyzer
+</h4>
+
+<p class="fs-sm text-muted mb-6">
+  Here is your order/purchase summary
+</p>
+
+<p class="mb-6">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th scope="row">Transaction ID</th>
+        <td>{{paypaltransaction_id}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Transaction Date</th>
+        <td>{{ date_time|date:'m/d/Y h:i a' }} EST</td>
+      </tr>
+      <tr>
+        <th scope="row">Confirmation email sent to</th>
+        <td>{% for email in email_address_list %}<ul><li class="mb-0">{{email}}</li></ul>{% endfor %}</td>
+      </tr>
+      <tr>
+        <th scope="row">Product Delivery Method</th>
+        <td>Order will be delivered electronically to the following Email addresses
+          {% for email in email_address_list %}<ul><li class="mb-0">{{email}}</li></ul>{% endfor %}
+        </td>
+      </tr>              
+    </tbody>
+  </table>
+</p>
+
+<p>
+  
+  <a href="{% url 'site_homepage_link' %}" class="btn btn-secondary rounded-0">Done</a>
+
+</p>

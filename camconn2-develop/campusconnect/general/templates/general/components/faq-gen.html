@@ -1,0 +1,16 @@
+{% if pg_layout_type == 'homepg' %}
+<div class="card bg-primary-desat">
+  <div class="card-body">
+{% else %}    
+<div>
+  <div>
+{% endif %}
+    <p class="fs-sm fw-bolder">General FAQs</p>
+    <hr class="text-dark">
+    <p class="fs-sm text-reset">
+      General purpose Frequesntly Asked Questions (FAQs) may have 
+      some other information such as "about my purchases", "my registration"
+    </p>
+    <a class="fs-sm" href="{% url ' faq_gen' %}">Know More</a>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+{% extends 'prof_candidate/layout/primary_layout.html' %}
+{% load static %}
+
+
+
+<!-- SIDEBAR -->
+{% block sidebar_content %}
+        {% include 'prof_candidate/components/menu/referral.html' %}
+{% endblock %}
+
+
+
+<!-- BODY SECTION -->
+{% block body_content_section %}
+
+
+
+  <!-- ORDER DETAILS -->
+  <div class="card card-bleed shadow-light-lg mb-6" style="display: none">
+    <div class="card-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h4 class="mb-0">
+            Referral Request
+          </h4>
+        </div>
+        <div class="col-auto me-n5">
+          <small class="text-reset">
+          </small>
+        </div>
+        <div class="col-auto">
+          Check Delivery Status
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="list-group list-group-flush">
+        <div class="list-group-item">
+          <div class="row align-items-center">
+            <div class="col">
+              {% include 'prof_candidate/pg-contents/referral/submit-req-form.html' %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+{% endblock %}

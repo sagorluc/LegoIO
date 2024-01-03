@@ -1,0 +1,40 @@
+<div class="p-3 mb-3 bg-light rounded" id="cart-sidebar">
+  <div class="card-header subsection-colors border-radius-0">
+    Similar Products
+  </div>
+
+
+
+  {% for other in others %}
+  <div class="card-body">
+    <h5 class="card-title">{{ other.title | capfirst }}</h5>
+    <p class="card-text text-muted">
+      With supporting text below as a natural lead-in to additional content.
+    </p>
+    <p class="card-text text-muted">
+
+        <span class="text-danger">
+          List Price: <del>${{ object.listprice }}</del>
+        </span>
+          Sale Price: ${{ other.saleprice }}
+
+    </p>
+
+    <ul class="text-muted">
+      <li class="bg-transparent border-top-0">
+        Service ad-on available
+      </li>
+      <li class="bg-transparent">
+        quick delivery available
+      </li>
+      <li class="bg-transparent">
+        some other options available
+      </li>
+    </ul>
+    <a class="btn-link" href="{% url "prei20_detail_view_link" other.id %}">Know More</a>
+  </div>
+
+  <hr>
+  {% endfor %}
+
+</div>

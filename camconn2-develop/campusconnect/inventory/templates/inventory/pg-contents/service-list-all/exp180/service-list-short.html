@@ -1,0 +1,38 @@
+{% for object in object_list %}
+
+    <div class="card">
+      <div class="card-body">
+        <p class="fs-sm text-muted fw-bolder mb-0">{{object.sku | upper}}</p>
+        <p class="fw-bolder text-primary">
+          <a class="" href="{% url 'exp180_detail_view_link' object.id %}">{{object.title | capfirst}}</a>
+        </p>
+        <p class="fs-sm text-reset">{{object.description | capfirst}}</p>
+        <p class="fs-sm mb-0">
+          <span class="text-reset">Price: ${{object.listprice}}</span> 
+          <span class="text-danger">Current offer: ${{object.saleprice}}</span>
+        </p>
+        <p class="fs-sm text-reset mb-0">Category: {{object.category | capfirst}}</p>
+        <p>
+            <div class="col-12 col-md-8 col-lg-8">
+              <div class="d-flex">
+                <div class="badge badge-rounded-circle bg-success mt-1 me-4">
+                  <i class="fe fe-check"></i>
+                </div>
+                <h4 class="fs-sm">Multiple service options</h4>
+                <h4 class="fs-sm">Multiple deliery options</h4>
+              </div>
+            </div>          
+        </p>
+      </div>
+    </div>
+
+{% endfor %}
+
+
+<div class="row pt-5">
+  <div class="col-12 col-md-4 col-lg-4 col-xl-5">
+    <a class="btn btn-sm btn-primary rounded-0 me-1" href="{% url 'exp180_services_all' %}">
+      Show All Services
+    </a>
+  </div>
+</div>

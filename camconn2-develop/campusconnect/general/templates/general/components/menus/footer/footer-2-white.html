@@ -1,0 +1,113 @@
+{% load static %}
+
+
+<!-- logo and social section -->
+<div class="col-12 col-md-3 col-lg-3">
+  <a class="fw-bolder navbar-brand text-white" href="{% url 'site_homepage_link' %}">
+    resumenalyzer
+  </a>
+  <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+    <li class="mb-2">
+      <a href="{% url 'general:about_us' %}" class="fs-sm text-reset">
+        Twitter
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+
+<!-- about us section  -->
+<div class="col-12 col-md-3 col-lg-3">
+  <h6 class="fw-bolder text-uppercase text-gray-100">
+    About the Service
+  </h6>
+  <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+    <li class="mb-2">
+      <a href="{% url 'general:about_us' %}" class="fs-sm text-reset">
+        What we do
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="{% url 'general:promo_offers_page' %}" class="fs-sm text-reset">
+        Promotional Offers
+      </a>
+    </li>            
+    <li class="mb-3">
+      <a href="{% url 'general:covid19_res_url' %}" class="fs-sm text-reset">
+        Covid-19 Response
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+
+{% comment %} <!-- products & accounts section  -->
+<div class="col-12 col-md-3 col-lg-3">
+  <h6 class="fw-bolder text-uppercase text-gray-100">
+    Products & Solutions
+  </h6>
+  <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+    <li class="mb-2">
+      <a href="{% url 'mydocs:all_services_link' %}" class="fs-sm text-reset">
+        All Products
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="{% url ' all_prime_services_link' %}" class="fs-sm text-reset">
+        Universal Services
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="{% url ' all_secon_services_link' %}" class="fs-sm text-reset">
+        Proficiency Services
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="{% url ' compare_all_services_link' %}" class="fs-sm text-reset">
+        Product Feature Matrix
+      </a>
+    </li>          
+    <li class="mb-2">
+      <a href="{% url ' faq_gen' %}" class="fs-sm text-reset">
+        General FAQs
+      </a>
+    </li>                      
+  </ul>
+</div>
+
+
+<!-- help center section  -->
+<div class="col-12 col-md-3 col-lg-3">
+  <h6 class="fw-bolder text-uppercase text-gray-100">
+    Help & Support
+  </h6>
+  <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+    <li class="mb-2">
+      <a href="{% url 'cust_service_home' %}" class="fs-sm text-reset">
+        Help Center Home
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="{% url 'guestactions:contact_us_guest' %}" class="fs-sm text-reset">
+        Contact Us
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="{% url 'guestactions:check_my_order_status' %}" class="fs-sm text-reset">
+        Check Order Status
+      </a>
+    </li>
+    <li class="mb-2">
+      <a href="{% url 'guestactions:product_review_by_guest_link' %}" class="fs-sm text-reset">
+        Product Review
+      </a>
+    </li>      
+    <li class="mb-2">
+      <a href="{% url 'guestactions:submit_site_survey_as_guest' %}" class="fs-sm text-reset">
+        Site Survey
+      </a>
+    </li>       
+  </ul>
+</div> {% endcomment %}

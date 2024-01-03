@@ -1,0 +1,19 @@
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+
+
+<div class="card-body">
+  <div class="list-group list-group-flush">
+    {% include 'prof_candidate/pg-contents/order_cancellation/order_object_summary.html' %}
+  </div>
+</div>
+
+<div class="card-body">
+  <div class="list-group list-group-flush">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form | crispy}}
+      <button class="btn btn-black" type="submit">Submit</button>
+    </form>  
+  </div>
+</div>

@@ -1,0 +1,17 @@
+{% extends 'resumeweb/email_templates/base_plain.html' %}
+
+{% comment "==================== CONTENT START ====================" %}{% endcomment %}
+{% block content %}
+Thank you for the feedback.
+
+Here is a coupon for {{discount_percent}}% off a purchase of {{category}}.
+This coupon is good for {{hours_to_expire}} hours.
+
+Coupon #: {{random_string_32}}
+
+{% endblock %}
+{% comment "==================== CONTENT END ======================" %}{% endcomment %}
+
+{% comment "Optional note" %}
+{% endcomment %}
+

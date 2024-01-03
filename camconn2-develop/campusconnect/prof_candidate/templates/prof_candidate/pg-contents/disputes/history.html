@@ -1,0 +1,30 @@
+{% if object_list %}
+<div class="list-group list-group-flush">
+    {% for object in object_list %}
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col">
+            <p class="mb-0">
+              {% comment "Original before decision to stop using sub_id field and use id field instead " %}
+              Submission ID: {{ object.sub_id | upper }}
+              {% endcomment %}
+              Submission ID: {{ object.id | upper }}
+            </p>
+            <p class="text-reset">
+              {{ object.created_at }} EST
+            </p>
+            <p class="text-reset">
+              Tracking Id: {{ object.created_aganist.tracking_id }} <br>
+            </p>
+            <p class="text-reset">
+              {{ object.msg }}
+            </p>            
+          </div>
+          <div class="col-auto">
+            <a class="btn btn-black" href="{% url 'prof_candidate:dispute_details' object.id %}">Details</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endif %}

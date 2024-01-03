@@ -1,0 +1,22 @@
+{% if pg_layout_type == "all_serv_list" %}
+    <h6>
+      <span class="fs-sm fw-bolder">{{product_line | capfirst}} |</span>
+      <span class="fs-sm">Category |</span>
+      <span class="fs-sm">All</span>
+    </h6>
+{% else %}
+    <h6>
+      <span class="fs-sm fw-bolder">{{product_line | capfirst}} |</span>
+      <span class="fs-sm">Category |</span>
+      <span class="fs-sm">Others</span>
+    </h6>    
+{% endif %}
+   
+{% for i in cat_list %}
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="{{i}}" id="{{i}}">
+    <label class="form-check-label" for="{{i}}">
+      <a class="fs-sm" href="{% url 'strategy_bycat' i %}">{{i | capfirst}}</a>
+    </label>
+  </div>
+{% endfor %}  

@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<div class="container-fluid">
+  <div class="container">
+    
+    <div class="row border">
+      <div class="col-4">
+        <div class="list-group rounded-0" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active border-0" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">No storage of PII</a>
+          <a class="list-group-item list-group-item-action border-0" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">We value your privacy</a>
+          <a class="list-group-item list-group-item-action border-0" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Minimum information theory</a>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+            <p class="p-5 text-muted">
+              Resumenalyzer takes the importance of Personal Identification Information (PII) very seriously,
+              because of this we never ask for a customer's PII through our site. 
+            </p>
+          </div>
+          <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+            <p class="p-5 text-muted">
+            will never sell or share your personal info with 3rd party
+            </p>
+          </div>
+          <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+            <p class="p-5 text-muted">
+              We donot seek for information that are irrelevant to us such as your complete physical address,
+                rater, in order to complete your online resumenalizer profile, we only need your first and last name,
+              and your email address
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,29 @@
+{% if pg_layout_type == "all_serv_list" %}
+    <p>
+      <span class="fs-sm">{{product_line | capfirst}} |</span>
+      <span class="fs-sm fw-bolder">Quick start guide</span>
+    </p>
+{% else %}
+    <p>
+      <span class="fs-sm">{{product_line | capfirst}} |</span>
+      <span class="fs-sm fw-bolder">Quick start guide</span>
+    </p>    
+{% endif %}
+
+<hr class="text-dark">
+
+<p class="fs-sm">
+    To get started with {{product_line | capfirst}} Services
+    with ease we recommend you to make a purchase
+    with one of the following services
+</p>
+
+<ul class="list p-3">
+  <a href="">
+    <li class="fs-sm list-item">
+      To get started with {{product_line | capfirst}} Services
+      with ease we recommend you to make a purchase
+      with the following service
+    </li>
+  </a>
+</ul>

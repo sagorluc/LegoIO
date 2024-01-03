@@ -1,0 +1,143 @@
+{% load static %}
+
+
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-10 text-center">
+    <a href="{% url 'posti20_home' %}">
+      <h6 class="text-uppercase text-warning btn btn-xs active btn-outline-primary">Dialect</h6>
+    </a>
+    <h1 class="display-2 fw-bolder">
+      Leverage the power of your <span class="text-primary">programming skillset</span> in your next job search
+    </h1>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-7 text-center">    
+    <p class="mb-6 mb-md-6">
+      A resume/profile analysis tool to help you prepare when you
+      submit your resume for progamming
+      languages or platform based jobs 
+      such as Java Developer, Python Developer, 
+      API Developer or Database Administrator
+    </p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-4 col-md-2 p-5">
+    <a href="{% url 'posti20_bycat' 'c#' %}" class="text-decoration-none">
+      <h2 class="fw-bolder text-center">
+        C#
+      </h2>
+    </a>
+  </div>
+  <div class="col-4 col-md-2 p-5">
+    <a href="{% url 'posti20_bycat' 'c++' %}" class="text-decoration-none">
+      <h2 class="fw-bolder text-center">
+        C/C++
+      </h2>
+    </a>
+  </div>
+  <div class="col-4 col-md-2 p-5">
+    <a href="{% url 'posti20_bycat' 'python' %}" class="text-decoration-none">
+      <h2 class="fw-bolder text-center">
+        Python
+      </h2>
+    </a>
+  </div>
+  <div class="col-4 col-md-2 p-5">
+    <a href="{% url 'posti20_bycat' 'java' %}" class="text-decoration-none">
+      <h2 class="fw-bolder text-center">
+        Java
+      </h2>
+    </a>
+  </div>
+</div>
+
+<div class="row justify-content-center">  
+  <div class="col-4 col-md-2 p-5">
+    <a href="{% url 'posti20_bycat' 'javascript' %}" class="text-decoration-none">
+      <h2 class="fw-bolder text-center">
+        JavaScript
+      </h2>
+    </a>
+  </div>
+
+  <div class="col-4 col-md-2 p-5">
+    <a href="{% url 'posti20_bycat' 'nodejs' %}" class="text-decoration-none">
+      <h2 class="fw-bolder text-center">
+        Node JS
+      </h2>
+    </a>
+  </div>
+
+  <div class="col-4 col-md-6 p-5">
+    <a href="{% url 'posti20_bycat' 'cloud' %}" class="text-decoration-none">
+      <h2 class="fw-bolder text-center">
+        Cloud / AWS / GCP / Azure
+      </h2>
+    </a>
+  </div>
+
+</div> 
+
+
+<div class="row justify-content-center bg-light">
+  <div class="col-12 col-md-8 col-lg-6 col-xl-6">
+
+        
+          {% for object in servicelist_dialec %}
+            <div class="row">
+
+                <div class="card-body">
+                  <p class="text-muted fw-bolder mb-0">{{object.sku | upper}}</p>
+                  <p class="fw-bolder text-primary">
+                    <a class="" href="{% url 'prei20_detail_view_link' object.id %}">{{object.title | capfirst}}</a>
+                  </p>
+                  <p class="text-reset">{{object.description | capfirst}}</p>
+                  <p class="mb-0">
+                    <span class="text-reset">Price: ${{object.listprice}}</span> 
+                    <span class="text-danger">Current offer: ${{object.saleprice}}</span>
+                  </p>
+                  <p class="text-reset mb-0">Category: {{object.category | capfirst}}</p>
+                  <p>
+                      <div class="col-12 col-md-8 col-lg-8">
+                        <h4 class="fs-sm">Features available</h4>
+                        <div class="d-flex">
+                          <div class="badge badge-rounded-circle bg-success mt-1 me-4">
+                            <i class="fe fe-check"></i>
+                          </div>
+                          <p class="fs-sm mb-0">
+                            Multiple service options
+                          </p>
+                        </div>
+                        <div class="d-flex">
+                          <div class="badge badge-rounded-circle bg-success mt-1 me-4">
+                            <i class="fe fe-check"></i>
+                          </div>
+                          <p class="fs-sm mb-0">
+                            Multiple deliery options 
+                          </p>
+                        </div>
+                      </div>          
+                  </p>
+                </div>
+
+            </div> 
+          {% empty %}
+            <h1>No service added</h1>
+          {% endfor %}
+        
+  </div>
+</div>
+
+
+<div class="row justify-content-center py-7 py-md-7">
+  <div class="col-12 col-md-10 col-lg-8 text-center">
+    <a href="{% url 'posti20_all_services' %}" class="btn">
+      <h3 class="fw-bolder">View all Dialect Services <i class="fe fe-arrow-right ms-auto"></i></h3>
+    </a>
+  </div>
+</div>
+

@@ -1,0 +1,29 @@
+{% extends 'base_v3.html' %}
+{% load static %}
+
+<!-- ============================================== -->
+{% block meta %}
+  <title>TCART_HOME_V3</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+{% endblock %}
+
+<!-- ============================================== -->
+{% block content %}
+
+<div class="py-5">
+  <!-- NAVBAR -->
+  {% include 'resumeweb/components/menus/header/main-menu-3.html' %}
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>delivery_options_deleted</b> {{delivery_options_deleted}}<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>service_options_deleted</b> {{service_options_deleted}}<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>mcart_deleted</b> {{mcart_deleted}}<BR>
+
+</div>
+
+{% endblock %}
+<!-- ============================================== -->
+
+<!-- ============================================== -->
+{% comment "Optional note" %}
+{% endcomment %}

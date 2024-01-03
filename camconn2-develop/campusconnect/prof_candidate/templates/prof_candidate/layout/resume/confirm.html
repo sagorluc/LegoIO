@@ -1,0 +1,14 @@
+{% extends 'prof_candidate/layout/primary_layout.html' %}
+
+
+{% block sidebar_content %}
+    <div class="card">
+        {% include 'prof_candidate/components/menu/resume.html' %}
+    </div>
+{% endblock %}
+
+
+
+{% block body_content_section %}
+    {% include 'prof_candidate/pg-contents/my_resume/confirm.html' %}
+{% endblock %}

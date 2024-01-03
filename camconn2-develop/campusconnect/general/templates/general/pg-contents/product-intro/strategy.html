@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+	<div class="col-12 col-md-10 col-lg-8 text-center">
+	  <h6 class="text-uppercase text-warning btn btn-xs active btn-outline-primary">Strategy</h6>
+	  <h1 class="display-2 fw-bolder">Sometimes, a <span class="text-primary">proper Strategy</span> is all you need</h1>
+	  <p class="mb-6 mb-md-6">
+		      our Strategy services will help you plan well and plan ahead 
+		      for your upcoming or ongoing
+		      job search techniques
+	  </p>
+	</div>
+</div>
+
+
+
+<div class="row">
+	{% for obj in servicelist_stratg %}
+	<div class="col-12 col-md-6 col-lg-4 d-flex">
+
+		<div class="card mb-6">
+				<div class="card-body">
+					<p class="fs-sm fw-bolder text-muted mb-0">{{obj.sku | upper}}</p>
+					<p class="fs-sm fw-bolder text-primary">
+						<a class="" href="{% url 'strategy_prod_details' obj.id %}">{{obj.title | capfirst}}</a>
+					</p>
+          <p class="fs-sm mb-0">
+            <span class="text-reset">Price: ${{obj.listprice}}</span> 
+            <span class="text-danger">Current offer: ${{obj.saleprice}}</span>
+          </p>
+          <h6 class="text-uppercase me-2 text-muted">{{obj.category | capfirst}}</h6>
+				</div>
+		</div>
+
+	</div>
+	{% endfor %}
+</div>
+
+
+
+<div class="row justify-content-center py-7 py-md-7">
+  <div class="col-12 col-md-10 col-lg-8 text-center">
+    <a href="{% url 'strategy_all_serv' %}" class="btn">
+      <h3 class="fw-bolder">View all Strategy Services <i class="fe fe-arrow-right ms-auto"></i></h3>
+    </a>
+  </div>
+</div>

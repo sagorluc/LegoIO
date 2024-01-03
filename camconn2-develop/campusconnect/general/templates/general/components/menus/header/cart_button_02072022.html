@@ -1,0 +1,23 @@
+<div class="col-md topper d-flex align-items-center justify-content-end" id="mmh_cart_icon_id">
+  <p class="mb-0">
+    {% comment %}
+    <a class="navbar-btn btn btn-sm btn-primary ms-auto fs-sm" href="{% url 'mmh_carthome' %}">My Cart
+      <strong class="d-block text-gray-dark">
+      <p id="pmmhNoItems" style="display: none;">Empty</p>
+      <p id="pmmhHasItems" style="display: none;">SOME_ITEMS_IN_CART</p>
+      </strong>
+    </a>
+    {% endcomment %}
+
+    <a class="navbar-btn btn btn-sm btn-primary ms-auto fs-sm" href="{% url 'mmh_carthome' %}">
+      <i class="fe fe-shopping-cart px-1"></i> 
+      <span class="badge bg-warning">{{ cart_item_count }}</span>
+      <br>My Cart
+    </a>
+
+    {% comment "Optional note" %}
+    <p id="pmmhHasItems" style="display: none;">SOME_ITEMS_IN_CART</p>
+    <p id="pmmhNoItems" style="display: none;">Empty</p>
+    {% endcomment %}
+  </p>
+</div>

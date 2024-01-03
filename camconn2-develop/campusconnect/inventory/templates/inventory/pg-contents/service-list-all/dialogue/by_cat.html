@@ -1,0 +1,17 @@
+{% for p in all_services %}
+<div class="bg-white rounded-0">
+  <div class="card mt-4">
+    <div class="card-body box-shadow">
+      <h3 class="card-title text-primary">{{p.title | capfirst}}</h3>
+      <p class="card-text">
+        <span class="">Listing Price:<del>${{ p.listprice }}</del></span>
+        <span class="">Current Offer:<span class="text-danger">${{ p.saleprice }}</span>
+      </p>
+      <p class="card-text text-muted">{{p.description | capfirst}}</p>
+      <p class="card-text">
+        <a class="btn btn-primary" href="{% url 'intprep_prod_details' p.id %}">Show Details</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endfor %}

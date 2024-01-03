@@ -1,0 +1,36 @@
+<p style="line-height: 140%;"><span data-metadata="&lt;!--(figmeta)eyJmaWxlS2V5IjoiWUswYUxXejkwdm5ST2ZlclZiTDl4RiIsInBhc3RlSUQiOjE3NTA2ODE1MzksImRhdGFUeXBlIjoic2NlbmUifQo=(/figmeta)--&gt;" style="line-height: 19.6px;"></span><span style="line-height: 19.6px;">Hello Guest</span></p>
+<p style="line-height: 140%;"> </p>
+<p style="line-height: 140%;"><span style="line-height: 19.6px;">Thank you for your interest in Resumenalyzer.</span></p>
+
+<p style="line-height: 140%;"> </p>
+{% autoescape off %}
+  <p style="line-height: 140%;">
+    <span style="line-height: 19.6px;">              
+      We came to know that you are interested to open an account in Resumenalyzer. 
+      In order to complete the account activatation process, please click on the following button
+    </span>      
+  </p>
+
+  <p style="line-height: 140%;"> </p>
+  
+  <p>
+      <a style="" href={{protocol}}://{{dns_name}}{% url 'mmhauth:mmh_auth_verification_completed_link' activation_code %}>Click Here</a>
+  </p>
+
+  <p style="line-height: 140%;"> </p>
+
+  <p style="line-height: 140%;">
+    <span style="line-height: 19.6px;">
+      If clicking the link above doesn't work, 
+      please copy and paste the following URL in a new browser
+      window:
+    </span> 
+  </p>
+
+  <p style="line-height: 140%;">
+    <span style="line-height: 19.6px;">              
+      {{protocol}}://{{dns_name}}{% url 'mmhauth:mmh_auth_verification_completed_link' activation_code %}
+    </span>
+  </p>
+
+{% endautoescape %}

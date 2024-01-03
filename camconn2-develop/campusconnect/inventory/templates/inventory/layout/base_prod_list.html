@@ -1,0 +1,122 @@
+{% extends 'general/layout/primary_layout.html' %}
+
+
+{% block meta %}
+  <title>{{prod_name|title}} | {{page_type|title}} | Campus Linker</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 text-center">
+            <h1 class="mb-2 bread">Blog Single</h1>
+             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="index.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            
+            {% block breadcrumb %}
+                {% include 'general/components/breadcrumb/serv_list.html' %}
+            {% endblock %}
+
+            <div class="col-12 col-md-12">
+              {% block service_list %}{% endblock %}
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 sidebar">
+
+            <div class="sidebar-box">
+              <h3>Category</h3>
+              <ul class="categories">
+                <li><a href="#">Art <span>(6)</span></a></li>
+                <li><a href="#">Sports <span>(8)</span></a></li>
+                <li><a href="#">Language <span>(2)</span></a></li>
+                <li><a href="#">Food <span>(2)</span></a></li>
+                <li><a href="#">Music <span>(2)</span></a></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-box">
+              <h3>Popular Articles</h3>
+              <div class="block-21 mb-4 d-flex">
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> June 27, 2019</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Dave Lewis</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="block-21 mb-4 d-flex">
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> June 27, 2019</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Dave Lewis</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="block-21 mb-4 d-flex">
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> June 27, 2019</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Dave Lewis</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-box">
+              <h3>Tag Cloud</h3>
+              <ul class="tagcloud m-0 p-0">
+                <a href="#" class="tag-cloud-link">School</a>
+                <a href="#" class="tag-cloud-link">Kids</a>
+                <a href="#" class="tag-cloud-link">Nursery</a>
+                <a href="#" class="tag-cloud-link">Daycare</a>
+                <a href="#" class="tag-cloud-link">Care</a>
+                <a href="#" class="tag-cloud-link">Kindergarten</a>
+                <a href="#" class="tag-cloud-link">Teacher</a>
+              </ul>
+            </div>
+
+            <div class="sidebar-box">
+              <h3>Archives</h3>
+              <ul class="categories">
+                <li><a href="#">December 2018 <span>(30)</span></a></li>
+                <li><a href="#">Novemmber 2018 <span>(20)</span></a></li>
+                <li><a href="#">September 2018 <span>(6)</span></a></li>
+                <li><a href="#">August 2018 <span>(8)</span></a></li>
+              </ul>
+            </div>
+
+
+            <div class="sidebar-box">
+              <h3>Paragraph</h3>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}

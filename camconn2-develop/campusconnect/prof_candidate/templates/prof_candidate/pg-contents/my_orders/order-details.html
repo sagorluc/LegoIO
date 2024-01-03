@@ -1,0 +1,163 @@
+<div class="mb-6">
+  <table class="table table-sm text-reset">
+    <thead><p class="text-primary mb-0">Order Placement Info</p></thead>
+    <tbody>
+      <tr>
+        <td>Order Tracking ID</td>
+        <td>{{mcart_instance.tracking_id}}</td>
+      </tr>
+      <tr>
+        <td>Order Placed</td>
+        <td>{{mcart_instance.mcompleted_purchase.created|date:'m/d/Y h:i A'}} EST</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ---------------------------- -->
+<!-- Purchased Items -->
+<!-- ---------------------------- -->
+<div class="mb-6">
+  <table class="table table-sm text-reset">
+    <thead><p class="text-primary mb-0">Purchased Item(s)</p></thead>
+    <tbody>
+      <tr>
+        <td>Product Type</td>
+        <td>{{mcart_instance.get_user_visible_product_line}}</td>
+      </tr>
+      <tr>
+        <td>Main Product</td>
+        <td><span class="fw-bold">{{mcart_instance.sku | upper}}</span> {{mcart_instance.title | capfirst}}</td>
+      </tr>
+      <tr>
+        <td>Sub Product(s)</td>
+      </tr>      
+      {% if mcart_serviceoptions %}
+        {% for serviceoption in mcart_serviceoptions %}
+          <tr><td>{{serviceoption.name | capfirst}}</td></tr>
+          <tr><td>{{serviceoption.price}}</td></tr>
+        {% empty %}
+          <h1>no sub-product purchased </h1>
+        {% endfor %}
+      {% endif %}
+      <tr>
+        <td>Item Total Price</td>
+        <td>${{mcart_instance.final_price}}</td>
+      </tr>      
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ---------------------------- -->
+<!-- Resume attached -->
+<!-- ---------------------------- -->
+<div class="mb-6">
+  <table class="table table-sm text-reset">
+    <thead><p class="text-primary mb-0">Resume Attached</p></thead>
+    <tbody>
+      <tr>
+        <td><a href="{{resume_uploaded1.url}}">Download</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ---------------------------- -->
+<!-- Order Status -->
+<!-- ---------------------------- -->
+<div class="mb-6">
+  <table class="table table-sm text-reset">
+    <thead><p class="text-primary mb-0">Order Status</p></thead>
+    <tbody>
+        {{order_status}}
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ---------------------------- -->
+<!-- Order Cancellation -->
+<!-- ---------------------------- -->
+<div class="mb-6">
+  <table class="table table-sm text-reset">
+    <thead><p class="text-primary mb-0">Order Cancellation Status</p></thead>
+    <tbody>
+      {% if mcart_instance.processing_status == 'cancelled' %}
+        <table class="table table-sm text-reset">
+          <tbody>
+            <tr>
+              <td>Cancellation & Refund</td>
+              <td>Order Cancellation has been submitted successfully</td>
+            </tr>
+            <tr>
+              <td>PayPal Refund Id</td>
+              <td>{{ order_cancelation_id }}</td>
+            </tr>            
+          </tbody>
+        </table>
+      {% else %}
+        {% if mcart_instance.grace_left_in_seconds %}
+          <table class="table table-sm text-reset">
+            <tbody>
+              <tr>
+                <td>Time left to cancel this order</td>
+                <td>{{ mcart_instance.grace_period_ends|date:'m/d/Y h:i A' }} EST</td>
+              </tr>
+              <tr>
+                <td>Submit request</td>
+                <td><a href="{% url 'prof_candidate:mmh_cancel_order' mcart_instance.tracking_id %}">Click Here</a></td>
+              </tr>
+            </tbody>
+          </table>
+        {% else %}
+        <table class="table table-sm text-reset">
+          <tbody>
+            <tr><td>Time to Cancel This Order Has Expired</td></tr>
+          </tbody>
+        </table>
+        {% endif %}
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- ---------------------------- -->
+<!-- Delivery info -->
+<!-- ---------------------------- -->
+<div class="mb-6">
+  <p class="mb-0 border-bottom pt-3 text-primary">Delivery Info</p>
+  {% if mcart_deliveryoption %}
+    <table class="table table-sm text-reset">
+      <tbody>
+        <tr>
+          <td>Delivery time</td>
+          <td>{{mcart_deliveryoption.name}}</td>
+        </tr>
+        <tr>
+          <td>Delivery Fee</td>
+          <td>${{mcart_deliveryoption.price}}</td>
+        </tr>
+        <tr>
+          <td>To be delivered by</td>
+          <td>{{mcart_instance.delivery_time_ends|date:'m/d/Y h:i a'}} EST</td>
+        </tr>
+        <tr>
+          <td>Delivery Method</td>
+          <td>
+              To be delivered electronically to:
+                {{ mcart_instance.muser.email }}
+                {{mcart_instance.mcompleted_purchase.email_address}}
+          </td>
+        </tr>
+        <tr>
+          <td>Check Status</td>
+          <td><a>{{ order_status }}</a></td>
+        </tr>      
+      </tbody>
+    </table>
+  {% endif %}
+</div>

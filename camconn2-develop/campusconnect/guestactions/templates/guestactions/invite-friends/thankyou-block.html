@@ -1,0 +1,37 @@
+        <h4 class="display-3 fw-bold">
+          <span class="text-primary">Thank you</span> for your inviting your friend
+        </h4>
+        <p class="fs-lg text-muted mb-6">
+          Here is your order/purchase summary
+        </p>
+        <p class="fs-lg text-muted mb-6">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">Order ID</th>
+                <td>{{paypaltransaction_id}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Order Date</th>
+                <td>{{date_time}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Confirmation email sent to</th>
+                <td>
+
+                        guest>>{{email_guest}}<br>
+                        friend>>{{email_friend}}<br>
+
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Method of Delivery</th>
+                <td>Order will be delivered electronically to the following Email
+                {{email_address_list|last}}
+                </td>
+              </tr>              
+            </tbody>
+          </table>
+        </p>
+        
+        

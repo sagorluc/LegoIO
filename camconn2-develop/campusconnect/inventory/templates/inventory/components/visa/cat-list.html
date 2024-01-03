@@ -1,0 +1,23 @@
+{% if pg_layout_type == "all_serv_list" %}
+    <p>
+      <span class="fs-sm fw-bolder">{{product_line | capfirst}} |</span>
+      <span class="fs-sm">Category |</span>
+      <span class="fs-sm">All</span>
+    </p>
+{% else %}
+    <p>
+      <span class="fs-sm fw-bolder">{{product_line | capfirst}} |</span>
+      <span class="fs-sm">Category |</span>
+      <span class="fs-sm">Others</span>
+    </p>    
+{% endif %}
+   
+{% for i in cat_list %}
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="{{i}}" id="{{i}}">
+    <label class="form-check-label" for="{{i}}">
+      <a class="fs-sm" href="{% url 'visaassist_bycat' i %}">{{i | capfirst}}</a>
+    </label>
+  </div>
+{% endfor %}  
+

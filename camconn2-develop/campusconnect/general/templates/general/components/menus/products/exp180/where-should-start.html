@@ -1,0 +1,22 @@
+<h6 class="border-bottom pb-2">Where to start from?</h6>
+
+<p class="pt-1 text-muted">
+  If you are not sure which service you should start with, we recommend you consider
+  the following
+</p>
+
+<ul class="list-group list-group-flush bg-transparent border-0">
+
+  {% for object in object_list %}
+  <li class="list-group-item bg-transparent border-0">
+  	{{ object.title | title }}
+    <p>
+      donot include pricing information here,
+      just talk about the additional services
+    </p>
+  	<a href="{% url 'exp180_detail_view_link' object.id %}">See Inside</a>
+  </li>
+  {% endfor %}
+
+</ul>
+

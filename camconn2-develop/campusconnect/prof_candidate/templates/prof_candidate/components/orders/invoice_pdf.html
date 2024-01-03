@@ -1,0 +1,170 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="{% static 'prof_candidate/assets/css/libs.bundle.css' %}" rel="stylesheet"/>
+    <link href="{% static 'prof_candidate/assets/css/theme.bundle.css' %}" rel="stylesheet"/>
+    <title>PDF</title>
+</head>
+<body>
+<div class="d-flex justify-content-center align-items-center my-5">
+    <div class="card border border-2 w-50" style="font-size: 15px">
+        <h1 class="display-4 text-center" style="background-color: #865091; text-align: center; color: white; font-size: 20px; padding-top: 10px">{{section_header_1}}</h1>
+        <div>
+            <p class="mb-0 border-bottom pt-3 text-primary">
+                Order Placement Info
+            </p>
+
+            <table class="table table-sm text-reset">
+                <tbody>
+                <tr>
+                    <td>Order Tracking ID</td>
+                    <td>{{mcart_instance.tracking_id}}</td>
+                </tr>
+                <tr>
+                    <td>Order Placed</td>
+                    <td>
+                        {{mcart_instance.mcompleted_purchase.created|date:'m/d/Y h:i A'}} EST
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- ---------------------------- -->
+            <!-- Purchased Item Info -->
+            <!-- ---------------------------- -->
+            <p class="mb-0 border-bottom pt-3 text-primary">
+                Purchased Item(s)
+            </p>
+            <p>Product Type</p>
+            <ul>
+                <li class="text-reset">{{mcart_instance.get_user_visible_product_line}}</li>
+            </ul>
+            <p>Main Product</p>
+            <ul>
+                <li class="text-reset">Service Title: {{mcart_instance.title}}</li>
+                <li class="text-reset">SKU: {{mcart_instance.sku}}</li>
+                {% if mcart_instance.final_price == mcart_instance.base_price %}
+                <li class="text-reset">Price: {{mcart_instance.final_price}}</li>
+                {% else %}
+                <li class="text-reset">Price: {{mcart_instance.final_price}} (coupon
+                    {{mcart_instance.mcart_coupons.mcoupon_given.random_string_32}} applied:
+                    ${{mcart_instance.base_price}}
+                    - ${{mcart_instance.coupon_subtract}})
+                </li>
+                {% endif %}
+            </ul>
+
+            {% if mcart_serviceoptions %}
+            <p>Sub Product(s)</p>
+            {% for serviceoption in mcart_serviceoptions %}
+            <ul>
+                <li class="text-reset">Service Title: {{serviceoption.name}}</li>
+                <li class="text-reset">SKU: {{serviceoption.sku}}</li>
+                <li class="text-reset">Price: {{serviceoption.price}}</li>
+            </ul>
+            {% endfor %}
+            {% endif %}
+
+            {% if resume_uploaded %}
+            <p class="mb-0 border-bottom pt-3 text-primary">
+                Resume Attached
+            </p>
+            {% endif %}
+
+            <!-- ---------------------------- -->
+            <!-- Order Cancellation Info -->
+            <!-- ---------------------------- -->
+            {% if mcart_instance.processing_status == 'cancelled' %}
+            <p class="mb-0 border-bottom pt-3 text-primary">
+                This Order Has Been Cancelled and Refunded
+            </p>
+            <table class="table table-sm text-reset">
+                <tbody>
+                <tr>
+                    <td>PayPal Refund Id</td>
+                    <td>{{ mcart_instance.mcompleted_refund.paypalrefund_id }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            {% else %}
+            <p class="mb-0 border-bottom pt-3 text-primary">
+                Cancellation Info
+            </p>
+            {% if mcart_instance.grace_left_in_seconds %}
+
+            <table class="table table-sm text-reset" style="">
+                <tbody>
+                <tr>
+                    <td>Time left to cancel this order</td>
+                    <td>{{ mcart_instance.grace_period_ends | date:'m/d/Y h:i A' }}</td>
+                </tr>
+                </tbody>
+            </table>
+            {% else %}
+            <p class="border-bottom">
+                Time to Cancel This Order Has Expired
+            </p>
+            {% endif %}
+            {% endif %}
+
+            <!-- ---------------------------- -->
+            <!-- Delivery Info -->
+            <!-- ---------------------------- -->
+
+
+            {% if mcart_deliveryoption %}
+            <p class="mb-0 border-bottom pt-3 text-primary">
+                Delivery Info
+            </p>
+            <table class="table table-sm text-reset">
+                <tbody>
+                <tr>
+                    <td>Delivery Title</td>
+                    <td>{{mcart_deliveryoption.name}}</td>
+                </tr>
+                <tr>
+                    <td>Delivery Sku</td>
+                    <td>{{mcart_deliveryoption.sku}}</td>
+                </tr>
+                <tr>
+                    <td>Delivery Fee</td>
+                    <td>{{mcart_deliveryoption.price}}</td>
+                </tr>
+                <tr>
+                    <td>To be delivered by</td>
+                    {% comment "comment text" %}
+                    <td>{{mcart_instance.delivery_time_ends|date:'m/d/Y h:i A'}} EST</td>
+                    {% endcomment %}
+                    <td>{{mcart_instance.delivery_time_ends|date:'Y-m-d H:i:s'}}</td>
+                </tr>
+                <tr>
+                    <td>Delivery Method</td>
+                    <td>
+                        To be delivered electronically to:
+                        {% if mcart_instance.muser %}
+                        {{ mcart_instance.muser.email }}
+                        {% else %}
+                        {{ mcart_instance.mcompleted_purchase.guest_login_email_address }}
+                        {% endif %}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            {% endif %}
+
+            {% comment "Optional note" %}
+            {% endcomment %}
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<p class="text-muted text-center mb-6">You have 0 items in the cart</p>
+
+
+<div class="row mx-auto">
+	<div class="col-12 col-sm-12 mx-auto">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title fw-bolder">Want to get a Coupon Code ?</h5>
+				<h5 class="card-text fs-sm">You can easily get as many coupon codes 
+				as you want before your next purchase. Choose any of the following options listed below</h5>
+			</div>
+
+			<div class="card-body">
+				<p class="mb-0">
+					<a href="{% url 'guestactions:product_review_by_guest_link' %}" class="btn btn-link btn-xs"><h5 class="fw-bold">Submit Product Review</h5></a>
+				</p>
+
+				<p class="mb-0">
+					<a href="{% url 'guestactions:invite_friends_link' %}" class="btn btn-link btn-xs"><h5 class="fw-bold">Invite Friends</h5></a>
+				</p>
+
+				<p class="mb-0">
+					<a href="{% url 'guestactions:submit_site_survey_as_guest' %}" class="btn btn-link btn-xs"><h5 class="fw-bold">Submit Site Survey</h5></a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,64 @@
+{% extends 'inventory/layout/base_prod_homepg.html' %}
+
+
+{% block left_column %}
+
+    <section class="ftco-section">
+        <div class="container">
+            {% include 'inventory/layout/products/strategy/prod-intro.html' %}
+        </div>
+    </section>
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+            {% include 'inventory/layout/products/strategy/top-reasons.html' %}
+        </div>
+    </section>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row mb-6">
+                <div class="col-lg-8">
+                    <div class="sidebar-box">
+                      <h1>Service List</h1>
+                        {% include 'inventory/pg-contents/service-list-all/strategy/service-list-short.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+            {% include 'general/components/ads/1-target-audi.html' %}
+        </div>
+    </section>
+
+    <section class="ftco-section">
+        <div class="container">
+            {% include 'inventory/layout/products/strategy/your-benif.html' %}
+        </div>
+    </section>
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+            {% include 'general/components/need_customization-form.html' %}
+        </div>
+    </section>
+
+{% endblock %}
+
+
+{% block right_column %}
+            <div class="sidebar-box">
+                <h3>Category</h3>
+              <ul class="categories">
+                <li><a href="#">Art <span>(6)</span></a></li>
+                <li><a href="#">Sports <span>(8)</span></a></li>
+                <li><a href="#">Language <span>(2)</span></a></li>
+                <li><a href="#">Food <span>(2)</span></a></li>
+                <li><a href="#">Music <span>(2)</span></a></li>
+              </ul>
+            </div>
+{% endblock %}

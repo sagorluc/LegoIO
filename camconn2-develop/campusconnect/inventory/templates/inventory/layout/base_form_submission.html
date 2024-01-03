@@ -1,0 +1,34 @@
+{% extends 'resumeweb/layout/primary_layout.html' %}
+
+
+{% block body_contents %}
+    
+    <div class="container-fluid bg-gray-200">
+        <div class="container">
+            <div class="row py-7 py-md-7">
+
+                    <div class="col-12 col-md-4">
+                        {% block left_column %}
+                        {% endblock %}
+                    </div>
+
+                    <div class="col-12 col-md-8">
+                        {% block right_column %}
+                        {% endblock %}
+                    </div>
+
+            </div>
+        </div>
+    </div>    
+
+
+    {% if pg_layout_type != 'contact_us' %}
+        {% block pg_footer %}
+            <div class="bg-gray-300">
+            {% include 'resumeweb/components/ads/1-customer-service-msg-now.html' %}
+            </div>
+        {% endblock %}
+    {% endif %}
+
+
+{% endblock %}

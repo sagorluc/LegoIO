@@ -1,0 +1,39 @@
+{% extends 'inventory/layout/primary_layout.html' %}
+
+
+{% block opening_banner %}
+  <section class="py-6 py-md-6">
+    <div class="container">
+      {% include 'resumeweb/components/pgheaders/all.html' %}
+    </div>
+  </section>
+{% endblock %}
+
+
+{% block body_contents %}
+  
+  <section class="py-6 py-md-6 bg-gray-200">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          {% block leftside_content %}
+          {% endblock %}
+
+          <div class="mb-6">
+            {% include 'resumeweb/components/need_help.html' %}
+          </div>          
+        </div>
+
+        <div class="col-12 col-md-8">
+          <div class="border-bottom mb-6">
+            <h2 class="fw-bold">{{pg_header}}</h2>
+          </div>
+
+          {% block rightside_content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

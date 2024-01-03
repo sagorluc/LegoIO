@@ -1,0 +1,94 @@
+{% extends 'general/layout/primary_layout.html' %}
+{% load static %}
+
+
+{% block meta %}
+  <title>Help Center | Home | Resumenalyzer</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+{% endblock %}
+
+
+{% block body_contents %}
+
+	<section data-jarallax data-speed=".8" class="py-8 py-md-8 overlay overlay-primary overlay-90 jarallax" style="background-image: url(/static/resumeweb/assets/img/covers/cover-6.jpg);">
+		<div class="container-fluid">
+			<div class="row justify-content-left">
+				<div class="col-12 col-md-8">
+					<div class="col-12 col-md-12">
+						<h1 class="display-3 text-white fw-bolder">Resumenalyzer Legal Policies</h1>
+						<p class="text-white">
+							This documentation describes the scopes and tersm and conditions
+							within which resumeanalyzer operates
+						</p>
+					</div>
+				</div>
+			</div>
+		</div> 
+	</section>
+
+	<div class="row">
+
+		<div class="col-12 col-md-3 py-7">
+			{% include 'mydocumentations/legalpolicydocs/menus/sidebar.html' %}
+		</div>
+
+		<div class="col-12 col-md-6 py-7">
+
+
+			<p class="h4">{{section_title}}</p>
+			<p class="fs-sm text-muted mb-md-6">Effective Date: {{eff_dt}}</p>
+			<hr>
+
+			{% if cookie_policy_notes %}
+				{% include 'mydocumentations/legalpolicydocs/pg-contents/cookie_policy.html' %}
+			{% endif %}
+
+			{% if termsofuse_notice %}
+				{% include 'mydocumentations/legalpolicydocs/pg-contents/terms_of_use.html' %}
+			{% endif %}
+
+			{% if privacypolicy_notice %}
+				{% include 'mydocumentations/legalpolicydocs/pg-contents/privacy-policy.html' %}
+			{% endif %}
+
+			{% if caprights_notice %}
+				{% include 'mydocumentations/legalpolicydocs/pg-contents/ca-p-rights.html' %}
+			{% endif %}
+
+			{% if donotsellmyinfo_notice %}
+				{% include 'mydocumentations/legalpolicydocs/pg-contents/donot-sell-my-info.html' %}
+			{% endif %}
+
+			{% if patact_notice %}
+				{% include 'mydocumentations/legalpolicydocs/pg-contents/pat-act.html' %}
+			{% endif %}	      	
+
+			{% if refund_policy_gen %}
+				{% include 'mydocumentations/legalpolicydocs/pg-contents/cancel_n_refund_general.html' %}
+			{% endif %}	      	
+
+			{% if cancel_refund_gen %}
+				{% include 'mydocumentations/legalpolicydocs/pg-contents/cancel_policy.html' %}
+			{% endif %}	      	
+
+			{% if dispute_refund_gen %}
+				{% include 'mydocumentations/legalpolicydocs/pg-contents/dispute_policy.html' %}
+			{% endif %}	      	
+
+			{% if payment_policy_gen %}
+				{% include 'mydocumentations/legalpolicydocs/pg-contents/payment_policy.html' %}
+			{% endif %}	
+
+			{% if security_policy_gen %}
+				{% include 'mydocumentations/legalpolicydocs/pg-contents/security_policy.html' %}
+			{% endif %}	
+
+
+
+
+		</div>
+
+	</div>
+
+{% endblock %}

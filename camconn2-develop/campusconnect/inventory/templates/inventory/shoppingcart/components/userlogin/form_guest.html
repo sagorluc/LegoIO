@@ -1,0 +1,9 @@
+<form action="/cart/checkout/sign-in/mmh/guestlogin" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary btn-xs rounded-0" type="submit" value="Submit">Submit & Continue</button>
+</form>
+
+
+{% comment "Optional note" %}
+{% endcomment %}

@@ -1,0 +1,31 @@
+<div class="list-group list-group-flush">
+
+  {% if object_list %}
+    {% for object in object_list %}
+
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col">
+            <p class="mb-0">
+                Message Date: {{ object.created_at }} EST
+            </p>
+              <small class="text-reset mb-0">
+                  Subject: {{ object.subject }}
+              </small>
+              <p class="text-reset">
+                  {{ object.title }}
+              </p>
+          </div>
+          <div class="col-auto">
+              <a class="btn btn-xs btn-outline-white" href="{% url 'prof_candidate:msg_details' object.id %}">
+                  Details
+              </a>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+  {% endif %}
+
+</div>
+

@@ -1,0 +1,33 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb pl-0">
+    <li class="breadcrumb-item"><a href="{% url 'posti20_all_services' %}">All 7766Services</a></li>
+    <li class="breadcrumb-item active">{{view.kwargs.category}}</li>
+  </ol>
+</nav>
+
+Number of services avail: {{count}}
+
+{% for p in all_posti20_services %}
+<div class="bg-white rounded-0">
+  <div class="card mt-4">
+    <div class="card-body box-shadow">
+      <h3 class="card-title text-primary">{{p.title | title}}</h3>
+      <p class="card-text">
+        <span class="">Listing Price:<del>${{ p.price }}</del></span>
+        <span class="">Current Offer:<span class="text-danger">${{ p.saleprice }}</span>
+      </p>
+      <p class="card-text text-muted">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!
+      </p>
+      <p class="card-text">
+        <a href="{% url 'posti20_prod_details' p.id %}">Show Details</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+{% comment "Optional note" %}
+        <a href="{% url 'posti20_prod_details' p.category p.id %}">Show Details</a>
+{% endcomment %}

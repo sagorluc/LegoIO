@@ -1,0 +1,61 @@
+{% for object in object_list %}
+
+    <div class="card">
+      <div class="card-body">
+        <p class="fs-sm text-muted fw-bolder mb-0">{{object.sku | upper}}</p>
+        <p class="h2 fw-bolder text-primary">
+          <a href="{% url 'usvisa_prod_details' object.id %}">{{object.title | capfirst}}</a>
+        </p>
+        <p class="fs-sm text-reset mb-0">{{object.description | capfirst}}</p>
+        <p class="fs-sm mb-0">
+          <span class="text-muted">Price: ${{object.listprice}}</span> 
+          <span class="text-danger">Current offer: ${{object.saleprice}}</span>
+        </p>
+        <p class="fs-sm text-reset mb-0">Category: {{object.category | upper}}</p>
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-12 mb-6">
+
+            <!-- Heading -->
+            <h4 class="fs-sm mb-0">Features</h4>
+
+            <!-- List -->
+            <div class="d-flex">
+              <p class="fs-sm mb-0">
+                Number of service options available: {{ object.mprod_prei20_serviceoption_set.count }}
+              </p>
+            </div>
+            <div class="d-flex">
+              <div class="badge badge-rounded-circle bg-light mt-1 me-4">
+                <i class="fe fe-check"></i>
+              </div>
+              <p class="fs-sm mb-0">
+                Price range may vary from $0.99 to $15.99
+              </p>
+            </div>
+            <div class="d-flex">
+              <div class="badge badge-rounded-circle bg-light mt-1 me-4">
+                <i class="fe fe-check"></i>
+              </div>
+              <p class="fs-sm mb-0">
+                Delivery time may vary from 3 to 7 days
+              </p>
+            </div>
+            <div class="d-flex">
+              <div class="badge badge-rounded-circle bg-light mt-1 me-4">
+                <i class="fe fe-check"></i>
+              </div>
+              <p class="fs-sm mb-0">
+                Order cancellation time 3 hours after order posting
+              </p>
+            </div>
+
+          </div>
+        </div>
+        </p>
+      </div>
+    </div>
+
+{% empty %}
+i am empty now
+{% endfor %}
+

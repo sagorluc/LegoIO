@@ -1,0 +1,31 @@
+{% regroup object_list by category as service_list %}
+{% for visa in service_list %}
+
+
+    {% for i in visa.list %}
+
+        <div class="card border-bottom rounded-0 mb-6">
+          <div class="card-body box-shadow">
+            <p class="card-text">{{i.sku|upper}}</p>
+            <h3 class="card-title text-primary fw-bolder">{{i.title | capfirst}}</h3>
+            <p class="card-text text-muted">{{i.description | capfirst}}</p>
+            <p class="card-text mb-0">
+              <span class="">Listing Price:<del>${{ i.listprice }}</del></span>
+              <span class="">Current Offer:<span class="text-danger">${{ i.saleprice }}</span>
+            </p>
+            <p class="card-text">Category: {{category.grouper|upper}}
+              <a class="text-decoration-none" href="{% url 'usvisa_bycat' visa.grouper %}">[Browse This Category]</a>
+            </p>
+            <p class="card-text">
+              <a class="btn btn-primary btn-xs rounded-0" href="{% url 'usvisa_prod_details' i.id %}">Show Detials</a>
+            </p>
+          </div>
+        </div>
+
+    {% empty %}
+      it's empty
+    {% endfor %}
+
+
+
+{% endfor %}

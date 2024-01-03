@@ -1,0 +1,73 @@
+{% load static %}
+
+
+<div class="row align-items-stretch bg-black">
+  <div class="col-12 col-md-6 col-lg-6 p-8">
+
+    <div class="row py-3">
+      <h6 class="text-uppercase text-primary">Services / Universal / Dialect</h6>
+    </div>
+    
+    <h1 class="fw-bolder display-2">
+      <span class="text-warning">Which language you speak with ?</span>
+    </h1>
+    <h2>
+      <span class="text-white" data-typed='{"strings": ["C, C++, C#", "JavaScript or Go", "Java or Python"]}'></span>
+    </h2>
+
+    <div class="d-flex">
+      <div class="icon text-primary">
+        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"/><path d="M12 8H8a4 4 0 00-4 4v1a3 3 0 003 3v2a5 5 0 01-5-5v-1a6 6 0 016-6h4V4.728a.5.5 0 01.8-.4l2.856 2.133a.5.5 0 01-.001.802l-2.857 2.121A.5.5 0 0112 8.983V8z" fill="#335EEA"/><path d="M12.058 16H16a4 4 0 004-4v-1a3 3 0 00-3-3V6a5 5 0 015 5v1a6 6 0 01-6 6h-3.942v.983a.5.5 0 01-.798.401l-2.857-2.12a.5.5 0 010-.803l2.856-2.134a.5.5 0 01.8.401V16z" fill="#335EEA" opacity=".3"/></g></svg>              </div>
+
+      <div class="ms-5">
+        <p class="text-muted mb-6">
+          Analyze your resume when you are looking for a job or job change 
+          based on a programming language skillsets such as Java Developer, NodeJS Developer, Business Analyst, Cloud Infrastructure Developer
+        </p>
+      </div>
+    </div>
+    
+    <div class="d-flex">
+      <div class="row">
+        <div class="col-12 col-lg-4">
+          <div class="d-flex">
+            <p class=""><a href="{% url 'proglang_bycat' 'c' %}"><h2 class="pt-5 fw-bolder">C</h2></a></p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="d-flex">
+            <p><a href="{% url 'proglang_bycat' 'c#' %}"><h2 class="pt-5 fw-bolder">C#</h2></a></p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="d-flex">
+            <p><a href="{% url 'proglang_bycat' 'php' %}"><h2 class="pt-5 fw-bolder">PHP</h2></a></p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="d-flex">
+            <p class=""><a href="{% url 'proglang_bycat' 'java' %}"><h2 class="pt-5 fw-bolder">Java</h2></a></p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="d-flex">
+            <p><a href="{% url 'proglang_bycat' 'python' %}"><h2 class="pt-5 fw-bolder">Python</h2></a></p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="d-flex">
+            <p><a href="{% url 'proglang_bycat' 'javascript' %}"><h2 class="pt-5 fw-bolder">JavaScript</h2></a></p>
+          </div>
+        </div>
+      </div>      
+    </div>
+  
+  </div>
+
+  <div class="col-12 col-md-5 offset-lg-1">
+    <div class="position-relative h-100 vw-50 d-none d-md-block">
+      <div class="w-100 h-100 bg-cover" style="background-image: url(https://cdr-108.s3.amazonaws.com/pics-1952/general/img/covers/cover-6.jpg);"></div>
+    </div>
+  </div>
+</div> 
+

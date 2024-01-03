@@ -1,0 +1,14 @@
+{% load crispy_forms_tags %}
+
+
+<form method="POST">
+  {% csrf_token %}
+  {% for field in form %}
+    <div class="row">
+      <div class="form-group mb-0">
+        {{ field|as_crispy_field }}
+      </div>
+    </div>
+  {% endfor %}
+  <button class="btn btn-primary btn-xs rounded-0" type="submit">Submit</button>
+</form>

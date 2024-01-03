@@ -1,0 +1,15 @@
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary btn-xs rounded-0" type="submit">Login & Continue</button>
+</form>
+
+<p>Don't have an account?</p>
+<p>
+  <a href="{% url 'mmhauth:mmh_auth_register_url' %}"><strong>Register Here!</strong></a>
+  <span style="display:none" id="is_authenticated">{{user.is_authenticated}}</span>
+</p>    
+
+
+{% comment "Optional note" %}
+{% endcomment %}

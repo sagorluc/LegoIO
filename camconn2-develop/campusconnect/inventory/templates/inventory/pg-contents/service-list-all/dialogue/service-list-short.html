@@ -1,0 +1,35 @@
+{% for object in object_list %}
+<div class="col-12 col-md-8">
+  <div class="card">
+    <div class="card-body">
+      <p class="fs-sm text-muted fw-bolder mb-0">{{object.sku | upper}}</p>
+      <p class="fw-bolder text-primary">
+        <a class="" href="{% url 'intprep_prod_details' object.id %}">{{object.title | capfirst}}</a>
+      </p>
+      <p class="fs-sm text-reset">{{object.description | capfirst}}</p>
+      <p class="fs-sm mb-0">
+        <span class="text-reset">Price: ${{object.listprice}}</span> 
+        <span class="text-danger">Current offer: ${{object.saleprice}}</span>
+      </p>
+      <p class="fs-sm text-reset mb-0">Category: {{object.category | capfirst}}</p>
+      <p>
+          <div class="col-12">
+              <i class="fe fe-check"></i><h4 class="fs-sm">Multiple service options</h4>
+              <i class="fe fe-check"></i><h4 class="fs-sm">Multiple deliery options</h4>
+            </div>
+          </div>
+      </p>
+    </div>
+  </div>
+  {% empty %}
+    <h1>nothing added yet</h1>
+  {% endfor %}
+
+  <div class="row pt-5">
+    <div class="col-12 col-md-4 col-lg-4 col-xl-5">
+      <a class="btn btn-sm btn-primary rounded-0 me-1" href="{% url 'intprep_all_services' %}">
+        Show All Services
+      </a>
+    </div>
+  </div>
+</div>

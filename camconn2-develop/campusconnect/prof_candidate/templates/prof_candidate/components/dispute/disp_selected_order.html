@@ -1,0 +1,44 @@
+{% if object_list %}
+  {% for object in object_list %}
+
+<div class="card card-bleed border-bottom border-bottom-md-0 shadow-light-lg">
+  <div class="collapse d-md-block" id="sidenavCollapse">
+    <div class="card-body">
+      <h6 class="fw-bold text-uppercase mb-3">
+        Order Selected
+      </h6>
+      <ul class="card-list list text-reset mb-6">
+        <li class="list-item">
+            <span class="list-link">
+              Product Type
+            </span>
+        </li>
+        <li class="list-item">
+            <span class="list-link">
+              {{ object.model_name }}
+            </span>
+        </li>
+        <li class="list-item">
+            <span class="list-link">
+              Order Total
+            </span>
+        </li>
+        <li class="list-item">
+            <span class="list-link">
+              xxx
+            </span>
+        </li>
+        <li class="list-item">
+            <span class="list-link">
+              <a href="{%url 'prof_candidate:order_details' object.id %}">
+                See Details
+              </a>
+            </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  {% endfor %}
+{% endif %}
