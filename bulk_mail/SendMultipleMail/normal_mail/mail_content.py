@@ -61,7 +61,7 @@ def send_bulk_mail_async(request, subject, msg_body, clean_emails):
                 
             end_time = datetime.now()
             total_duration = end_time - start_time
-            messages.success(request, f'Asynchronous email sent successfully. Total duration is {total_duration.seconds} seconds')
+            messages.success(request, f'Asynchronous email sent successfully. Total duration of async exucation is {total_duration.seconds} seconds')
             print(f'Asynchronous total duration is {total_duration.seconds} seconds')
         
         else:
