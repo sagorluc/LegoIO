@@ -1,0 +1,509 @@
+// *****************************************************************************
+function mmh_updateMyCartIconItemCount() {
+  console.log("mmh: mmh_updateMyCartIconItemCount()");
+  // var cart_localstorage_array = JSON.parse(localStorage.getItem('cart')) || [];
+  // if(cart_localstorage_array.length == 0) {
+  //   document.getElementById("pmmhNoItems").style.display = "";
+  //   document.getElementById("pmmhHasItems").style.display = "none";
+  // }
+  // else {
+  //   document.getElementById("pmmhNoItems").style.display = "none";
+  //   document.getElementById("pmmhHasItems").style.display = "";
+  //   if(cart_localstorage_array.length == 1) {
+  //     document.getElementById("pmmhHasItems").innerHTML = cart_localstorage_array.length + " item in cart";
+  //   }
+  //   else {
+  //     document.getElementById("pmmhHasItems").innerHTML = cart_localstorage_array.length + " items in cart";
+  //   }
+  // }
+
+  // // Start using similar method to update cart icon
+  // mmh_replaceElementWithIdWithHtmlFromUrl("mmh_shopping_cart_contents", magicAjaxUrl_rwCartAjaxView_contents);
+  // // WITH FOLLOWING IN TEMPLATE/HTML
+  // <!-- shopping cart item listing and summary total  -->
+  // <div id="mmh_shopping_cart_contents" class="py-9">
+  //   {{shopping_cart_contents}}
+  // </div>
+
+  mmh_replaceElementWithIdWithHtmlFromUrl("mmh_cart_icon_id", magicAjaxUrl_rwCartAjaxView_carticon);
+}
+
+// // *****************************************************************************
+// // this is a substitution for looping through and adding event listners. you can
+// // make a simple function to change the onclick attribute and the button text on
+// // the fly so it might be a good alternative
+// addToCartButtonsDOM.forEach(elem => {
+//   console.log("mmh: addToCartButtonsDOM()");
+//   elem.setAttribute("onclick", "mmh_addItemFromCartAndDB()")    // was "addToCart()"
+// });
+// removeFromCartButtonsDOM.forEach(elem => {
+//   console.log("mmh: removeFromCartButtonsDOM()");
+//   elem.setAttribute("onclick", "mmh_removeProductFromCart_andUpdateDom()") // was "removeFromCart()
+// });
+
+
+// // *****************************************************************************
+// function enableProductDetailHtmlElements() {
+//   console.log("mmh: enableProductDetailHtmlElements");
+//
+//   document.getElementById("divRemoveFromCart").style.display = "none";
+//   document.getElementById("btnAddToCart").style.display = "";
+//   document.getElementsByClassName("service_option").disabled = false;
+//
+//   var list, index;
+//
+//   // Handle class service_option checkboxes
+//   list = document.getElementsByClassName("service_option");
+//   for (index = 0; index < list.length; ++index) {
+//     list[index].removeAttribute('disabled', false);
+//     // list[index].checked = false;
+//   }
+//
+//   // Handle class class_delivery_option checkboxes
+//   list = document.getElementsByClassName("class_delivery_option");
+//   for (index = 0; index < list.length; ++index) {
+//     list[index].removeAttribute('disabled', false);
+//   }
+// }
+
+// // *****************************************************************************
+// function disableProductDetailHtmlElements() {
+//   console.log("mmh: disableProductDetailHtmlElements");
+//
+//   document.getElementById("divRemoveFromCart").style.display = "";
+//   document.getElementById("btnAddToCart").style.display = "none";
+//   document.getElementsByClassName("service_option").disabled = true;    // Disable the service option checkbox
+//
+//   var list, index;
+//
+//   // Handle class service_option checkboxes
+//   list = document.getElementsByClassName("service_option");
+//   for (index = 0; index < list.length; ++index) {
+//     list[index].setAttribute('disabled', true);
+//   }
+//
+//   // Handle class class_delivery_option checkboxes
+//   list = document.getElementsByClassName("class_delivery_option");
+//   for (index = 0; index < list.length; ++index) {
+//     list[index].setAttribute('disabled', true);
+//   }
+// }
+
+
+
+
+// *****************************************************************************
+function mmh_enableOrDisableProductDetailHtmlElementsBasedOnCartLocalStorageContents() {
+  // console.log("mmh: mmh_enableOrDisableProductDetailHtmlElementsBasedOnCartLocalStorageContents");
+  // if (productDOM == null) return;
+  //
+  // // Theoregically product__id and product__model_name class tags are only used on product details template
+  // // ex: careercoach/resumeweb/templates/resumeweb/pg-contents/products/1-exp180/prod-details.html
+  // var product_id = productDOM.querySelector('.product__id').innerText;
+  // var model_name = productDOM.querySelector('.product__model_name').innerText;
+  //
+  // // contents of cart local storage
+  // var cart_localstorage_array = JSON.parse(localStorage.getItem('cart')) || [];
+  //
+  // // If there are items in cart local storage
+  // if (cart_localstorage_array.length != 0) {
+  //   var foundIndex = mmh_getIndexOfItemInCartLocalStorageArray(cart_localstorage_array, product_id, model_name)
+  //   if (foundIndex == -1) {
+  //     // if product_id AND model_name retrieved from DOM Of current PAGE are NOT found in cart local storage
+  //     // Then this product has NOT been added to cart
+  //     // Therefore its various html components should be ENABLED.
+  //     enableProductDetailHtmlElements()
+  //     return false;
+  //   }
+  //   else {
+  //     // product_id and model_name WERE found in cart local storage.
+  //     // Therefore this product HAS been added to cart.
+  //     // Therefore its various html components should be DISABLED
+  //     disableProductDetailHtmlElements()
+  //     return true;
+  //   }
+  // }
+  // else {
+  //   // cart local storage array is empty.
+  //   // Therefore this product has not been added to cart.
+  //   // Therefore its various html components should be enabled
+  //   enableProductDetailHtmlElements()
+  //   return false;
+  // }
+
+
+}
+
+
+
+// console.log("mmh: --------------------------------------------");
+// console.log("mmh: generic_every_page_load mmh_enableOrDisableProductDetailHtmlElementsBasedOnCartLocalStorageContents()");
+mmh_enableOrDisableProductDetailHtmlElementsBasedOnCartLocalStorageContents();
+// console.log("mmh: --------------------------------------------");
+
+
+// *****************************************************************************
+function mmh_remove_PRODUCT_UNIQUE_ID_FromLocalStorage(product_uniqid) {
+  console.log("mmh: mmh_remove_PRODUCT_UNIQUE_ID_FromLocalStorage(): product_uniqid = " + product_uniqid);
+
+  var cart_localstorage_array = JSON.parse(localStorage.getItem('cart')) || [];
+  // console.log("mmh: A: cart_localstorage_array.length == " + cart_localstorage_array.length);
+
+  if (cart_localstorage_array.length != 0) {
+    var foundIndex = cart_localstorage_array.findIndex(x=>x.uniqid == product_uniqid);
+    if (foundIndex == -1) {
+      console.log("mmh: WARNING product_uniqid " + product_uniqid + " not found in cart_localstorage_array");
+    }
+    else {
+      // console.log("mmh: unique product_uniqid " + product_uniqid + " removed from cart_localstorage_array at index " + foundIndex);
+      cart_localstorage_array.splice(foundIndex, 1);
+    }
+  }
+  else {
+    console.log("mmh: WARNING product_uniqid " + product_uniqid + " cant be removed from empty cart_localstorage_array");
+  }
+
+  // Save to localStorage
+  localStorage.setItem('cart', JSON.stringify(cart_localstorage_array));
+
+  // // TEST
+  // cart_localstorage_array = JSON.parse(localStorage.getItem('cart')) || [];
+  // console.log("mmh: B: cart_localstorage_array.length == " + cart_localstorage_array.length);
+  // console.log("mmh: ====== mmh_remove_PRODUCT_UNIQUE_ID_FromLocalStorage END");
+}
+
+
+// // *****************************************************************************
+// function mmh_fromLocalStorageUpdateDbTable_mcart() {
+//   var cart_localstorage_array = JSON.parse(localStorage.getItem('cart')) || [];
+//   var mmh_uniqid = mmh_getUsersUniqueId();
+//   $.ajax({
+//     type: "POST",
+//     url: magicUrl_vpaypal_fromLocalStorageUpdateDbTable_mcart,
+//     data: {
+//       uniqid: mmh_uniqid,
+//       cart: [JSON.stringify(cart_localstorage_array)],
+//       csrfmiddlewaretoken: '{{ csrf_token }}',
+//     },
+//     success:function(response) {
+//       console.log("mmh: mmh_fromLocalStorageUpdateDbTable_mcart ajax completed()");
+//     },
+//     async: false   // make this request syncronous
+//   });
+// }
+
+
+// // *****************************************************************************
+// function mmh_removeItemFromCartByProductUniqid_andRefreshCartHomeDom(product_uniqid) {
+//   console.log("mmh: mmh_removeItemFromCartByProductUniqid_andRefreshCartHomeDom(): product_uniqid = " + product_uniqid);
+//
+//   //  SYNCRONOUS AJAX CALL TO REMOVE THIS FROM MCART
+//   var mmh_uniqid = mmh_getUsersUniqueId();
+//
+//   // Calls rw_cart_views.mmh_RemoveUniqueProductIdFromCart_Ajax()
+//   $.ajax({
+//     type: "POST",
+//     url: magicUrl_rw_cart_views_mmh_removeUniqueProdID + product_uniqid,
+//     data: {
+//       uniqid: mmh_uniqid,
+//       csrfmiddlewaretoken: '{{ csrf_token }}',
+//     },
+//     success:function(response) {
+//       console.log("mmh: mmh_removeItemFromCartByProductUniqid_andRefreshCartHomeDom ajax completed()");
+//     },
+//     async: false   // make this request syncronous
+//   });
+//
+//   mmh_refreshCartHomeDom()
+// }
+
+
+
+// // *****************************************************************************
+// function getProductFromDOM(){
+//   console.log("mmh: getProductFromDOM()");
+//
+//   const product = {
+//     uniqid: mmh_genUniqueID(),
+//     id: productDOM.querySelector('.product__id').innerText,
+//     model_name: productDOM.querySelector('.product__model_name').innerText,
+//     title: productDOM.querySelector('.product__title').innerText,
+//     base_price: productDOM.querySelector('.product__price').innerText,
+//     serviceoptions: mmh_getServiceOptionsArray('option'),
+//     deliveryoption: mmh_getDeliveryOptionsArray('delivery_option'),
+//     quantity: 1,
+//   };
+//   // console.log(product);
+//   if (product["model_name"] === "") {
+//     alert("MMH: product[model_name] is null. Must supply a model_name in DOM")
+//   }
+//   return product;
+// }
+
+
+
+
+// // *****************************************************************************
+// function mmh_getServiceOptionsArray(name) {
+//   console.log("mmh: mmh_getServiceOptionsArray()");
+//   var returnArray = [];
+//
+//   const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+//   (checkboxes)
+//   for (var i = 0; i<(checkboxes.length); i++){
+//       // mmh: hardcoded index to proper attribute for values is problematic
+//       var name = checkboxes[i].attributes[7].value;
+//       var price = checkboxes[i].attributes[3].value;
+//       var id = checkboxes[i].attributes[2].value;   // mmh: new field saved to array equals id of option
+//
+//       returnArray.push({
+//         name: name,
+//         price: price,
+//         id: id    // mmh: new field saved to array equals id of service option
+//       });
+//   }
+//   return returnArray;
+// }
+//
+// // *****************************************************************************
+// function mmh_getDeliveryOptionsArray(name) {
+//   console.log("mmh: mmh_getDeliveryOptionsArray()");
+//   var returnArray = [];
+//
+//   const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+//   // (checkboxes)
+//   for (var i = 0; i<(checkboxes.length); i++){
+//     // console.log("checkboxes[i].id " + checkboxes[i].id);
+//
+//       // mmh: hardcoded index to proper attribute for values is problematic
+//       var name = checkboxes[i].attributes[6].value;
+//       var price = checkboxes[i].attributes[3].value;
+//       var id = checkboxes[i].attributes[2].value;   // mmh: new field saved to array equals id of option
+//
+//       returnArray.push({
+//         name: name,
+//         price: price,
+//         id: id    // mmh: new field saved to array equals id of service option
+//       });
+//   }
+//   return returnArray;
+// }
+
+
+// *****************************************************************************
+function mmh_saveProductToLocalStorage(product) {
+  var cart_localstorage_array = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cart_localstorage_array.length != 0) {
+    var foundIndex = mmh_getIndexOfItemInCartLocalStorageArray(cart_localstorage_array, product["id"], product["model_name"])
+    if (foundIndex == -1) {
+      cart_localstorage_array.push(product);
+      // mmh_write_to_console_product("mmh_saveProductToLocalStorage: added to NON-empty localStorage", product);
+    }
+    else {
+      // mmh_write_to_console_product("mmh_saveProductToLocalStorage: WARNING ALREADY IN localStorage at index: " + foundIndex, product);
+    }
+  }
+  else {
+    // mmh_write_to_console_product("mmh_saveProductToLocalStorage: added to empty localStorage", product);
+    cart_localstorage_array.push(product);
+  }
+
+  // Save to localStorage
+  localStorage.setItem('cart', JSON.stringify(cart_localstorage_array));
+}
+
+
+
+
+
+// *****************************************************************************
+function mmh_removeProductIdFromLocalStorage(product_id, model_name) {
+  console.log("mmh: mmh_removeProductIdFromLocalStorage product_id = " + product_id + ", model_name = " + model_name);
+
+  var cart_localstorage_array = JSON.parse(localStorage.getItem('cart')) || [];
+  // console.log("mmh: A: cart_localstorage_array.length == " + cart_localstorage_array.length);
+  // mmh_consoleLog_arraycontents(cart_localstorage_array)
+
+  if (cart_localstorage_array.length != 0) {
+    var foundIndex = mmh_getIndexOfItemInCartLocalStorageArray(cart_localstorage_array, product_id, model_name)
+    if (foundIndex == -1) {
+      console.log("mmh: WARNING (model_name, product_id) (" + model_name + ", " + product_id + ") not found in cart_localstorage_array");
+    }
+    else {
+      console.log("mmh: (model_name, product_id) (" + model_name + ", " + product_id + ") removed from cart_localstorage_array at index " + foundIndex);
+      cart_localstorage_array.splice(foundIndex, 1);
+    }
+  }
+  else {
+    console.log("mmh: WARNING (model_name, product_id) (" + model_name + ", " + product_id + ") cant be removed from empty cart_localstorage_array");
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart_localstorage_array));
+
+  // // TEST
+  // cart_localstorage_array = JSON.parse(localStorage.getItem('cart')) || [];
+  // console.log("mmh: B: cart_localstorage_array.length == " + cart_localstorage_array.length);
+}
+
+
+// *****************************************************************************
+function mmh_write_to_console_product(lable, product) {
+  console.log("mmh: mmh_write_to_console_product ********************************** START");
+  console.log("mmh: " + lable + " id = " + product["id"]);
+  console.log("mmh: " + lable + " model_name = " + product["model_name"]);
+  console.log("mmh: " + lable + " uniqid = " + product["uniqid"]);
+  console.log("mmh: " + lable + " title = " + product["title"]);
+  console.log("mmh: " + lable + " base_price = " + product["base_price"]);
+  console.log("mmh: " + lable + " quantity = " + product["quantity"]);
+
+  if (product["serviceoptions"].length != 0) {
+    var loop1;
+    for (loop1 = 0; loop1 < product["serviceoptions"].length; loop1++) {
+      console.log("mmh: ---------------------------------- service options " + loop1 + " start");
+      console.log("mmh: " + lable + " name = " + product["serviceoptions"][loop1]["name"]);
+      console.log("mmh: " + lable + " price = " + product["serviceoptions"][loop1]["price"]);
+      console.log("mmh: ---------------------------------- service options " + loop1 + " end");
+    }
+  }
+  else {
+    console.log("mmh: " + lable + " serviceoptions = NONE");
+  }
+
+  if (product["deliveryoption"].length != 0) {
+    var loop1;
+    for (loop1 = 0; loop1 < product["deliveryoption"].length; loop1++) {
+      console.log("mmh: ---------------------------------- delivery option " + loop1 + " start");
+      console.log("mmh: " + lable + " name = " + product["deliveryoption"][loop1]["name"]);
+      console.log("mmh: " + lable + " price = " + product["deliveryoption"][loop1]["price"]);
+      console.log("mmh: ---------------------------------- delivery option " + loop1 + " end");
+    }
+  }
+  else {
+    console.log("mmh: " + lable + " deliveryoption = NONE");
+  }
+  console.log("mmh: mmh_write_to_console_product ********************************** END");
+}
+
+
+// *****************************************************************************
+// iterate through cart_localstorage_array finding index
+// where item.id = product_id AND item.model_name = model_name
+function mmh_getIndexOfItemInCartLocalStorageArray(cart_localstorage_array, product_id, model_name) {
+  var foundIndex = -1;
+  if (cart_localstorage_array.length != 0) {
+    cart_localstorage_array.forEach(function (item, index) {
+      if ((item.id == product_id) && (item.model_name == model_name)) {
+        foundIndex = index
+      }
+    });
+  }
+  // console.log("mmh_getIndexOfItemInCartLocalStorageArray(" + product_id + ", " + model_name + "): index = " + foundIndex);
+  // mmh_consoleLog_arraycontents(cart_localstorage_array)
+  return foundIndex
+}
+
+
+
+// *****************************************************************************
+function mmh_removeDomElementWithId(id) {
+  console.log("mmh: mmh_removeDomElementWithId(): id = " + id);
+  var element = document.getElementById(id);
+  element.remove();
+}
+
+
+// *****************************************************************************
+function mmh_consoleLog_arraycontents(input_array) {
+  console.log("mmh: mmh_consoleLog_arraycontents() START: ---------------------------------------");
+  input_array.forEach(function (item, index) {
+    console.log(item);
+  });
+  console.log("mmh: mmh_consoleLog_arraycontents() END  : ---------------------------------------");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

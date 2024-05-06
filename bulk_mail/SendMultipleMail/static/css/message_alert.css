@@ -1,0 +1,20 @@
+.alert {
+    padding: 15px;
+    background-color: #a6f454; /* Red background color */
+    color: black; /* White text color */
+    margin-bottom: 15px;
+    transition: opacity 2s ease-out;
+}
+
+.alert.error {
+    background-color: #ffcccb; /* Light red background color for error messages */
+    color: #8b0000; /* Dark red text color for error messages */
+}
+
+.disabled-text {
+    background-color: #f0f0f0; /* Background color */
+    color: #555; /* Text color */
+    border: 1px solid #ddd; /* Border */
+    padding: 8px; /* Padding */
+    border-radius: 4px; /* Border radius */
+}

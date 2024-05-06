@@ -1,0 +1,735 @@
+// MMH: REPLACED
+// var obj667 = [];
+// let cart = (JSON.parse(localStorage.getItem('cart')) ||[]);
+// const cartDOM = document.querySelector('.cart');
+// let user = null;
+
+
+// MMH: REPLACED WITH SIMILAR CALL IN mmh_earlyscript.js FILE
+// // mmh: review value for SameSite Parameter
+// // mmh: get user uniqueid and set as cookie
+// var mmh_uniqid_cookie_value = mmh_getUsersUniqueId();
+// document.cookie = "mmh_uniqid_cookie=" + mmh_uniqid_cookie_value + "; SameSite=Strict";
+// // console.log("set mmh_uniqid_cookie: " + mmh_uniqid_cookie_value)
+
+
+
+// // *****************************************************************************
+// // mmh: get users unique id from localStorage or if not there generate and store it.
+// function mmh_getUsersUniqueId() {
+//   // console.log("mmh: mmh_getUsersUniqueId()");
+//   var temp_uniqueid = localStorage.getItem('mmh_uniqid');
+//   if (temp_uniqueid === null) {
+//     temp_uniqueid = mmh_genUniqueID();
+//     localStorage.setItem('mmh_uniqid', temp_uniqueid);
+//     // console.log("mmh: generated new temp_uniqueid = " + temp_uniqueid);
+//   }
+//   return temp_uniqueid
+// }
+
+// // mmh: commented out as no longer called (replaced by new methods)
+// function removeCartItem(id){
+//   console.log("mmh: removeCartItem()");
+//   return new Promise(resolve => {
+//     //loop through cart and see if item id = cartitem id if it does remove the item
+//     cart.forEach((item) => {
+//       if(item.uniqid == id){
+//         remove(cart, item)
+//         obj667 = [];
+//         saveCart();
+//         reloadCart();
+//         displayHideButtons();
+//         resolve(true)
+//       }
+//     })
+//   })
+// }
+
+// // MMH: replaced
+// function fnDeliveryDays(){
+//   console.log("mmh: fnDeliveryDays()");
+//   var subTotal = 0;
+//   var deliveryCharges = parseInt(document.getElementById('ddlDeliveryDays').value);
+//   document.getElementById('spnCartLoginDeliveryCharges').innerText = `$${deliveryCharges}`;
+//
+//    getCartItems().then(items => {
+//
+//       items.forEach(cartItem => {
+//         subTotal +=  parseFloat(cartItem.base_price);
+//
+//         cartItem.serviceoptions.forEach(service_option => {
+//                   subTotal += parseFloat(service_option.price);
+//
+//                 });
+//       }
+//       )
+//
+//       if(document.getElementById('spnCartLoginSubTotal') != null){
+//         document.getElementById('spnCartLoginSubTotal').innerText = `$${subTotal.toFixed(2)}`;
+//         document.getElementById('spnCartLoginEstTotal').innerText = `$${(parseFloat(subTotal) + parseFloat(deliveryCharges)).toFixed(2)}`;
+//       }
+//    })
+// }
+
+// // mmh: commented out as no longer called (replaced by new methods)
+// function emptyCart(){
+//   console.log("mmh: emptyCart()");
+//   cart = [];
+//   obj667 = [];
+//   localStorage.removeItem('cart');
+//   reloadCart();
+//   document.getElementById("pNoItems").style.display = "";
+//
+// }
+
+// // mmh: commented out as no longer called (replaced by new methods)
+// function reloadCart(){
+//   console.log("mmh: reloadCart()");
+//   clearCartTableDom();
+//   appendCartItems();
+//   mmh_updateMyCartIconItemCount();
+// }
+
+// // mmh: commented out as no longer called (replaced by new methods)
+// function clearCartTableDom(){
+//   console.log("mmh: clearCartTableDom()");
+//   var cartTableDom = document.getElementById("cart-item-tbody");
+//   if(cartTableDom != null){
+//   cartTableDom.innerHTML = ''
+//   }
+// }
+
+// // MMH: replaced
+// function countCartTotal(){
+//   console.log("mmh: countCartTotal()");
+//   // var cartTotal = 0;
+//   // cart.forEach((item) => {
+//   //   cartTotal += item.base_price * item.quantity;
+//   //   var service_options = item.serviceoptions
+//   //   service_options.forEach((service_option) => {
+//   //     cartTotal += JSON.parse(service_option.price);
+//   //   })
+//
+//   // })
+//
+//   // //document.body.innerHTML += `Pay from 06/19/2020 $${cartTotal}`;
+//   // //document.getElementById("show-cart-total").innerHTML = `$${cartTotal}` ;
+//   // return cartTotal.toFixed(2);
+//
+// return parseFloat(document.getElementById('spnCartLoginEstTotal')  == null ? 0 : document.getElementById('spnCartLoginEstTotal').innerText.replace('$','')).toFixed(2);
+//
+// }
+
+
+// // mmh: commented out as never called
+// function createItemTable(parentElem){
+//   // console.log("mmh: createItemTable()");
+//   parentElem.innerHTML += `
+//
+//
+//   `;
+// }
+
+// // MMH: replaced
+// function getCartItems(){
+//   console.log("mmh: getCartItems()");
+//   var items = JSON.parse(localStorage.getItem('cart')) ||[];
+//   if(document.getElementById("pNoItems") != null) {
+//     if(items.length == 0)
+//     {
+//       document.getElementById("pNoItems").style.display = "";
+//       document.getElementById("btnEmptyCart").style.display = "none";
+//     } else {
+//       document.getElementById("pNoItems").style.display = "none";
+//       document.getElementById("btnEmptyCart").style.display = "";
+//     }
+//   }
+//     return new Promise(resolve => {
+//       resolve(items);
+//     })
+// }
+
+
+// // mmh: commented out as no longer called (replaced by new methods)
+// function appendCartItems() {
+//   console.log("mmh: appendCartItems()");
+//   var i = 0;
+//   getCartItems().then(items => {
+//     var subTotal = 0;
+//      var divCart = document.getElementById('divCart');
+//      var dynamicHtml = '';
+//      var productTotal = 0;
+//       items.forEach(cartItem => {
+//
+//         ///////////////////////------------///////////////////////////
+//
+//         if(divCart == null)
+//           {
+//             return;
+//           }
+//         productTotal = parseFloat(cartItem.base_price);
+//           dynamicHtml += `<div class="media text-muted pt-3">
+//             <img data-src="holder.js/32x32?theme=thumb&amp;bg=ff0000&amp;fg=ff0000&amp;size=1" alt="32x32" class="mr-2 rounded" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_173d2fcb7af%20text%20%7B%20fill%3A%23007bff%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A2pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_173d2fcb7af%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23007bff%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2212.2890625%22%20y%3D%2216.9%22%3E32x32%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 32px; height: 32px;">
+//               <div class="media-body pb-3 mb-0 lh-125">
+//                 <div class="d-flex justify-content-between align-items-center w-100">
+//                   <strong class="text-gray-dark">${cartItem.title}
+//                   </strong>
+//                   <a class="">$${cartItem.base_price}</a>
+//                 </div>`;
+//                 cartItem.serviceoptions.forEach(service_option => {
+//                   productTotal += parseFloat(service_option.price);
+//                   dynamicHtml += `<div class="d-flex justify-content-between align-items-center w-100">
+//                     <div class="text-muted">
+//                       ${service_option.name}
+//                     </div>
+//                     <a class="">$${service_option.price}</a>
+//                    </div>
+//                   `
+//                 });
+//                 dynamicHtml += `</div>
+//                 </div>
+//                 <a href="javascript:removeCartItem('${cartItem.uniqid}')" class="small">Remove Item</a>
+//                   <strong class="d-block text-right mt-1">
+//                       $${productTotal.toFixed(2)}
+//                    </strong>
+//                 <hr/>
+//                 `;
+//                 subTotal +=  productTotal;
+//
+//           i++
+//           if(i >= items.length){
+//
+//           }
+//       })
+//       if(divCart != null){
+//         divCart.innerHTML =  dynamicHtml;
+//       }
+//       if(document.getElementById('spnSubTotal') != null){
+//       document.getElementById('spnSubTotal').innerText = `$${subTotal.toFixed(2)}`;
+//       document.getElementById('spnEstTotal').innerText = `$${subTotal.toFixed(2)}`;
+//
+//
+//       }
+//        localStorage.setItem('previous_cart_length', items.length);
+//        cardReloader();
+//   })
+// }
+
+// // MMH: replaced
+// window.load = fnCallOutPages();
+
+// // MMH: replaced
+// function fnCallOutPages(){
+//   console.log("mmh: fnCallOutPages()");
+//   if(window.location.href.indexOf('checkout/sign-in') > -1) {
+//     fnDeliveryDays();
+//   } else {
+//     appendCartItems();
+//   }
+// }
+
+// // MMH: replaced
+// function continueGuest() {
+//   console.log("mmh: continueGuest()");
+//   document.getElementById('divGuestContainer').style.display = '';
+//   document.getElementById('divContinueGuestContainer').style.display = 'none';
+//   document.getElementById('divLoginContainer').style.display = 'none';
+//
+// }
+
+// // MMH: replaced
+// function check_for_login_already(){
+//   console.log("mmh: check_for_login_already()");
+//   var element = document.getElementById('is_authenticated');
+//   if (element === null) {
+//     console.log("mmh: check_for_login_already() warning: document.getElementById(is_authenticated) is null");
+//   }
+//   else {
+//     if (element.innerHTML == 'True'){
+//       document.getElementById('paypal-button-container').style.display = '';
+//       document.getElementById('divGuestContainer').style.display = 'none';
+//       document.getElementById('divContinueGuestContainer').style.display = 'none';
+//       document.getElementById('divLoginContainer').style.display = 'none';
+//     }
+//   }
+// }
+
+// // MMH: replaced
+// function fnProcceedGuest() {
+//   console.log("mmh: fnProcceedGuest()");
+//   var guest = {
+//     uniqueId: mmh_genUniqueID(),
+//     email: document.getElementById('guestInputEmail').value,
+//     isGuest: true
+//   }
+//
+//   localStorage.setItem('guest', JSON.stringify(guest))
+//   console.log('fnProcceedGuest() > guest =', guest);
+//   document.getElementById('paypal-button-container').style.display = '';
+//   document.getElementById('divGuestContainer').style.display = 'none';
+//
+// }
+
+// // MMH: replaced
+// function getUserEmail() {
+//   console.log("mmh: getUserEmail()");
+//   const userObj = JSON.parse(localStorage.getItem('guest'));
+//   return userObj.email;
+// }
+
+// // mmh: commented out as no longer called (replaced by new methods)
+// function cardReloader() {
+//   console.log("mmh: ************************");
+//   console.log("mmh: cardReloader()");
+//   var time = 1;
+//
+//   var cart_length = JSON.parse(localStorage.getItem('cart')) == null ? 0 : JSON.parse(localStorage.getItem('cart')).length;
+//   var previous_cart_length =  localStorage.getItem('previous_cart_length') == null ? 0 :  localStorage.getItem('previous_cart_length');
+//
+//   if(time > 1 && previous_cart_length == cart_length)
+//   {
+//      setTimeout(function name(params) {
+//           cardReloader();
+//         }, mmh_cardReloaderSetTimeoutValue);
+//     return;
+//   }
+//
+//   var interval = setInterval(function() {
+//      if (time < 10) {
+//         time++;
+//         reloadCart();
+//      }
+//       else {
+//         setTimeout(function name(params) {
+//           cardReloader();
+//         }, mmh_cardReloaderSetTimeoutValue);
+//          clearInterval(interval);
+//       }
+//   }, mmh_cardReloaderSetIntervalValue);
+// }
+
+// // mmh: commented out as never called
+// function initContextMenu(){
+//   console.log("mmh: initContextMenu()");
+//   addContextMenuDOM();
+//   setupIconClickMenu();
+// }
+
+// // mmh: commented out as never called
+// function addContextMenuDOM(){
+//   console.log("mmh: addContextMenuDOM()");
+//   document.body.innerHTML += `
+//   <div class="hide contextmenu" id="context-menu">
+//     <div class="contextmenu-item" onclick="contextDeleteItem()"><i class="fa fa-trash"></i><p>Delete</p></div>
+//     <div class="contextmenu-item" onclick=""><i class="fa fa-share-alt"></i><p>Options</p></div>
+//   </div>`
+// }
+
+// // mmh: commented out as never called
+// function setupIconClickMenu(){
+//   console.log("mmh: setupIconClickMenu()");
+//   $('body').click((evt) => {
+//       var clicked = evt.target;
+//       var currentClass = clicked.className || "No Class!";
+//       if(currentClass.indexOf('context-menu') >= 0){
+//           $('#context-menu').attr('for', clicked.id)
+//           $('#context-menu').addClass('show')
+//           $('#context-menu').removeClass('hide')
+//           $('#context-menu').css("top", mouseY(evt) + 'px')
+//           $('#context-menu').css("left", mouseX(evt) - document.getElementById("context-menu").offsetWidth + 'px');
+//       }else{
+//           $('#context-menu').removeClass('show')
+//           $('#context-menu').addClass('hide')
+//       }
+//   })
+// }
+
+// // mmh: commented out as never called
+// function contextDeleteItem(){
+//   console.log("mmh: contextDeleteItem()");
+//   var itemID = $('#context-menu').attr('for');
+//   removeCartItem(itemID).then((status) => {
+//     if(status == true){
+//       console.log('item successfully deleted');
+//     }else{
+//       console.log(status);
+//     }
+//   })
+// }
+
+// // mmh: commented out as no longer called (replaced by new methods)
+// // function to save current cart to the browsers localstorage.
+// function saveCart() {
+//   console.log("mmh: saveCart()");
+//   localStorage.setItem('cart', JSON.stringify(cart));
+//   countCartTotal();
+// }
+
+// // mmh: NOTE: VIEW THIS REFERS TO COULD BE REMOVED AS WELL
+// // mmh: commented out as no longer called (replaced by new methods)
+// function getCartFromDB(uniqid){
+//   console.log("mmh: getCartFromDB()");
+//   return new Promise(resolve => {
+//     // mmh: fix url
+//     // $.post( "/get-cart", { uniqid: uniqid})
+//     $.post( "/v1.1/app/resumeweb/cart/get-cart", { uniqid: uniqid})
+//     .done(function( data ) {
+//       console.log(data.response);
+//       data = data.response;
+//       data.forEach((item) => {
+//         JSON.parse(item)
+//       })
+//       resolve(data)
+//     });
+//   })
+// }
+
+// // mmh: commented out as never called
+// function uniqidInDOM(){
+//   console.log("mmh: uniqidInDOM()");
+//   return new Promise(resolve => {
+//     var uid = document.getElementById("uid").innerHTML;
+//     if(uid){
+//       resolve(uid)
+//     }else{
+//       resolve(false)
+//     }
+//   })
+// }
+
+
+// // MMH: RENAMED TO mmh_genUniqueID and moved to mmh_earlyscript.js
+// // function to make completly uniqu userid for possible uses in the future.
+// function uniquid() {
+//   console.log("mmh: uniquid()");
+//   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+//     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+//     return v.toString(16);
+//   });
+// }
+
+// // mmh: commented out as no longer called (replaced by new methods)
+// // mmh: this method should be renamed to something less generic
+// //function to remove from array by item
+// function remove(arr, item) {
+//   console.log("mmh: remove()");
+//   for (var i = arr.length; i--;) {
+//       if (arr[i] === item) {
+//           arr.splice(i, 1);
+//       }
+//   }
+// }
+
+// // mmh: commented out as never called
+// function mouseX(evt) {
+//   if (evt.pageX) {
+//     return evt.pageX;
+//   } else if (evt.clientX) {
+//     return evt.clientX + (document.documentElement.scrollLeft ?
+//       document.documentElement.scrollLeft :
+//       document.body.scrollLeft);
+//   } else {
+//     return null;
+//   }
+// }
+
+// // mmh: commented out as never called
+// function mouseY(evt) {
+//   if (evt.pageY) {
+//     return evt.pageY;
+//   } else if (evt.clientY) {
+//     return evt.clientY + (document.documentElement.scrollTop ?
+//       document.documentElement.scrollTop :
+//       document.body.scrollTop);
+//   } else {
+//     return null;
+//   }
+// }
+
+
+
+
+// // mmh: commented out as never called
+// function hideButtons(){
+//     console.log("mmh: hideButtons() -- EMPTY METHOD????");
+// }
+
+
+// PAYPAL Integration
+
+// document.querySelector('#paypal-button-container').style.display = 'none';
+
+// MMH: replaced
+// const PAYPAL_CLIENT_ID = 'AQuing_yMXjZznXrdprlmnUwgXcFyvwz_929DA3D3bc8XG4FXtgrit7L2CpZ67vW3sCWO_KpXrOde8WC'
+
+// // mmh: commented out as never called
+// function checkout_original() {
+//   console.log("mmh: checkout_original()");
+//   let paypalFormHTML = `
+//     <form id="paypal-form" action="https://www.paypal.com/sdk/js?client-id=AQuing_yMXjZznXrdprlmnUwgXcFyvwz_929DA3D3bc8XG4FXtgrit7L2CpZ67vW3sCWO_KpXrOde8WC&currency=USD" method="post">
+//       <input type="hidden" name="cmd" value="_cart">
+//       <input type="hidden" name="upload" value="1">
+//       <input type="hidden" name="business" value="adrian@webdev.tube">
+//   `;
+//
+//   cart.forEach((cartItem, index) => {
+//     ++index;
+//     paypalFormHTML += `
+//       <input type="hidden" name="item_title_${index}" value="${cartItem.title}">
+//       <input type="hidden" name="amount_${index}" value="${cartItem.price}">
+//       <input type="hidden" name="quantity_${index}" value="${cartItem.quantity}">
+//     `;
+//   });
+//
+//   paypalFormHTML += `
+//       <input type="submit" value="PayPal">
+//     </form>
+//     <div class="overlay"></div>
+//   `;
+//
+//   document.querySelector('body').insertAdjacentHTML('beforeend', paypalFormHTML);
+//   document.getElementById('paypal-form').submit();
+// }
+
+
+// MMH: replaced
+// paypal.Buttons({
+//     env: 'sandbox', // Optional: specify 'sandbox' environment
+//     client: {
+//       sandbox:    'xxxxxxxxx',
+//       production: 'xxxxxxxxx'
+//     },
+//     commit: true,
+//     locale: 'en_US',
+//     style: {
+//         shape: 'rect',
+//         color: 'gold',
+//         layout: 'vertical',
+//         label: 'checkout',
+//         size: 'small'
+//         // tagline: 'false',
+//         // fundingicons: 'false',
+//     },
+//     funding: {
+//         allowed: [ paypal.FUNDING.CARD ],
+//         disallowed: [ paypal.FUNDING.CREDIT ]
+//     },
+//
+//     createOrder: function(data, actions) {
+//         return actions.order.create({
+//             purchase_units: [{
+//                 amount: {
+//                     value: countCartTotal()
+//                 }
+//             }]
+//         });
+//     },
+//     onApprove: function(data, actions) {
+//         return actions.order.capture().then(function(details) {
+//             mmh_transactionCompletePerformHouskeeping();
+//         });
+//     }
+// }).render('#paypal-button-container');
+
+
+// // MMH: replaced
+// check_for_login_already()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// *****************************************************************************
+// mmh: old code that was never called
+// mmh: old code that was never called
+
+// // mmh: commented out as never called
+// function hasUniqid(){
+//   return new Promise(resolve => {
+//     if(localStorage.getItem('uniqid')){
+//       console.log('has uniqid');
+//       resolve(true)
+//     }else{
+//       console.log('does not have uniqid');
+//       resolve(false)
+//     }
+//   })
+// }
+
+// // mmh: commented out as never called
+// function assignTempUniqid(){
+//   console.log("mmh: assignTempUniqid()");
+//   localStorage.setItem('uniqid', mmh_genUniqueID())
+// }
+
+// // mmh: this method never called anywhere in code.
+// // mmh: removing for now
+// function transferCartToUser(from, to){
+//   console.log("mmh: transferCartToUser()");
+//   console.log(`${from} - ${to}`);
+//   getCartFromDB(from).then(cart => {
+//     console.log(cart);
+//     saveCartToDB(cart)
+//   })
+// }
+
+
+// *****************************************************************************
+// mmh: old code that has been replaced
+// mmh: old code that has been replaced
+
+// // Replaced with mmh_fromLocalStorageUpdateDbTable_mcart()
+// function saveCartToDB(option){
+//   console.log("mmh: saveCartToDB()");
+//   if(option == "localstorage"){
+//     console.log("mmh: saveCartToDB(option == localstorage)");
+//     getCartItems().then(cartItems => {
+//       // mmh: fix url
+//       // $.post("/save-cart", { uniqid: localStorage.getItem('uniqid'), cart: [JSON.stringify(cartItems)]})
+//       $.post("/v1.1/app/resumeweb/cart/save-cart", { uniqid: localStorage.getItem('uniqid'), cart: [JSON.stringify(cartItems)]})
+//       .done(function( data ) {
+//
+//       });
+//     })
+//   }else{
+//     console.log("mmh: saveCartToDB(option NOT EQUAL localstorage)");
+//     console.log(option);
+//     // mmh: fix url
+//     // $.post("/save-cart", { uniqid: localStorage.getItem('uniqid'), cart: [JSON.stringify(option)]})
+//     $.post("/v1.1/app/resumeweb/cart/save-cart", { uniqid: localStorage.getItem('uniqid'), cart: [JSON.stringify(option)]})
+//     .done(function( data ) {
+//
+//     });
+//   }
+// }
+
+// // Replaced with mmh_removeProductFromCart_andUpdateDom()
+// function removeFromCart(){
+//   //debugger;
+//   var productId = productDOM.querySelector('.product__id').innerText;
+//   console.log("mmh: removeFromCart(): productId = " + productId);
+//   var addedItems = JSON.parse(localStorage.getItem('cart'));
+//   if(addedItems != null) {
+//     var itemIndex = addedItems.findIndex(x=>x.id == productId);
+//     addedItems.splice(itemIndex, 1);
+//     localStorage.setItem('cart', JSON.stringify(addedItems));
+//     //localStorage.setItem('previous_cart_length', addedItems.length);
+//   }
+//   mmh_updateMyCartIconItemCount();
+//   displayHideButtons();
+// }
+
+// // replaced with mmh_addItemFromCartAndDB()
+// function addToCart(){
+//   console.log("mmh: addToCart()");
+//   cart.push(getProductFromDOM())
+//   saveCart();
+//   saveCartToDB("localstorage")
+//   reloadCart();
+//   displayHideButtons();
+// }
+
+// -----------------------------------------------------------------------------
+// mmh: global variables
+
+// // mmh: commented out as no longer called (replaced by new methods)
+// // Two values used for cardReloader Timeout and Interval timers.
+// // Unfortunately while idling on a page this method causes browser to shortly use up all resources.
+// // Until this can be reviewed forcing these timer values to huge numbers to avoid being called frequently.
+// var mmh_cardReloaderSetTimeoutValue   = 100000000;    // orig = 100000
+// var mmh_cardReloaderSetIntervalValue  = 50000000;     // orig = 50000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+{% extends './base.html' %}
+
+
+{% block meta %}
+    <meta name="description" content="Analyze your resume the most accurate way possible">
+    <meta name="keywords" content="resume template, resume builder, free resume builder, resume help, resume review service, resume review free, free resume review, best resume review services, how to write a resume, build your resume, resume examples for job, help with resume writing, best resume examples, how do i write a resume, examples of good resumes, build a professional resume">
+    <meta name="author" content="LegoIO">
+    <title>Resumenalyzer</title>
+{% endblock %}
+
+
+{% block content %}
+
+  {% if messages %}
+      <div class="row bg-warning">
+          <ul class="unstyled">
+            {% for message in messages %}
+              <li class="px-3">{{ message }}</li>
+            {% endfor %}
+          </ul>
+      </div>
+  {% endif %}
+
+  {% block opening_banner %}
+  {% endblock %}
+
+  {% block body_contents %}
+  {% endblock %}
+
+  {% block upload_file %}
+  {% endblock %}
+
+  {% block show_email_data %}
+  {% endblock %}
+
+
+{% endblock %}

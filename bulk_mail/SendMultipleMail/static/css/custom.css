@@ -1,0 +1,40 @@
+.form-control-xs{
+	color: #ff0000;
+}
+
+
+.shadow1{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.shadow2{
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+
+.nav-scroller2 {
+  position: fixed;
+  z-index: 2;
+  height: 1.75rem;
+  overflow-y: hidden;
+}
+.nav-scroller {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  z-index: 2;  
+  width: 100%;
+}
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+

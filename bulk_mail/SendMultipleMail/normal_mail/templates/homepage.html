@@ -1,0 +1,27 @@
+{% extends 'primary_layout.html' %}
+{% load static %}
+
+
+{% block body_contents %}
+
+<!-- WELCOME -->
+<section class="pt-4 pt-md-9 pb-md-7 bg-gradient-light-white text-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <!-- Content Area -->
+        <h2 class="mb-4">Welcome to Our Mail Service</h2>
+        <p class="mb-4">Choose an option below:</p>
+
+        <!-- Action Links -->
+        <div class="d-grid gap-3">
+          <a href="{% url "show_email_data" %}" class="btn btn-primary btn-lg">Upload and Validate Emails</a>
+          <a href="{% url "upload_and_send_mail" %}" class="btn btn-secondary btn-lg">Send Email</a>
+        </div>
+      </div>
+    </div>
+  </div> <!-- / .container -->
+</section>
+
+
+{% endblock %}

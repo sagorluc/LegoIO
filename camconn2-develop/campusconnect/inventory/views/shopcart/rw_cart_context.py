@@ -85,6 +85,7 @@ def cart_context_forQuerySet(request, mcart_qs):
         item_totalcost = round(item_totalcost, 2)
 
         final_total_cost += item_totalcost
+        # print(final_total_cost, 'line 88')
         products_list.append({
             "mcart":                    mcart_instance,
             "mcart_serviceoptions":     serviceoptions_list,
@@ -112,6 +113,7 @@ def cart_context_forQuerySet(request, mcart_qs):
         'final_deliverytotal'   : final_deliverytotal,
         # 'qs_mcoupon_given'      : qs_mcoupon_given,
     }
+    
 
     # zzz_print(context, pretty=True)
     # ******************************************************************************************** ZZZ_PRETTY | START:

@@ -1,0 +1,87 @@
+
+{% extends 'primary_layout.html' %}
+{% load static %}
+
+{% block body %}
+
+    <!-- Messages -->
+    <div style="width: 23%; margin: auto;">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert {% if message.tags == 'error' %}error{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- WELCOME -->
+    <section class="pt-4 pt-md-9 pb-md-7 bg-gradient-light-white">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Upload Form -->
+                <div class="col-12 col-md-5 col-lg-5 order-md-2 mb-8">
+                    <div class="card shadow-sm">
+                        <!-- Card Body for Email Content -->
+                        <div class="card-body">
+                            <form id="mailForm" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="csv_file" class="form-label">Upload CSV File</label>
+                                    <input type="file" class="form-control" id="csv_file" name="csv_file" accept=".csv" required>
+                                    {% if form.csv_file.errors %}
+                                        <div class="invalid-feedback">{{ form.csv_file.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter your subject.." required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" placeholder="Enter your message.." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send</button>
+                                <a type="button" href="{% url 'homepage' %}" class="btn btn-primary">Back</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Display Emails and Status -->
+                <div class="col-12 col-md-7 col-lg-7 order-md-1" data-aos="">
+                    <div class="px-5">
+                        <!-- Heading -->
+                        <h1 class="display-2 fw-bold text-primary mb-6">
+                            uploading the CSV file, write your mail content for sending.
+                        </h1>
+                        
+                    <!-- Displaying Emails and Their Status -->
+                    {% if clean_emails %}
+                        <div class="d-flex">
+                            <!-- Badge -->
+                            <div class="badge badge-rounded-circle bg-success mt-1 me-4">
+                                <i class="fe fe-check"></i>
+                            </div>
+                            <!-- Email List -->
+                            <div>
+                                {% for email in clean_emails %}
+                                        {% if status == 'done' %}
+                                            <p class="text-gray-800">{{ forloop.counter }}. {{ email }} | <span class="text-success">Success</span></p>
+                                        {% elif status == 'failed' %}
+                                            <p class="text-gray-800">{{ forloop.counter }}. {{ email }} | <span class="text-danger">Failed</span></p>
+                                        {% else %}
+                                            <p class="text-gray-800">{{ forloop.counter }}. {{ email }} | <span class="text-warning">Unknown</span></p>
+                                        {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </section>
+{% endblock %}

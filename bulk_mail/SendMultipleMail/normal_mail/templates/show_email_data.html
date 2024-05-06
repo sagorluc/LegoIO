@@ -1,0 +1,91 @@
+{% extends 'primary_layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+    <!-- Messages -->
+    <div style="width: 23%; margin: auto;">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert {% if message.tags == 'error' %}error{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- WELCOME -->
+    <section class="pt-4 pt-md-9 pb-md-7 bg-gradient-light-white">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-5 col-lg-5 order-md-2 mb-8">
+                    <div class="card shadow-sm">
+                        <!-- Card Image -->
+                        <img src="https://ccv1staticdata.s3.amazonaws.com/images/new-ui/ra-13.png" alt="Card Image" class="card-img-top">
+                        
+                        <!-- Card Body for Email Content -->
+                        <div class="card-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="csv_file" class="form-label">Upload CSV File</label>
+                                    <input type="file" class="form-control" id="csv_file" name="csv_file" accept=".csv" required>
+                                    {% if form.csv_file.errors %}
+                                        <div class="invalid-feedback">{{ form.csv_file.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                <button type="submit" class="btn btn-primary">Upload CSV</button>
+                                <a href="{% url 'homepage' %}" class="btn btn-primary">Back</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-7 col-lg-7 order-md-1" data-aos="">
+                    <div class="px-5">
+                        <!-- Heading -->
+                        <h1 class="display-2 fw-bold text-primary mb-6">
+                            Upload CSV file <span class="">To</span> check validation of all email.
+                        </h1>
+                        {% if clean_emails %}
+                            <div class="d-flex flex-column">
+                                <!-- Email List -->
+                                {% for email in clean_emails %}
+                                    <p class="text-gray-800">                               
+                                        {{ forloop.counter }}. {{ email }} <a href="#" onclick="deleteRow('{{ email }}')" class="bi bi-x text-danger" style="text-decoration:none;">delete</a>
+                                    </p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </section>
+
+    
+    <!-- JavaScript to handle email deletion -->
+    <script>
+        function deleteRow(email) {
+            if (confirm("Are you sure you want to delete the email: " + email + "?")) {
+                // Retrieve all email paragraphs
+                const emailParagraphs = document.querySelectorAll(".text-gray-800");
+
+                // Find the paragraph containing the email to delete
+                const paragraphToDelete = Array.from(emailParagraphs).find(p => p.textContent.includes(email));
+
+                if (paragraphToDelete) {
+                    // Remove the paragraph from the DOM
+                    paragraphToDelete.remove();
+                    alert("Email deleted successfully.");
+                } else {
+                    alert("Email not found.");
+                }
+            }
+        }
+    </script>
+
+{% endblock %}

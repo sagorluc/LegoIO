@@ -28,9 +28,12 @@ def generate_transaction_id():
     return transaction_id
 
 
+
 def initial_payment_amarPay(request):
     
-    request.session['mmh_guestemailaddress'] = 'mdsagorluc@gmail.com'
+    print(request.POST, 'line 34')
+    
+    request.session['mmh_guestemailaddress'] = request.user.email
     
     if 'mmh_guestemailaddress' not in request.session or not request.session['mmh_guestemailaddress']:
         return HttpResponse('Empty email in the session.line 37')
@@ -38,7 +41,7 @@ def initial_payment_amarPay(request):
 
     global_dict.update(email=request.session['mmh_guestemailaddress'])
     
-
+    total_price = cart_context_forUser(request)['total_cost']
     tran_id = generate_transaction_id()
     
     url = "https://sandbox.aamarpay.com/index.php"
@@ -48,7 +51,7 @@ def initial_payment_amarPay(request):
     'cus_name': 'Customer Name',
     'cus_email': request.session['mmh_guestemailaddress'],
     'cus_phone': '01870******',
-    'amount': '10',
+    'amount': total_price,
     'currency': 'BDT',
     'tran_id': tran_id,
     'desc': 'test transaction',
@@ -90,8 +93,10 @@ def success(request):
         print("Payment data==========================",payment_data)
 
         convertedPaymentData=payment_data.dict()
+        print(convertedPaymentData, 'line 94')
         save_payment_data= mamar_pay.objects.create(customer_email=global_dict['email'],
                 amarpay_payment_data=convertedPaymentData)
+        print(save_payment_data, 'line 97')
         save_payment_data.save()
 
         #Capturing transaction id
