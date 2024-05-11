@@ -28,7 +28,7 @@
                         
                         <!-- Card Body for Email Content -->
                         <div class="card-body">
-                            <form method="POST" enctype="multipart/form-data">
+                            <form method="GET" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="mb-3">
                                     <label for="csv_file" class="form-label">Upload CSV File</label>
@@ -55,7 +55,7 @@
                                 <!-- Email List -->
                                 {% for email in clean_emails %}
                                     <p class="text-gray-800">                               
-                                        {{ forloop.counter }}. {{ email }} <a href="#" onclick="deleteRow('{{ email }}')" class="bi bi-x text-danger" style="text-decoration:none;">delete</a>
+                                        {{ forloop.counter }}. {{ email }} <!-- <a href="#" onclick="deleteRow('{{ email }}')" class="bi bi-x text-danger" style="text-decoration:none;">delete</a> -->
                                     </p>
                                 {% endfor %}
                             </div>
