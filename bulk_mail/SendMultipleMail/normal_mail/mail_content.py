@@ -17,6 +17,31 @@ from threading import Thread
 TEMP_DIR_GENERAL = 'siteshared/layout/'
 
 
+# ================================ SEND ASYNC MAIL ======================================
+async def send_async_mail(request, subject, msg_body, clean_emails):
+    start_time = datetime.now()
+
+    try:
+        loop = asyncio.get_event_loop()
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            futures = [loop.run_in_executor(executor, send_bulk_mail, request, subject, msg_body, clean_email) for clean_email in clean_emails]
+
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    await future  # Wait for completion or catch exceptions
+                except Exception as e:
+                    logger.error(f"Email sending failed: {e}")
+
+        end_time = datetime.now()
+        duration = end_time - start_time
+        logger.info(f"Emails sent in {duration.seconds} seconds")
+        return HttpResponse("Bulk emails sent successfully")
+    
+    except Exception as e:
+        logger.error(f"Error sending bulk emails: {e}")
+        return HttpResponseServerError("Error sending bulk emails")
+
+
 # ================================ SEND BULK MAIL ASYNC ==================================
 class EmailThread(threading.Thread):
     def __init__(self, subject, html_content, recipient_list):

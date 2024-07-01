@@ -32,15 +32,18 @@
                                 <input type="file" class="form-control" id="csv_file" name="csv_file" accept=".csv"
                                     required>
                             </div>
-                            <button type="submit" name="action" class="btn btn-primary" value="upload">Upload
-                                CSV</button>
+                            <button type="submit" name="action" class="btn btn-primary mb-3" value="upload">Upload CSV</button>
+                            
                             {% if clean_emails %}
+                              <div class="mb-3">
                                 <button type="submit" name="action" class="btn btn-primary" value="send">Send</button>
+                              </div>
                             {% endif %}
-                            <a href="{% url 'homepage' %}" class="btn btn-primary">Back</a>
+                           <!-- <a href="{% url 'homepage' %}" class="btn btn-primary">Back</a> -->
                         </form>
                     </div>
 
+                    <!--
                     {% if clean_emails %}
                         <div class="card-body">
                             <form id="mailForm" method="POST" enctype="multipart/form-data" novalidate>
@@ -61,6 +64,7 @@
                             </form>
                         </div>
                     {% endif %}
+                    -->
                 </div>
             </div>
 
