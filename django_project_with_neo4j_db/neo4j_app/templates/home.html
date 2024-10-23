@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Header -->
+        <h1 class="text-center">Neo4j Application</h1>
+
+        <!-- Action Buttons -->
+        <div class="text-center my-4">
+            <a href="{% url 'person' %}" class="btn btn-primary mx-2">Create Person</a>
+            <a href="{% url 'book' %}" class="btn btn-success mx-2">Create Book</a>
+            <a href="{% url 'profile' %}" class="btn btn-info mx-2">Create Profile</a>
+        </div>
+
+        <!-- Table Section Person -->
+        <h1 style="width: 500%; margin:auto;">Persons</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>UID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Books Written</th>
+                            <th>Books Read</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in persons %}
+                        <tr>
+                            <td>{{ person.uid }}</td>
+                            <td>{{ person.name }}</td>
+                            <td>{{ person.age }}</td>
+                            <td>
+                                {% with key=person.uid %}
+                                {% if books_written.key %}
+                                    {% for book in books_written.key %}
+                                        {{ book.title }}<br>
+                                    {% endfor %}
+                                {% else %}
+                                    None
+                                {% endif %}
+                                {% endwith %}
+                            </td>
+                            <td>
+                                {% with key=person.uid %}
+                                {% if books_read.key %}
+                                    {% for book in books_read.key %}
+                                        {{ book.title }}<br>
+                                    {% endfor %}
+                                {% else %}
+                                    None
+                                {% endif %}
+                                {% endwith %}
+                            </td>
+                            <td>
+                                {% if person.uid %}
+                                    <a href="{% url 'person_details' person.uid %}" class="btn btn-primary">Details</a>
+                                {% else %}
+                                    <a href="#" class="btn btn-secondary">None</a>
+                                {% endif %}
+                            </td> 
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Table Section Book -->
+        <h1 style="width: 500%; margin:auto;">Books</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>UID</th>
+                            <th>Title</th>
+                            <th>Genre</th>
+                            <th>Author</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                        <tr>
+                            <td>{{ book.uid }}</td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.genre }}</td>
+                            <td>{{ book.author.name }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Table Section Profile -->
+        <h1 style="width: 500%; margin:auto;">Profiles</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>UID</th>
+                            <th>Bio</th>
+                            <th>Website</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for profile in profiles %}
+                        <tr>
+                            <td>{{ profile.uid }}</td>
+                            <td>{{ profile.bio }}</td>
+                            <td>{{ profile.website }}</td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

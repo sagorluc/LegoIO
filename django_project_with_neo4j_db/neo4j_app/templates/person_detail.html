@@ -1,0 +1,98 @@
+<!-- templates/myapp/person_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}Person Detail{% endblock %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-md-4">
+        <!-- Card for Person Details -->
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Person Details
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ person.name }}</h5>
+                <p class="card-text">
+                    Age: {{ person.age }}
+                </p>
+                {% if person.profile %}
+                <h6>Profile:</h6>
+                <p>Bio: {{ person.profile.bio }}</p>
+                <p>Website: <a href="{{ person.profile.website }}" target="_blank">{{ person.profile.website }}</a></p>
+                {% else %}
+                <p>No profile available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <!-- Table for Books Authored by the Person -->
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                Books Authored by {{ person.name }}
+            </div>
+            <div class="card-body">
+                {% if person.books_written %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Genre</th>
+                            <th>Publish Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in person.books_written %}
+                        <tr>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.genre }}</td>
+                            <td>{{ book.publish_year }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>{{ person.name }} hasn't authored any books yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add a list of books read by the person (many-to-many relationship) -->
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                Books Read by {{ person.name }}
+            </div>
+            <div class="card-body">
+                {% if person.books_read %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Genre</th>
+                            <th>Publish Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in person.books_read %}
+                        <tr>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.genre }}</td>
+                            <td>{{ book.publish_year }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>{{ person.name }} hasn't read any books yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
